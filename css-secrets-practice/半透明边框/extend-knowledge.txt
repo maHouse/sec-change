@@ -43,4 +43,27 @@ em  相对值，相对于父元素，父元素字体（font-size）变化，这�
 
 3.max-width 和 min-width
 
-最大宽度及一下能做啥，最小宽度及以上能做啥
+最大宽度及一下能做啥，最小宽度及以上能做啥，和width同时写出来的话，min-width会屏蔽其他而出效果，
+width的优先级是最小的
+
+4.hsla 和 rgba
+前者是由人的感官体现出来的，hue色调，saturation饱和度，以及lightness亮度，色调的最大值是360，saturation和lightness
+从0--100%，alpha是opacity的透明度；
+后者是一种颜色的调和，red红色，green绿色，blue蓝色，加透明度opacity；
+opacity的值仅仅在0到1之间。
+
+共同的特点是在IE6-IE8中都不支持。可用滤镜代替。
+opacity:.9;
+filter:alpha(opacity=90);//IE 6不支持
+
+一个公用的样式：
+div{
+	width: 800px;
+	height: 600px;
+}
+.red_rgba{
+	background: rgba(255,0,0,.3);
+}
+.red_hsla{
+	background: hsla(0,100%,54%,.3);
+}
