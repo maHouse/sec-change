@@ -1,0 +1,28 @@
+1.background相关知识：
+background-color
+		  -image        两张图片交叉在一起，两张背景图片
+		  -repeat
+		  -size         背景图片的尺寸
+		  -position   	背景图像的位置，
+		  -origin	    背景图片的定位区域
+		  -clip         规定背景的绘制区域
+		  -attachment   背景图像是否滚动或随着页面的其余部分滚动
+		  
+		-position
+		
+没有计较边框，可用位置top等，像素和百分比，均可为负值，在Firefox和Opera中，要用attachment属性为fixed
+		
+		-size
+		
+背景图像的尺寸，用像素度量，则是背景图像自身的width和height的值，如果用百分比则是父元素width和height
+乘以百分比，得到背景图像的宽和高，第二项没有的话，自动设置为auto，还有两个属性值，cover和contain，cover
+顾名思义，是覆盖背景区域，后者是覆盖内容区域。
+
+		-origin
+		
+与 -attachment属性冲突，有它没有 -rigin，相对于谁来定位背景图片，三个值边框（border-box），
+内边距（padding-box），内容区域（content-box）
+
+		-clip
+		
+同样3个值，不过针对的是背景图片和背景颜色，与 -origin同样的效果，同样的属性值
