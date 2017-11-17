@@ -26,3 +26,21 @@ background-color
 		-clip
 		
 同样3个值，不过针对的是背景图片和背景颜色，与 -origin同样的效果，同样的属性值
+
+2.px、rem、em意思与应用
+
+px  绝对单位，与浏览器的分辨率相关，一切用px单位的元素大小的更改都要逐次更改
+
+rem  相对值，相对于根元素，html根元素变化，则其他相关的随之变化，不过，如果修改文档里面的某些值，
+则要一一更改，所以rem可以在浏览器默认字体大小更改的情况下使用，如媒体查询
+
+em  相对值，相对于父元素，父元素字体（font-size）变化，这个会涉及到字体的继承，则随之变化，更改量少，
+但计算他们之间的关系略微复杂，如果要求组件整体的变化，则可以用em
+
+多列布局，用%
+
+更多信息可以浏览https://webdesign.tutsplus.com/zh-hans/tutorials/comprehensive-guide-when-to-use-em-vs-rem--cms-23984
+
+3.max-width 和 min-width
+
+最大宽度及一下能做啥，最小宽度及以上能做啥
