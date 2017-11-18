@@ -67,3 +67,17 @@ div{
 .red_hsla{
 	background: hsla(0,100%,54%,.3);
 }
+
+5.font:italic 100%/1.5 "微软雅黑" === font-size/line-height;font-size 是浏览器的默认
+的字体大小，这么设置，不会继承父元素的字体大小，而以这个比例设置字体大小。
+
+font-size：百分比
+
+为100%即为浏览器默认的字体大小，为其他百分比，则是默认浏览器字体大小与百分比的乘积
+
+line-height:1.5,line-height的属性值的像素大小就是font的属性值的像素大小
+
+line-height撑起了字体所在的盒子，line box，字体能不能显示就看line-height是不是设置了，设置了多少，
+font-size是字体大小，与能不能展示出来无关，line-height是展示出来。
+
+line-height：值为数字时，表示当前的字体大小与数字的乘积作为line-height的值。
