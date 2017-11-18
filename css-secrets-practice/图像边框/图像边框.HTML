@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>图像边框</title>
+	<style>
+		/* .bg-img{
+			border: 1px solid red;
+			background: url(images/timg.jpg);
+			background-size: cover;
+			padding: 1rem;
+		}
+		.bg-img div{ background: white; padding: 1rem; } */
+
+		/* .bg-img{
+			padding: 1rem;
+			border: 1rem solid transparent;
+			background: linear-gradient(white, white),
+						url(images/timg.jpg);
+			background-size: cover;
+			background-clip: padding-box, border-box;
+			background-origin: border-box;
+		}
+		
+		或者,同上一样
+		
+		.bg-img{
+			padding: 1rem;
+			border: 1rem solid transparent;
+			background: linear-gradient(white,white) padding-box,
+						url(images/timg.jpg) 0 / cover;
+		} */
+
+		@keyframes ants{ to { background-position: 100% } }
+			/*可以用上面的来实验*/
+		.bg-img{
+		
+			padding: 1rem;
+			border: 1px solid transparent;
+			background: linear-gradient(white, white) padding-box,
+				        repeating-linear-gradient(-45deg,black 0,black 25%,white 0, white 50%) 0 / .6rem .6rem;
+			
+			animation: ants 12s linear infinite;
+		}
+	/*pepeating-linear-gradient设置的是线条 .6rem设置的线条的宽高，background-size设置相同，padding-box,设置的是背景色，padding-box同样可以用content-box，不过效果不好看*/
+	</style>
+</head>
+<body>
+	<div class="bg-img" id="bg">
+		<div>
+			存放内容部分，content-box
+		</div>
+	</div>
+</body>
+</html>

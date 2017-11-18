@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>条纹背景</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: calc(50% + 20px);
+			height: calc(50% + 20px);
+			margin: 20rem auto;
+			text-align: center;
+			font: 100%/4 sans-serif;
+			/*border: 4px dashed red;*/
+		}
+		.toTop{
+			background: 
+			linear-gradient(to bottom left,green,red,black),
+			linear-gradient(black,greenyellow);
+			;
+		}
+		.toTop-deg{
+			background: linear-gradient(90deg,red,green);
+		}
+		.toTop-degsec{ 
+			background: linear-gradient(60deg, #58a 50%, #fb8 0);
+			background-size: 100% 47px;
+		}
+		.toTop-degthird{ background: radial-gradient(circle, greenyellow, red); }
+	</style>
+</head>
+<body>
+	<div class="toTop">toTop</div>
+	<div class="toTop-deg">toTop-deg</div>
+	<div class="toTop-degsec">toTop-degsec</div>
+	<div class="toTop-degthird">toTop-degthird</div>
+</body>
+</html>
