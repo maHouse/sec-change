@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>多重边框</title>
+	<style>
+		*{ margin: 0; padding: 0; }
+		div{
+			margin: 20rem auto;
+			width: 10rem;
+			height: 10rem;
+			background: yellowgreen;
+			
+
+			box-shadow: 0 0 0 10px red,
+						0 0 0 15px deeppink,
+						0 0 0 20px hsla(0,25%,14%,.6);
+		}
+		p{ 
+			text-align: center;
+			font: 100%/1.5 "微软雅黑";
+		}
+		header{
+			margin: 40rem auto;
+			width: 10rem;
+			height: 10rem;
+			background: url("images/德国.jpg");
+			background-origin: border-box;
+
+
+			/* box-shadow: 0 0 0 10px green,
+						0 0 0 20px deeppink,
+						0 0 0 30px hsla(0,25%,14%,.6);
+			 */
+
+			border: 5px dashed red;
+			outline: 10px solid rgba(0,255,0,.9);
+			border-radius: 10px;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<p>多重边框</p>
+	</div>
+	<header>
+		outline
+	</header>
+</body>
+</html>
