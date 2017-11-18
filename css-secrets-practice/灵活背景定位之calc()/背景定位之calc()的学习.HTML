@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>calc()之背景定位</title>
+	<style>
+		*{ margin: 0; padding: 0; }
+		.banner{ 
+			/*position: absolute;*/
+			/*left: calc(40px);*/
+			width: calc(100% - 80px);
+			border: 1px dashed black;
+			border-radius: 6px;
+			outline: 4px solid hlsa(255,45%,45%,.6);
+			box-shadow: 0 0 0 1px green;
+			background: rgba(255,100,30,.6);
+			padding: 4px;
+			text-align: center;
+			box-sizing: border-box;
+			
+		 }
+		
+		#formbox{
+		 	width: calc(100% / 6);
+		 	border: 1px solid red;
+		 	padding: 4px;
+		 }
+		input{
+		 	display: block;
+		 	padding: 2px;
+		 	width: calc(100% - 1rem);
+		 }
+		p{
+
+			max-width: 20rem;
+			min-height: 10rem;
+			border: 2px dashed greenyellow;
+			padding: 10px;
+			font: 100%/1 sans-serif;
+		  	background: url("images/dish.jpg") no-repeat;
+		  	background-position: calc(100% - 20px) calc(100% - 10px);
+		  	background-size: 50% 30%;
+		}
+	</style>
+</head>
+<body>
+	<div class="banner">
+		这是个banner！！！
+	</div>
+	<form action="post">
+		<div id="formbox">
+			<label for="">输入：</label>
+			<input type="text">
+		</div>
+	</form>
+	<p>
+		img
+	</p>
+</body>
+</html>
