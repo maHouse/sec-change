@@ -1,0 +1,7 @@
+实现切角的方式还有很多
+SVG + border-image
+
+clip-path：polygon（）
+
+不过最终可能会被新的属性代替
+corner-shape + border-radius 可以打造出你想要的切角效果
