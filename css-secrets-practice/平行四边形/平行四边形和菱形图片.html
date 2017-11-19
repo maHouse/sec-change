@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>平行四边形</title>
+	<style>
+
+	/*平行四边形的一种实现方法，两个盒子的嵌套*/
+
+		div{
+			width: 10rem;
+			height: 2rem;
+			background: #fb3;
+			padding: .2rem .2rem;
+			text-align: center;
+			
+
+			transform: skew(45deg);
+		}
+		p{ transform: skew(-45deg); }
+
+
+	/*平行四边形的第二种操作方式，想变形一个形状，不改变内容，还想简洁*/
+
+		header{
+			margin: 10rem auto;
+			width: 10rem;
+			height: 3rem;
+			position: relative;
+		}
+		header::before{
+			position: absolute;
+			content: '';
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			z-index: -1;
+			background: #fb3;
+			transform: skew(45deg);
+			border-radius: 50% / 50% 0 ;
+		}
+
+	/*菱形图片制作*/
+
+
+	</style>
+</head>
+<body>
+
+	<div>
+		<p>
+			CLICK BUTTON
+		</p>
+	</div>
+
+	<header>
+		other METHOD
+	</header>
+
+	<aside>
+		
+	</aside>
+</body>
+</html>
