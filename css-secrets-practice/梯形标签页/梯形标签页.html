@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>梯形标签</title>
+	<style>
+		div{
+			margin: 20rem auto;
+			width: 10rem;
+			height: 4rem;
+			line-height: 4rem;
+			color: deeppink;
+			text-align: center;
+			border: 2px solid rgba(0, 0, 245,.6);
+			position: relative;
+		}
+		
+		div::before{
+			position: absolute;
+			content: '';
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			z-index: -1;
+			background: #58a;
+			border: 1px solid red;
+			border-bottom: none;
+			border-radius: .5rem .5rem 0 0;
+			box-shadow: 0 .15rem white; 
+
+			/*重要一环*/
+			transform: /*scale(1.3)*/ perspective(.5rem) rotateX(2deg);
+			transform-origin: bottom;
+		}
+
+	</style>
+</head>
+<body>
+	<div>
+		梯形标签
+	</div>
+</body>
+</html>
