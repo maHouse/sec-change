@@ -3,8 +3,43 @@
 <head>
 	<meta charset="UTF-8">
 	<title>饼状图制作</title>
+
+	<style>
+		.pie{
+			width: 100px;
+			height: 100px;
+			border-radius: 50%;
+			background: yellowgreen;
+			background-image: linear-gradient(to right, transparent 50%, #655 0);
+			margin: 100px auto;
+		}
+
+		.pie::before{
+			content: '';
+			display: block;
+			margin-left: 50%;
+			height: 100%;
+			/*border: 1px solid red; */
+			border-radius: 0 100% 100% 0 / 50%;
+			background-color: inherit;
+			transform-origin: left;
+			/*transform: rotate(.1turn);*/
+			animation: spin 60s linear infinite,
+						bg 3600s step-end infinite;
+		}
+
+		@keyframes spin{
+			to { transform: rotate(.5turn); }
+		}
+
+		@keyframes bg{
+			50% { background: #655; }
+		}
+	</style>
 </head>
 <body>
-	
+	<div class="pie">
+		
+	</div>
 </body>
 </html>
