@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>现实中的文字效果</title>
+	<style>
+
+	/*文字突出*/
+		p{
+			width: 20rem;
+			height: 10rem;
+			background: hsl(210, 13%, 40%);
+			color: hsl(210, 13%, 75%);
+			text-shadow: 0 -1px 1px black;
+		}
+	
+	/*文字描边，模糊算法和svg解决*/
+		footer{
+			/*background: deeppink;
+			font-size: 8rem;
+			color: white;*/
+
+			/*模糊算法1、不需要设置偏移量*/
+			/*text-shadow: 0 0 1px black, 0 0 1px black,
+						0 0 1px black, 0 0 1px black,
+						0 0 1px black,0 0 1px black;
+*/
+			/*设置了偏移量*/
+			
+			/*text-shadow: 1px 1px black, -1px -1px black,
+						 1px -1px black, -1px 1px black;*/
+
+		   /*svg来解决*/
+			
+		  font: 500% / 1 Rockwell, serif;
+		  background: deeppink;
+		  color: white; 
+		}
+
+		footer text{
+			fill: currentColor;
+		}
+		footer svg{
+			overflow: visible;
+		}
+		footer use{
+			stroke: black;
+			stroke-width: 6;
+			stroke-linejoin: round;
+		}
+
+		/*文字外发光*/
+
+		a[href="#"]{
+			display: inline-block;
+			width: 6rem;
+			height: 2rem;
+			line-height: 2rem;
+			text-align: center;
+			background: #203;
+			color: white;
+			transition: 1s;
+			text-decoration: none;
+		}
+
+		a[href="#"]:hover{
+			/*color: transparent;
+			text-shadow: 0 0 .1rem white, 0 0 .3rem white;*/
+
+			filter: blur(.1rem);
+			/*text-shadow不支持平稳退化*/
+		}
+
+		/*方式二为blur*/
+
+
+		/*文字突起*/
+
+		a[href="www.mashuaiqi.com"]{
+			display: inline-block;
+			width: 6rem;
+			height: 2rem;
+			font-size: 10rem;
+			line-height: 2rem;
+			text-align: center;
+			background: #58a;
+			color: white;
+			transition: 1s;
+			text-decoration: none;
+
+			text-shadow: 0 1px hsl(0, 0%, 85%),
+						 0 2px hsl(0, 0%, 80%),
+						 0 3px hsl(0, 0%, 75%),
+						 0 4px hsl(0, 0%, 70%),
+						 0 5px hsl(0, 0%, 65%),
+						 0 5px 15px black;
+		}
+
+	</style>
+</head>
+<body>
+
+	<!-- 文字凸出 -->
+	<p>
+		"The only way to get rid of a temptation is to yield to it"
+	</p>
+
+<!-- 空心字效果，描边 -->
+	<footer>
+		<svg width="2rem" height="1.2rem">
+			<use xlink:href="#css"/>
+			<text id="css" y="1rem">css</text>
+		</svg>		
+	</footer>
+	
+	<!-- 文字外发光 -->
+	
+	<a href="#">Glow</a>
+	
+	<a href="www.mashuaiqi.com">CSS3d</a>
+
+</body>
+</html>
