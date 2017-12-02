@@ -52,5 +52,20 @@
 		});
 	}
 		
-支持链式调用
+#### 支持链式调用 ####
+
+要让插件支持链式调用，只需要return一下就可以了。
+
+	$.fn.myPlugin = function() { 
+		
+		this.css( 'color', 'red' );
+		return this.each( function() {
+			$( this ).append( '' + $( this).attr( 'href' ));
+		});
+	}
+
+#### 让插件接收参数 ####
+
+使用的时候传递什么参数，就会得到什么结果，这才是我们想要的结果。
+
 
