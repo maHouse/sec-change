@@ -44,6 +44,13 @@
 
 更改后的插件：
 
-	$.fn.myPlugin
-
+	$.fn.myPlugin = function() { 
+		
+		this.css( 'color', 'red' );
+		this.each( function() {
+			$( this ).append( '' + $( this).attr( 'href' ));
+		});
+	}
+		
+支持链式调用
 
