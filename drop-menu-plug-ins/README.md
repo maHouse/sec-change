@@ -68,4 +68,15 @@
 
 使用的时候传递什么参数，就会得到什么结果，这才是我们想要的结果。
 
+一个不错的做法是将一个新的空的对象作为$.extend的第一个参数，defaults和用户传递的参数紧随其后，好处是所有值将被合并到这个空对象上，保护了插件的默认值。
 
+	$.fn.myPlugin = function( options ) {
+	
+		var defaults = { 'color' : 'red', 'fontSize' : '12px' },
+			settings = $.extend( {}, defaults, options );
+		//将第一个空对象作为第一个参数return
+		
+		this.css( { 'color' : settings.color, 'fontSize' : settings.fontSize } );
+	}
+
+到此，插件能接受和处理参数，代码量多的时候，将所有方法包装到一个对象上，用面向对象的思维将使工作更轻松。
