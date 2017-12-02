@@ -3,8 +3,36 @@
 <head>
 	<meta charset="UTF-8">
 	<title>不同的布局方式</title>
+
+	<style>
+		/*自适应内部元素*/
+		
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		figure{
+			max-width: 500px;
+			width: min-content;
+			margin: auto;
+		}
+
+		figure > img{
+			max-width: inherit;
+		}
+
+	</style>
 </head>
 <body>
 	
+	<p>Researchers have long sought for answers on the best way to help people quit smoking. Often, it comes down to two options: quitting cold turkey or gradually tapering a smoking habit. But which one works better?
+	But the results suggested just the opposite: quitting cold turkey is best.</p>
+<figure>
+	<img src="images/spurs.png" alt="aldridge">
+	<figcaption>
+		“A lot of people think that the common sense way to give up smoking is to reduce the amount they smoke before quitting,” says Nicola Lindson-Hawley of the University of Oxford, who led a new study published in the journal Annals of Internal Medicine.
+	</figcaption>
+	<p>More text [...]</p>
+</figure>
 </body>
 </html>
