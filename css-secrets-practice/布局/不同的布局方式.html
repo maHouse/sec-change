@@ -5,7 +5,7 @@
 	<title>不同的布局方式</title>
 
 	<style>
-		/*自适应内部元素*/
+		/*自适应内部元素,自适应宽度*/
 		
 		*{
 			margin: 0;
@@ -21,6 +21,19 @@
 			max-width: inherit;
 		}
 
+
+		/*精确控制表格列宽，而不是通过设置固定的列宽*/
+		
+		table{
+			table-layout: fixed;
+			width: 100%;
+		}
+
+		table, tr, td{
+			border: 1px solid red;
+			text-overflow: ellipsis;
+		}
+		
 	</style>
 </head>
 <body>
@@ -33,6 +46,28 @@
 		“A lot of people think that the common sense way to give up smoking is to reduce the amount they smoke before quitting,” says Nicola Lindson-Hawley of the University of Oxford, who led a new study published in the journal Annals of Internal Medicine.
 	</figcaption>
 	<p>More text [...]</p>
+
+
+	<table>
+		<tr>
+			<td>如果不</td>
+			<td>制定元素的宽度，则这些单元格就会根据他们的内容宽度的大小来分配宽度，也就是说，内容较长的单元格分配的宽度较多</td>
+		</tr>
+
+		<tr>
+			<td>如果不</td>
+			<td>制定元素的宽度，则这些单元格就会根据他们的内容宽度的大小来分配宽度，也就是说，内容较长的单元格分配的宽度较多</td>
+		</tr>
+		<tr>
+			<td>表格的每一行都会参与列宽的计算中，而不仅仅是第一行</td>
+			<td>注意，这个表格的列宽分配结果跟上个表格的不同</td>
+		</tr>
+		<tr>
+			<td>设置宽度是无效的，如果两个宽度超过了父元素大小会按比例分配宽度，如果禁止换行，则会远远超过文本宽度，即使是text-overflow：ellipsis也无用，大的图片也可能导致类似的问题</td>
+			<td><img src="images/spurs.png" alt="spurs">
+			</td>
+		</tr>
+	</table>
 </figure>
 </body>
 </html>
