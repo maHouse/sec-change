@@ -25,13 +25,17 @@
 		/*精确控制表格列宽，而不是通过设置固定的列宽*/
 		
 		table{
+			border-collapse: collapse;
 			table-layout: fixed;
+			/*table-layout: auto;*/
 			width: 100%;
+			margin: auto;
 		}
 
-		table, tr, td{
+		td{
 			border: 1px solid red;
-			text-overflow: ellipsis;
+			white-space: pre;
+			text-overflow: clip;
 		}
 		
 	</style>
