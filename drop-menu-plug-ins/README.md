@@ -100,3 +100,30 @@
 	}
 
 到此，插件能接受和处理参数，代码量多的时候，将所有方法包装到一个对象上，用面向对象的思维将使工作更轻松。
+
+#### 面向对象的插件开发 ####
+为便于管理也为了不影响外部命名空间，我们需要把这个插件给抽象成一个对象，一个美化页面的对象，这样我们的代码就能放到一块来了，代码规模大的时候的考虑。将需要的重要变量定义到对象的属性上，重要的函数称为对象的方法。
+
+我们新建一个对象命名为Beautifier，在这个插件里进行编码
+
+	//定义Beautifier的构造函数
+
+	var Beautifier = function( ele, opt ) {
+	
+		this.$element = ele,
+		this.defaults = { 'color' : 'red', 'fontSize' : '12px', 'textDecration' : 'none' },
+		this.options = $.extend( { {}, this.defaults, opt } );//定义Beautifier的方法
+	}
+
+	Beautifier.prototype = {
+		beautify : function() {
+			return this.$element.css( { 'color' : this.options.color, 'fontSize' : this.options.fontSize, 'textDecration' : this.options.textDecration } );
+		}
+	}
+
+	$.fn.myPlugin = function( options ) {
+		//创建实例
+		var beautifier = new Beautifier( this, options );
+		//调用方法
+		return beautifier.beautify();
+	}
