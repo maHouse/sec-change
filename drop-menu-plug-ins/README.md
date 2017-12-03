@@ -127,3 +127,38 @@
 		//调用方法
 		return beautifier.beautify();
 	}
+
+目前，我们的代码更加面向对象了，便于理解和维护，要添加新的方法，只要向对象添加新变量及新方法就可以了，然后在插件里实例化后就可以调用新添加的东西了。
+
+我们将代码的组织结构改动了，看看插件的调用
+
+	$( function() { $('a').myplugin( { 'color' : '#58a', 'fontSize' : '18px' } );});
+	//下划线是默认没有，要带下划线的话，直接加上去就可以了
+
+#### 改进之命名空间 ####
+名字会冲突，也可能污染全局变量，处理方法就是用自调用匿名函数包裹插件代码，既可以安全放在任何地方还没有冲突。
+
+我们知道我们可以通过函数创建一个作用域，如果我们创建一个Beautifier全局变量，它就属于window对象了，为防止这样的事情发生。我们一般的做法是用自调用匿名函数包裹。
+
+	(function() {
+		var Beautifier = function( ele, opt) {
+			this.$element = ele,
+			this.defaults = { 'color' : 'red', 'fontSize' : '12px', 'textDecration' : 'none'},
+			this.options = $.extend( {}, this.defaults, opt );
+		}
+		
+		Beautifier.prototype = {
+			beautify : function() {
+				return this.$element.css( { 'color' : this.options.color, 'fontSize' : this.options.fontSize, 'textDecration' : this.options.textDecration } );
+			}
+		}
+
+		$.fn.myPlugin = function( options ) {
+			//创建实例
+			var beautifier = new Beautifier( this, options );
+			//调用方法
+			return beautifier.beautify();
+		}
+	})();
+
+还有好处是代码会在页面准备好后第一时间执行，在要考虑的事情
