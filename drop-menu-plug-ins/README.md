@@ -161,4 +161,28 @@
 		}
 	})();
 
-还有好处是代码会在页面准备好后第一时间执行，在要考虑的事情
+还有好处是代码会在页面准备好后第一时间执行，还有要考虑的事情，如果其他人写的代码没有结束符号“;”，这个时候我们的代码房子他之后是会出错的，我们要在自调用函数前加上“;”,还有一些系统变量或关键字，比如window、undefined等，他们之前被修改掉了，如果我们再用的话，后果也是很可怕的，改进方案如下：
+
+		;(function( $, window, document, undefined ) {
+		var Beautifier = function( ele, opt) {
+			this.$element = ele,
+			this.defaults = { 'color' : 'red', 'fontSize' : '12px', 'textDecration' : 'none'},
+			this.options = $.extend( {}, this.defaults, opt );
+		}
+		
+		Beautifier.prototype = {
+			beautify : function() {
+				return this.$element.css( { 'color' : this.options.color, 'fontSize' : this.options.fontSize, 'textDecration' : this.options.textDecration } );
+			}
+		}
+
+		$.fn.myPlugin = function( options ) {
+			//创建实例
+			var beautifier = new Beautifier( this, options );
+			//调用方法
+			return beautifier.beautify();
+		}
+	})( jQuery, window, document );
+
+OK，完整的安全的结构良好的组织有序的插件到此完成了。下面就说说一些其他的话题了。
+
