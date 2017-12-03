@@ -68,7 +68,27 @@
 
 使用的时候传递什么参数，就会得到什么结果，这才是我们想要的结果。
 
-一个不错的做法是将一个新的空的对象作为$.extend的第一个参数，defaults和用户传递的参数紧随其后，好处是所有值将被合并到这个空对象上，保护了插件的默认值。
+在使用者不传递参数时，有个默认参数值，在处理插件参数的接收上，通常用jQuery的extend方法，之前提到的是给extend传递单个对象，这个对象会合并到jQuery身上，我们就可以在jQuery上调用新合并对象里包含的方法了。当给extend传递不止一个参数时，他会将所有参数合并到第一个参数里。同理，如果有同名属性时，合并的时候后面的会覆盖掉前面的。
+
+利用这点，我们先定义一个保存插件参数默认值得对象，同时将接收来的参数对象合并到默认对象上来，最后就实现了用户指定了值得参数被使用，未指定的参数使用插件默认值。
+
+为演示方便，再加一个参数fontSize，允许调用插件的时候设置字体的大小。
+
+	$.fn.myPlugin = function( options ) { 
+
+		var defaults = { 'color' : 'red', 'fontSize' : '12px' },//这是一个对象
+			settings = $.extend( defaults, options );
+		return this.css( { 'color' : settings.color, 'fontSize' : settings.fontSize } );
+	}
+
+现在开始使用
+
+	$('a').myPlugin( { 'color' : '#58a'});//字体颜色变化，而大小是默认的
+
+	$('a').myPlugin( { 'color' : '#58a', 'fontSize' : '18px' } );
+
+#### 保护默认参数 ####
+后面的参数改变了默认的参数，因为插件中有些要维持原来的样子，使用默认值，一个不错的做法是将一个新的空的对象作为$.extend的第一个参数，defaults和用户传递的参数紧随其后，好处是所有值将被合并到这个空对象上，保护了插件的默认值。
 
 	$.fn.myPlugin = function( options ) {
 	
@@ -76,7 +96,7 @@
 			settings = $.extend( {}, defaults, options );
 		//将第一个空对象作为第一个参数return
 		
-		this.css( { 'color' : settings.color, 'fontSize' : settings.fontSize } );
+		return this.css( { 'color' : settings.color, 'fontSize' : settings.fontSize } );
 	}
 
 到此，插件能接受和处理参数，代码量多的时候，将所有方法包装到一个对象上，用面向对象的思维将使工作更轻松。
