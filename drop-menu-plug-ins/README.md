@@ -186,3 +186,33 @@
 
 OK，完整的安全的结构良好的组织有序的插件到此完成了。下面就说说一些其他的话题了。
 
+①、引号在JavaScript中用的是单引号，HTML里面用双引号
+
+②、代码压缩，压缩是可以的，减小体积但是不能阅读了，除非再还原出来
+
+③、插件的发布，这是最后一步了（为了让更多的人看到我们的插件）：
+
+首先需要将插件放到GitHub上，创建一个Service Hook，便于插件的更新能在插件展示中心展示出来，
+
+我们看看我们要制作的JSON格式的文件的清单，包括关于插件的基本信息，具体格式以及参数，可以在jQuery官网插件发布指南了解到，实例如下：
+
+	{
+		"name" : "Beautifier",
+		"title" : "Beautifier",
+		"description" : "for beautifying page",
+		"keywords" : ["color", "fontSize", "textDecration"],
+		"version" : "0.1.0",
+		"author" : {"name" : "maHouse", "email" : "m13159774235@163.com", "url" : "https://github.com/maHouse/sec-change/drop-menu-plug-ins"},
+		"maintainers" : [{"name" : "maHouse", "email" : "m13159774235@163.com", "url" : "https://github.com/maHouse/sec-change/drop-menu-plug-ins"}],
+		"license" : [{"type" : "MIT", "url" : "https://github.com/jquery/drop-menu-plug-ins"}],
+		"bugs" : "https://github.com/maHouse/sec-change/issues",
+		"homepage" : "https://maHouse.github.io/sec-change",
+		"docs" : "https://maHouse.github.io/sec-change",
+		"demo" : "https://maHouse.github.io/sec-change",
+		"download" : ""https://github.com/maHouse/sec-change/master",
+		"dependencies" : "{"jquery" : ">=1.5}
+	}
+
+实际操作版本，自己去gooogle一下流程，操作一下吧！！
+
+
