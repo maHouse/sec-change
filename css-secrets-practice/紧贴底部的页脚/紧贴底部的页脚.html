@@ -5,15 +5,30 @@
 	<title>紧贴底部的页脚</title>
 
 	<style>
-		main{
+
+	/*first*/
+		/*main{
 			min-height: calc(100vh - 5rem - 7rem);
-		}
-		#contents:checked ~ p{
-			display: none;
-		}
-		body{
+		}*/
+		
+		/*body{
 			margin: 0;
 			font: 100% / 1.5 Palatino Linotype, Palatino, serif;
+		}*/
+
+		/*second*/
+
+		body{
+			display: flex;
+			flex-direction: column;
+			min-height: 100vh;
+		}
+		main{
+			flex: 1;
+		}
+
+		#contents:checked ~ p{
+			display: none;
 		}
 		h1{
 			margin: 0.5 0 0;
