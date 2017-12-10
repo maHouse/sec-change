@@ -3,8 +3,58 @@
 <head>
 	<meta charset="UTF-8">
 	<title>满屏背景，定宽内容</title>
+
+	<style>
+		header, section, footer{
+			padding: 1rem calc(50% - 350px);
+		}
+		footer{
+			background: #333;
+			color: white;
+		}
+		header{
+			background: orange;
+			color: white;
+		}
+		section + section{
+			background: #eee;
+		}
+		body{
+			margin: 0;
+			font: 100% / 1.5 sans-serif;
+		}
+	</style>
 </head>
 <body>
-	
+	<header>
+		<h1>
+			Fluid background, <br/>fixed content 
+		</h1>
+	</header>
+	<section>
+		<h1>
+			Heading
+		</h1>
+		<p>
+			The potato has been unfairly demonized—it’s actually a potent hunger tamer. In a study that measured the satiating index of 38 foods
+		</p>
+	</section>
+	<section>
+		<h1>
+			Another heading
+		</h1>
+		<p>
+			including brown rice and whole-wheat bread, people ranked boiled potatoes highest, reporting that they felt fuller and ate less two hours after consuming them
+		</p>
+		<p>
+			Ribeye in veniam ipsum flank. Elit incididunt t-bone proident meatball.
+		</p>
+	</section>
+	<footer>
+		<p>&copy; 2015 Lea Verou (j/k, feel free to use wherever)</p>
+		<p>Consectetur et t-bone pork loin. Tri-tip cupim in, spare ribs velit exercitation in. Tempor cillum fugiat, nisi leberkas reprehenderit anim laboris proident cow. Eu fatback kevin sint, ad shoulder in venison picanha. Sausage drumstick capicola, culpa boudin pork belly minim aute ipsum biltong picanha venison nulla adipisicing.
+		</p>
+
+	</footer>
 </body>
 </html>
