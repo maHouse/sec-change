@@ -4,12 +4,61 @@
 	<meta charset="UTF-8">
 	<title>垂直居中</title>
 
+	<style>
+/* 
+	绝对定位
+		main{
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			margin-left: -10rem;
+			margin-top: -3rem;
+			width: 20rem;
+			height: 3rem;
+		}
+		
+		同样效果的方式
+		main{
+			position: absolute;
+			top: calc(50% - 3rem);
+			left: calc(50% - 10rem);
+			width: 20rem;
+			height: 3rem;
+		} */
 
-	<!-- solve -->
+	/*transform：translate移动,不需要宽度和高度*/
 
-	<!-- 绝对定位 -->
+	/*main{
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}*/
+
+
+	/* 基于视口的操作方法 */
+
+	/*main{
+		width: 18rem;
+		padding: 1rem 1.5rem;
+		margin: 50vh auto 0;
+		transform: translateY(-50%);
+	}*/
+
+
+	/*用Flexbox实现*/
+
+	body{
+		display: flex;
+		min-height: 100vh;
+		margin: 0;
+	}
+	main{
+		margin: auto;
+	}
 
 	
+	</style>
 </head>
 <body>
 	<!-- 设置水平居中简单块级元素margin:auto;行内元素，父元素用text-align:center;看看垂直居中 -->
