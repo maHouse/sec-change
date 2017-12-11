@@ -211,3 +211,23 @@ for example:
 	:hidden//选取不可见的元素，$(':hidden')包括3中类型，input里的type为hidden，或者样式里的display为none，再有就是visibility为hidden，3中类型，如果想更有针对性，可以用$('div:hidden');
 
 	:visible//选取可见的div元素
+
+**属性过滤选择器**
+
+
+通过元素相应的属性来获取元素。
+
+
+	[attribute]  选出有此属性的元素  $('div[id])选出含有属性id的元素
+	
+	[attribute=value] 选出属性值为value的元素 $('div[title=test])选出含有title为test的元素
+	
+	[attribute!=value] 与2相反
+	
+	[attribute^=value] 选出属性值以value开始的元素 $('div[title^=test])选出title的属性值以test开始的div
+
+	[attribute$=value] 选出属性值以value结束的元素 与上反
+
+	[attribute*=value] 选出含有属性值含有value的元素
+
+	[selector1][selector2][selectorN] 多个属性选择器合并成一个属性选择器 $('div[id][title$=test]')
