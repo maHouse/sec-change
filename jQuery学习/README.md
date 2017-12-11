@@ -231,3 +231,10 @@ for example:
 	[attribute*=value] 选出含有属性值含有value的元素
 
 	[selector1][selector2][selectorN] 多个属性选择器合并成一个属性选择器 $('div[id][title$=test]')
+
+**子元素过滤选择器**
+
+
+	:nth-child(index/even/odd/equatio)  :first-child :last-child :only-child(某个元素是他父元素中唯一的子元素)
+
+	$('div.one :only-child').css();
