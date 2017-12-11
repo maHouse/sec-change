@@ -238,3 +238,10 @@ for example:
 	:nth-child(index/even/odd/equatio)  :first-child :last-child :only-child(某个元素是他父元素中唯一的子元素)
 
 	$('div.one :only-child').css();
+
+**表单对象属性过滤选择器**
+
+	:enabled//$('#form :enabled)选取可用元素 :disabled//选取不可用的元素  :checked//$('input:checked')选取被选中的元素，单选框和复选框 :selected//$('select :selected')选取被选中的选项元素（下拉列表中的）
+
+示例见代码
+
