@@ -173,4 +173,14 @@ id为prev元素之后的所有div兄弟元素，代替方案：
 
 	$('#prev').siblings('div');//同辈无前后
 #### 3.过滤选择器 ####
+过滤选择器根据不同的过滤规则可分为基本过滤、内容过滤、可见性过滤、属性过滤、子元素过滤、表单对象过滤选择器。
 
+	:first :last :not(selector) :even :odd :eq(index) :gt(index) :lt(index) :header :animated
+
+for example:
+
+	$('input:not(.myClass)');//选取的就是class不是myClass的input元素
+	
+	$('div:animated')//正在执行顺序动画的div元素
+	
+	$(':animated').css();
