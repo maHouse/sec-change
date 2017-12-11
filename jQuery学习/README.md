@@ -206,3 +206,8 @@ for example:
 
 **可见性过滤选择器**
 
+根据元素的可见和不可见状态来选择相应的元素
+
+	:hidden//选取不可见的元素，$(':hidden')包括3中类型，input里的type为hidden，或者样式里的display为none，再有就是visibility为hidden，3中类型，如果想更有针对性，可以用$('div:hidden');
+
+	:visible//选取可见的div元素
