@@ -175,6 +175,9 @@ id为prev元素之后的所有div兄弟元素，代替方案：
 #### 3.过滤选择器 ####
 过滤选择器根据不同的过滤规则可分为基本过滤、内容过滤、可见性过滤、属性过滤、子元素过滤、表单对象过滤选择器。
 
+**基本过滤选择器**
+
+
 	:first :last :not(selector) :even :odd :eq(index) :gt(index) :lt(index) :header :animated
 
 for example:
@@ -184,3 +187,22 @@ for example:
 	$('div:animated')//正在执行顺序动画的div元素
 	
 	$(':animated').css();
+
+**内容过滤选择器**
+
+体现在它包含的子元素或文本内容上
+
+	:contains(text)//选取包含文本内容为text的元素
+	:empty//不包含子元素或者文本元素
+	:has(selector)//选取含有所匹配元素的元素，不仅仅是文本
+	:parent//选取含有子元素或文本的元素
+
+for example:
+
+	$('div:contains(di)').css();//文本中含有di的div
+	$('div:empty').css();//无子元素的div
+	$('div:has(mini)').css();//改变class含有mini的div
+	$('div:parent').css();//改变含有子元素的元素
+
+**可见性过滤选择器**
+
