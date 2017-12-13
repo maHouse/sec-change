@@ -245,3 +245,30 @@ for example:
 
 示例见代码
 
+**表单选择器**
+
+
+	:input   //选取所有的input textarea select button 元素
+	
+	:text    //所有的单行文本
+
+	:password //所有的密码框
+
+	:radio    //所有的单选框
+
+	:checkbox //所有的多选框
+
+	：submit  //所有的提交按钮
+
+	:image    //所有的图像按钮
+
+	:reset    //所有的重置按钮
+
+	:button    //所有的按钮
+
+	：file     //所有的上传区域
+
+	:hidden    //所有的不可见元素，参看上面讲解
+
+HTML示例代码见
+
