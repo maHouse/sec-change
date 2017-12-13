@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表单对象属性过滤选择器</title>
+</head>
+<body>
+	<form action="Get" id="form1">
+		use: <input name="add" value="canUseText"> <br/>
+
+		unuse: <input name="eamil" disabled="disabled" value="cant'sUseText"> <br/>
+
+		use: <input name="che" value="canUseText"> <br/>
+
+		unuse: <input name="name" disabled="disabled" value="cant'sUseText"> <br/>
+
+		<br>
+
+		多选框：<br>
+
+		<input type="checkbox" name="newsletter" checked="checked" value="test1">test1
+		<input type="checkbox" name="newsletter" value="test2">test2
+		<input type="checkbox" name="newsletter" value="test3">test3
+		<input type="checkbox" name="newsletter" value="test4">test4
+		<input type="checkbox" name="newsletter" value="test5">test5
+
+		<div></div>
+
+		<br><br>
+
+		下拉列表：<br>
+
+		<select name="test" multiple="multiple" style="height: 100px">
+			<option value="">浙江</option>
+			<option value="" selected="selected">湖南</option>
+			<option value="">北京</option>
+			<option value="" selected="selected">天津</option>
+			<option value="">广州</option>
+			<option value="">湖北</option>
+		</select>
+
+		<br><br>
+
+		下拉列表2：
+		
+		<select name="test2">
+			<option value="">浙江</option>
+			<option value="">湖南</option>
+			<option value="" selected="selected">北京</option>
+			<option value="">天津</option>
+			<option value="">广州</option>
+			<option value="">湖北</option>
+		</select>
+		
+		<div></div>
+	</form>
+</body>
+</html>
