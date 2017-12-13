@@ -3,6 +3,8 @@
 <head>
 	<meta charset="UTF-8">
 	<title>锋利的jQuery第二章</title>
+
+	<script src="jquery-1.8.3.js"></script>
 	<style>
 		*{
 			margin: 0;
@@ -117,39 +119,55 @@
 <script>
 
 	// 使得每个p元素具有onclick事件
-	var items = document.getElementsByTagName('p');
-	for ( var i = 0; i < items.length; i++ ) {
-		items[ i ].onclick = function() {
-			alert('some intristing things!!!');
-		}
-	}
+	// var items = document.getElementsByTagName('p');
+	// for ( var i = 0; i < items.length; i++ ) {
+	// 	items[ i ].onclick = function() {
+	// 		alert('some intristing things!!!');
+	// 	}
+	// }
 	
 	// 隔行变色
 	
-	var item = document.getElementById('tb'),
-		tbody = item.getElementsByTagName('tbody')[0],
-		trs = tbody.getElementsByTagName('tr');
+	// var item = document.getElementById('tb'),
+	// 	tbody = item.getElementsByTagName('tbody')[0],
+	// 	trs = tbody.getElementsByTagName('tr');
 
-	for ( var i = 0; i < trs.length; i++ ) {
-		if ( i % 2 != 0 ) {
-			trs[i].style.backgroundColor = '#888';
-		}
-	}
+	// for ( var i = 0; i < trs.length; i++ ) {
+	// 	if ( i % 2 != 0 ) {
+	// 		trs[i].style.backgroundColor = '#888';
+	// 	}
+	// }
 
 	// 输出选中的多选框的个数
 	
 
-	var btn = document.getElementById('btn');
-	btn.onclick = function() {
-		var arr = new Array();
-		var items = document.getElementsByName('check');
+	// var btn = document.getElementById('btn');
+	// btn.onclick = function() {
+	// 	var arr = new Array();
+	// 	var items = document.getElementsByName('check');
 
-		for ( var i = 0, len = items.length; i < len; i++ ) {
-			if ( items[ i ].checked ) {
-				arr.push( items[ i ].value );
-			}
-		}
+	// 	for ( var i = 0, len = items.length; i < len; i++ ) {
+	// 		if ( items[ i ].checked ) {
+	// 			arr.push( items[ i ].value );
+	// 		}
+	// 	}
 
-		alert( '选中的个数为：' + arr.length );
-	}
+	// 	alert( '选中的个数为：' + arr.length );
+	// }
+
+	$( function() {
+
+		$('p').click( function() {
+			//do something
+		});
+
+		$('#tb tbody tr:even').css( 'background', '#888' );
+
+		$('#btn').click( function() {
+			var length = $('input[ name = "check" ]:checked').length;
+
+			//单双引号可以互相作为外壳，但是不能只用一种,无论是但还是双，必须混着用
+			alert( '选中的个数为：' + length );
+		} );
+	} )
 </script>
