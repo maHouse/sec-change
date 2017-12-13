@@ -7,11 +7,37 @@
 	<script>
 		$( function {
 
-
+			$('#form1 :input').length;
+			$('#form1 :text').length;
+			$('#form1 :password').length;
 		} )
 	</script>
 </head>
 <body>
-	
+	<form action="Get" id="form1">
+		<input type="button" value="Button"><br>
+		<input type="checkbox" name="c">1
+		<input type="checkbox" name="c">2
+		<input type="checkbox" name="c">3 <br>
+		<input type="file"><br>
+		<input type="hidden"><div style="display: none;">test</div><br>
+		<input type="image"><br>	
+		<input type="password"><br>
+		<input type="radio" name="a">1
+		<input type="radio" name="a">2 <br>
+		<input type="reset"><br>
+		<input type="submit" value="提交"><br>
+		<input type="text"><br>
+		<select>
+			<option>
+				Option
+			</option>
+		</select>
+		<br>
+		<textarea>
+			
+		</textarea>
+		<button>Button</button><br>
+	</form>
 </body>
 </html>
