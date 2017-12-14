@@ -40,4 +40,17 @@
 			$li_2 = $("<li></li>");
 
 		$("ul").append($li_1).append($li_2);
+
+		// 4.创建文本节点
+		
+		var $li_1 = $("<li>香蕉</li>");
+		var $li_2 = $("<li>雪梨</li>");
+
+		$("ul").append($li_1).append($li_2);
+
+		// 5.创建属性节点，预创建元素节点类似
+
+		var $li_1 = $("<li title='香蕉'>香蕉</li>");
+
+		$("ul").append($li_1);//顺带着出来了属性节点
 	</script>
