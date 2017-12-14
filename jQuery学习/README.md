@@ -272,3 +272,21 @@ for example:
 
 HTML示例代码见
 
+### 第三章 jQuery中的DOM操作 ###
+文档对象模型，一种与浏览器、平台、语言无关的接口，使用该接口可以轻松的访问页面中所有的标准组件，如获取和操作网页中的数据、脚本和表现层对象。
+
+DOM分为3个方面，DOM Core(核心）、HTML-DOM和CSS-DOM。
+
+DOM Core不属于JavaScript，属于DOM，任何支持DOM的程序设计都可以用，也可以处理任何一种使用标记语言编写的文档，例如XML。
+
+getElementById()、getElementsByTagName()、getAttribute()、setAttribute()这些事DOM Core的组成部分。
+
+HTML-DOM
+
+	document.forms;//HTML-DOM提供了一个forms对象
+
+	element.src;
+
+CSS-DOM，针对CSS进行的操作
+
+	element.style.color = 'red';
