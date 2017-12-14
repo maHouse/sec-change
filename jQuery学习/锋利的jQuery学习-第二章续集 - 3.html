@@ -27,9 +27,10 @@
 		
 		$( function() {
 
-			var $category = $('ul li:gt(5):not(:last)');
+			var $category = $('ul li:gt(5):not(:last)'),
+				$toggleBtn = $('.showmore > a');
 			$category.hide();
-			var $toggleBtn = $('.showmore > a');
+			
 			$toggleBtn.click( function() {
 
 				if ( $category.is(':visible') ) {
@@ -49,6 +50,14 @@
 
 				}
 			} );
+
+			// 或者用
+			
+			$toggleBtn.toggle( function() {
+
+			}, function() {
+
+			} )
 			
 		} )
 	</script>
