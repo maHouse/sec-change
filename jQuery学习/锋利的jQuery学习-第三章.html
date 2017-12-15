@@ -66,6 +66,34 @@
 		$parent.prepend($li_2);//添加到父元素的前面
 		$li_3.insertAfter($two_li);//添加到创建的第三个元素后面
 
+		var $one_li = $("ul li:eq(1)"),
+			$two_li = $("ul li:eq(2)");
+
+		$two_li.insertBefore($one_li);
+
+		// 删除节点
+		
+		// remove()
+		$("ul li:eq(1)").remove();//节点包括后代节点都会被删除
+
+		$("ul li").remove("li[title=菠萝]");
+
+		var $li = $("ul li:eq(1)").remove();
+		$li.appendTo("ul");
+
+		// empty()
+		
+		$("ul li:eq(1)").empty();//清空元素里的内容，包括后代节点
+
+		// 复制节点
+		
+		$("ul li").click( function() {
+
+			// $( this ).clone().appendTo("ul");//复制当前节点并添加到ul中
+
+			$( this ).clone( true ).appendTo("ul");//复制的元素具有了点击功能
+		} )
+
 
 
 	</script>
