@@ -290,3 +290,14 @@ HTML-DOM
 CSS-DOM，针对CSS进行的操作
 
 	element.style.color = 'red';
+
+**插入节点的方法**
+
+	append()  //相匹配的元素内部增加，加到了元素内部的最后面
+	appendTo()//与上面相反，把匹配元素追加到某个元素后面
+	prepend() //向某个匹配元素内部前置内容
+	prependTo //与上相反
+	after()   //在某个匹配的元素后面插入内容
+	before()  //在某个元素的前面插入内容
+	insertAfter()//将匹配的元素插入到指定的元素后面
+	insertBefore()//将匹配的元素插入到指定的元素的前面

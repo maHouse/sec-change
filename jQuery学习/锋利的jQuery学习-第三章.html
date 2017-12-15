@@ -53,4 +53,19 @@
 		var $li_1 = $("<li title='香蕉'>香蕉</li>");
 
 		$("ul").append($li_1);//顺带着出来了属性节点
+
+		//插入节点
+		
+		var $li_1 = $("<li title='香蕉'>香蕉</li>"),
+			$li_2 = $("<li title='雪梨'>雪梨</li>"),
+			$li_3 = $("<li title='其他'>其他</li>"),
+			$parent = $("ul"),
+			$two_li = $("ul li:eq(1)");
+
+		$parent.append($li_1);
+		$parent.prepend($li_2);//添加到父元素的前面
+		$li_3.insertAfter($two_li);//添加到创建的第三个元素后面
+
+
+
 	</script>
