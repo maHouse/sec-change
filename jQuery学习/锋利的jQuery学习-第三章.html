@@ -19,7 +19,10 @@
 </body>
 </html>
 	<script>
-		
+	
+	$( function() {
+
+
 		// 1.查找元素节点,这里有个问题，有待于解决，并没有得到我想要的结果
 		
 		var $li = $("ul li:eq(2)");
@@ -94,6 +97,14 @@
 			$( this ).clone( true ).appendTo("ul");//复制的元素具有了点击功能
 		} )
 
+		//替换节点，replaceWith()和replaceAll()
+		
+		$("p").replaceWith("<strong>你最不喜欢的水果？</strong>");//谁用什么替换
 
+		$("<strong>你最不喜欢的水果？</strong>").replaceAll("p");//用谁替换谁
 
+		
+		// 
+
+	} )	
 	</script>
