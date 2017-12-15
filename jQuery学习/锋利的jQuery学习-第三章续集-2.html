@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>锋利的jQuery第三章续集-2</title>
+	<style>
+		
+	</style>
+	<script src="jquery-1.8.3.js"></script>
+	<script>
+		$(document).ready( function() {
+
+			$("#address").focus( function() {
+				var txt_value = $( this ).val();
+				if ( txt_value == "请输入邮箱地址" ) {
+					$( this ).val("");
+				}
+			} ).blur( function() {
+
+				var txt_value = $( this ).val();
+				if ( txt_value == "" ) {
+					$( this ).val("请输入邮箱地址");
+				}
+			} )
+		} )
+	</script>
+</head>
+<body>
+	<input type="text" id="address" value="请输入邮箱地址">
+	<input type="text" id="password" value="请输入邮箱密码">
+	<input type="button" value="登录">
+</body>
+</html>
