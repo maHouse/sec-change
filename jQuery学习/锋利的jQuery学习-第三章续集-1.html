@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery学习第三章续集</title>
+
+	<style>
+		.hello{
+			font: 150% / 1.5 "微软雅黑" serif;
+			color: greenyellow;
+		}
+	</style>
+
+	<script src="jquery-1.8.3.js"></script>
+
+</head>
+<body>
+	<strong title="选择你喜欢的水果">
+		你最喜欢的水果
+	</strong>
+	<strong title="选择你喜欢的水果">
+		你最喜欢的水果
+	</strong>
+
+	<ul>
+		<li title="苹果">苹果</li>
+		<li title="橘子">橘子</li>
+		<li title="菠萝">菠萝</li>
+	</ul>
+
+	<p title="hello" class="hello">Hello World!!</p>
+</body>
+</html>
+
+<script>
+	
+	$( function() {
+
+		// 包裹节点
+		// 1.wrap()
+		
+		// $("strong").wrap("<p>Hello Boy!</p>");
+		$("strong").wrap("<b></b>");//分别包裹
+
+		$("strong").wrapAll("<b></b>");//包裹了两个，包在一起了
+
+		$("strong").wrapInner("<b></b>");//包裹了元素的子内容，包括文本节点
+
+
+		// 属性操作
+		
+		// 1.获取属性和设置属性
+		
+		var $para = $("p");
+		var p_txt = $para.attr("title");//获取到p元素节点的属性
+
+		$("p").attr( "title", "your title" );//设置属性
+
+		$("p").attr( {"title" : "your title", "name" : "test" } );
+
+		// 删除属性
+		
+		$("p").removeAttr("title");
+
+		// 样式操作
+		//1.获取样式和设置样式
+		
+		var p_class = $("p").attr("calss");//获取p元素的class
+
+		$("p").attr("class","Hello1");//class设置为Hello1
+
+		// 2.追加样式
+		
+		
+
+	} )
+
+</script>
