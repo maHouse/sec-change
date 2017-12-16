@@ -304,4 +304,18 @@ CSS-DOM，针对CSS进行的操作
 ### 第四章 ###
 事件绑定
 
-bind(type , fn)
+	bind(type , fn)   hover()  toggle()
+
+#### 事件冒泡 ####
+事件里的元素具有的点击事件，元素也具有了点击事件，为阻止这类问题发生，再有某些元素有默认的属性，比如提交，我们也要防止类似事情发生，做法如下：
+
+	event.stopPropagation();//阻止冒泡
+
+	event.preventDefault();//阻止默认行为
+
+代替上述两者：
+
+	return false;
+
+JavaScript不支持事件捕获
+
