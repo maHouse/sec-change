@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery学习</title>
+	<style>
+		.content{
+			display: none;
+		}
+	</style>
+	<script src="jquery-1.8.3.js"></script>
+	<script>
+		$( function() {
+			// $("#panel h5.head").bind( "click", function() {
+				
+			// 	var $content = $( this ).next("div.content");
+			// 	if ( $content.is(":visible") ) {
+
+			// 		$content.hide();//next里的选择器可以不用
+			// 	} else{
+			// 		$( this ).next().show();
+			// 	}
+				
+			// } )
+
+			// 改为mouseover和mouseout
+			
+			// $("#panel h5.head").bind( "mouseover", function() {
+
+			// 	// 代码块
+			// }).bind( "mouseout", function() {
+			// 	// 代码块
+			// } )
+
+
+			// 直接简写，直接用mouseover和mouseout
+			
+
+			// 合成事件
+			
+			// 1.hover( enter, leave )
+			
+			// $("#panel h5.head").hover( function() {
+			// 	$( this ).next().show();
+			// }, function() {
+			// 	$( this ).next().hide();
+			// } )
+
+
+			// 2.toggle()
+			
+			$("#panel h5.head").toggle( function() {
+				
+				$( this ).next().toggle();
+			}, function() {
+				
+				$( this ).next().toggle();
+			} )
+
+		} )
+	</script>
+</head>
+<body>
+	<div id="panel">
+		<h5 class="head">What is jQuery?</h5>
+		<div class="content">
+			jQuery is a good JavaScript repo,birthed in 2006.
+		</div>
+	</div>
+</body>
+</html>

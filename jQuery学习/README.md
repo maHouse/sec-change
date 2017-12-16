@@ -1,7 +1,7 @@
 ### 锋利的jQuery学习 ###
 
 **第一章**
-#### 1.window.onload与$(ready).reday(function() {})的区别 ####
+#### 1.window.onload与$(ready).reday(function() {})的区别 与$(window).load(function(){})的区别####
 #### 2.$与jQuery的关系 ####
 #### 3.更多的值得学习的框架 ####
 mootools、YUI这两个框架好好学习一下，
@@ -301,3 +301,7 @@ CSS-DOM，针对CSS进行的操作
 	before()  //在某个元素的前面插入内容
 	insertAfter()//将匹配的元素插入到指定的元素后面
 	insertBefore()//将匹配的元素插入到指定的元素的前面
+### 第四章 ###
+事件绑定
+
+bind(type , fn)
