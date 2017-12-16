@@ -319,3 +319,15 @@ CSS-DOM，针对CSS进行的操作
 
 JavaScript不支持事件捕获
 
+解除绑定 unbind()，只用一次，用过之后就解除绑定的用one()，这个用法和bind()类似
+
+模拟操作用trigger(type, [,data])、triggerHandler()绑定特定事件而取消默认的操作
+
+	$("div").trigger("click!");//不会触发其他事件
+
+fadeIn()、fadeOut()只改变元素的不透明度，前者是是从display:none到透明度为0%，后者是从透明度为0%到display:none.
+
+slideUp()和slideDown()只改变元素的高度，当一个元素的display属性值为none时，slideDown()表示元素从上到下延伸显示，slideUp()相反
+
+动画方法说明
+![](images/fourthcharter.png)
