@@ -12,7 +12,26 @@
 		
 		$( function() {
 			
+			$("span").bind( "click", function( event ) {
+				var txt = $("#msg").html() + "<p>innerElement</p>";
 
+				$("#msg").html(txt);
+
+				// event.stopPropagation();//阻止冒泡
+
+				// return false;//与上述一样的作用
+			} );
+
+
+			$("#sub").bind( function( event ) {
+
+				var username = $("#username").value();
+
+				if ( usename == "" ) {
+					$("#msg2").html("<p>File is nothing</p>");
+					event.preventDefault();
+				}
+			} );
 		} )
 	</script>
 </head>
@@ -23,5 +42,14 @@
 		outerElementOfdiv
 	</div>
 	<div id="msg"></div>
+
+	<form action="get">
+		
+		username: <input type="text" id="username">
+		<br>
+		<input type="submit" value="提交" id="sub">
+	</form>
+
+	<div id="msg2"></div>
 </body>
 </html>
