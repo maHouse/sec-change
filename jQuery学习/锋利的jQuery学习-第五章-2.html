@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>锋利的jQuery学习第五章-1</title>
+	<style>
+	
+	</style>
+
+	<script src="jquery-1.8.3.js"></script>
+
+	<script>
+		
+		$( function() {
+			$("#CheckedAll").click( function() {
+				if ( this.checked ) {
+					$('[name=items]:checkbox').attr("checked", true );
+				} else {
+					$('[name=items]:checkbox').attr("checked", false );
+				}
+			} );
+
+			$('[name=items]:checkbox').click( function() {
+				var flag = true;
+				$('[name=items]:checkbox').each( function() {
+					if ( !this.checked ) {
+						flag = false;
+					}
+				} );
+				$('#CheckedAll').attr( 'checked', flag );
+			} );
+			
+		} )
+	</script>
+</head>
+<body>
+	
+	<form action="#" method="GET" id="form2">
+		
+		Which country is your favorite? <br>
+		<input type="button" id="CheckedAll" value="selectedAll">selectedAll/selectedAllNo
+		<br>
+
+		<input type="checkbox" name="items" value="China">China
+		<input type="checkbox" name="items" value="England">England
+		<input type="checkbox" name="items" value="USA">USA
+		<input type="checkbox" name="items" value="Gemerny">Gemerny
+
+		<br>
+		
+		<input type="button" id="send" value="submit">
+	</form>
+
+
+	<div class="content">
+		<select multiple id="select1" style="width: 100px; height: 160px;">
+			<option value="1">select1</option>
+			<option value="2">select2</option>
+			<option value="3">select3</option>
+			<option value="4">select4</option>
+			<option value="5">select5</option>
+			<option value="6">select6</option>
+			<option value="7">select7</option>
+			<option value="8">select8</option>
+		</select>
+		<div>
+			<span id="add">
+				选中添加到右边&gt;&gt;
+			</span>
+			<span id="add_all">
+				全部添加到右边&gt;&gt;
+			</span>
+		</div>
+	</div>
+
+	<div class="content">
+		<select multiple id="select2" style="width: 100px; height: 160px;"></select>
+		<div>
+			<span id="remove">
+				&lt;&lt;选中删除到左边
+			</span>
+			<span class="remove_all">
+				&lt;&lt;全部删除到左边
+			</span>
+		</div>
+	</div>
+</body>
+</html>
