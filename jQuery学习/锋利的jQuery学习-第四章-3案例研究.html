@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>锋利的jQuery学习</title>
+
+	<style>
+		*{ margin: 0; padding: 0; }
+		a{ text-decoration: none; color: #58a; }
+		img{
+			width: 20rem;
+			height: 16rem;
+		}
+
+		.v_content_list>ul{ display: flex; }
+		.current{ display: inline-block; width: 1rem; height: 1rem; text-align: center; line-height: 1rem;background: #fefefe; cursor: pointer; }
+	</style>
+
+	<script src="jquery-1.8.3.js"></script>
+	<script>
+		
+		$( function() {
+
+			var page = 1,
+				i = 4;
+
+			$("span.next").click( function() {
+				var $parent = $( this ).parents("div.v_show"),
+					$v_show = $parent.find("div.v_content_list"),
+					$v_content = $parent.find("div.v_content"),
+					$v_width = $v_content.width();
+					len = $v_show.find("li").length;
+					page_count = Math.ceil( len / i );
+
+				if ( !$v_show.is(":animated") ) {
+					if ( page == page_count ) {
+						$v_show.animate( { left : '0px' }, 'slow' );
+						page = 1;
+					} else{
+						$v_show.animate( { left : '-=' + v_width }, 'slow' );
+						page++;
+					}
+				}
+
+				$parent.find("span").eq( (page-1) ).addClass("current")
+					.siblins().removeClass("current");
+				
+			} );
+
+			if ( !$v_show.is(':animated') ) {
+
+				if ( page == 1 ) {
+
+					$v_show.animate( { left : '-=' + v_width * (page_count - 1) }, 'slow' );
+
+					page = page_count;
+				} else {
+
+					$v_show.animate( { left : '+=' + v_width }, 'slow' );
+					page --;
+				}
+			}
+		} )
+	</script>
+</head>
+<body>
+	<div class="v_show">
+		<div class="v_caption">
+			<h2 class="cartoon" title="卡通动漫">卡通动漫</h2>
+			<div class="highlight_tip">
+				<span class="current">1</span>
+				<span class="current">2</span>
+				<span class="current">3</span>
+				<span class="current">4</span>
+			</div>
+			<div class="change_btn">
+				<span class="prev">
+					prevPage
+				</span>
+				<span class="next">
+					nextPage
+				</span>
+			</div>
+
+			<em><a href="#">more>></a></em>
+		</div>
+
+		<div class="v_content">
+			<div class="v_content_list">
+				<ul>
+					<li><a href="#"><img src="images/海贼王1.jpg" alt="海贼王1"></a></li>
+					<li><a href="#"><img src="images/海贼王2.jpg" alt="海贼王2"></a></li>
+					<li><a href="#"><img src="images/海贼王3.jpg" alt="海贼王3"></a></li>
+					<li><a href="#"><img src="images/海贼王4.jpg" alt="海贼王4"></a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
