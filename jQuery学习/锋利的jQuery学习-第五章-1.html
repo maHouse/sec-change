@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>锋利的jQuery学习第五章-1</title>
+	<style>
+		
+		input:focus, textarea:focus{
+			border: 1px solid #f00;
+			background: #fcc;
+		}
+
+		/*ready for IE6*/
+		.focus{
+			border: 1px solid #f00;
+			background: #fcc;
+		}
+
+		.bigger, .smaller{
+			display: inline-block;
+			width: 4rem;
+			
+			padding: .4rem .2rem;
+			background: red;
+			text-align: center;
+
+		}
+	</style>
+
+	<script src="jquery-1.8.3.js"></script>
+
+	<script>
+		
+		$( function() {
+
+			// ready for IE6
+			$(":input").focus( function() {
+
+				$( this ).addClass("focus");
+			} ).blur( function() {
+
+				$( this ).removeClass("focus");
+			} );
+
+			// 多行文本框
+			
+			// 方法1
+			// var $msg = $("#msg");
+
+			// $(".bigger").click( function() {
+
+			// 	if ( $msg.height() < 300 ) {
+
+			// 		$msg.height( $msg.height() + 50 );
+
+			// 	}
+			// } );
+
+			// $(".smaller").click( function() {
+
+			// 	if ( $msg.height() > 50 ) {
+
+			// 		$msg.height( $msg.height() - 50 );
+			// 	}
+			// } );
+			
+			// 方法2
+			
+			var $msg = $("#msg");
+
+			$(".bigger").click( function() {
+
+				if ( !$msg.is(":animated") ) {
+
+					if ( $msg.height() < 300 ) {
+
+						$msg.animate( { height : "+=50" }, 400 );
+					} 
+				}
+			} );
+
+			$(".smaller").click( function() {
+
+				if ( !$msg.is(":animated") ) {
+
+					if ( $msg.height() > 50 ) {
+
+						$msg.animate( { height : "-=50", width : "+=20" }, 400 );
+					}
+				}
+			} );
+
+
+			//we can use scrollTop replaces the height
+			
+			// 多选
+			
+			$("#CheckedAll").click( function() {
+
+				$('[name=items]:checkbox').attr( 'checked', true );
+			} );
+
+			$("#CheckedNo").click( function() {
+
+				$('[name=items]:checkbox').attr( 'checked', false );
+			} );
+
+			// reverse practice
+			
+			$("#CheckedRev").click( function() {
+
+				$('[name=items]:checkbox').each( function() {
+					this.checked = !this.checked;
+					// $( this ).attr( "checked", !$( this ).attr("checked") );
+				})
+			} );
+
+			// 复选框被选中
+			
+			$("#send").click( function() {
+				var str = "you choose: \r\n";
+
+				$('[name=items]:checkbox:checked').each( function() {
+					str += $( this ).val() + "\r\n";
+				} );
+
+				alert(str);
+			} );
+		} )
+	</script>
+</head>
+<body>
+	<!-- 1.单行文本框 -->
+	<form action="#" method="POST" id="form1">
+		<fieldset>
+			<legend>
+				Personal Information
+			</legend>
+			<div>
+				<label for="username">
+					username:
+				</label>
+				<input type="text" id="username">
+			</div>
+			<div>
+				<label for="pass">password:</label>
+				<input type="password" id="pass">
+			</div>
+			<div class="msg_caption">
+				<span class="bigger">+</span>
+				<span class="smaller">-</span>
+			</div>
+			<div>
+				<label for="msg">more:</label>
+				<textarea name="textarea" id="msg" cols="30" rows="10"></textarea>
+			
+			</div>
+		</fieldset>
+	</form>
+	
+	Which country is your favorite? <br>
+	<form action="#" method="GET" id="form2">
+		<input type="checkbox" name="items" value="China">China
+		<input type="checkbox" name="items" value="England">England
+		<input type="checkbox" name="items" value="USA">USA
+		<input type="checkbox" name="items" value="Gemerny">Gemerny
+
+		<br>
+		<input type="button" id="CheckedAll" value="selectedAll">
+		<input type="button" id="CheckedNo" value="selectedAllNo">
+		<input type="button" id="CheckedRev" value="selectReverse">
+		<input type="button" id="send" value="submit">
+	</form>
+</body>
+</html>
