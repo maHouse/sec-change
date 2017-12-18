@@ -1,0 +1,23 @@
+	
+*{ margin: 0; padding: 0; }
+ul{ list-style: none; }
+.tab_menu>ul{ display: flex; }
+.tab_menu>ul li{ padding: .2rem .6rem; margin-right: 1rem; background: greenyellow; border: 1px solid #f00; cursor: pointer; }
+.tab_menu>ul li:nth-child(1){ padding: .2rem .6rem 0 .6rem; }
+.tab_box{
+	width: 12rem;
+	height: 4rem;
+	/*border: 1px solid #f00;*/
+}
+.hide{
+	color: #fefefe;
+	display: none;
+}
+.selected{
+	color: red;
+	background: #fff;
+}
+.hover{
+	background: greenyellow;
+}
+	
