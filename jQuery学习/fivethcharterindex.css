@@ -7,10 +7,10 @@ ul{ list-style: none; }
 .tab_box{
 	width: 12rem;
 	height: 4rem;
-	/*border: 1px solid #f00;*/
+	border: 1px solid #f00;
 }
 .hide{
-	color: #fefefe;
+	color: #f00;
 	display: none;
 }
 .selected{
