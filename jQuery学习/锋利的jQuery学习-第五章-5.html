@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>锋利的jQuery学习第五章-5</title>
+	<style>
+		*{ margin: 0; padding: 0; }
+		td{ padding: .4rem 2rem; }
+	</style>
+
+	<script src="jquery-1.8.3.js"></script>
+
+	<script>
+		
+		$( function () {
+
+			$("tr.parent").click( function() {
+
+				$( this )
+					.toggleClass("selected")
+					.siblings('.child' + this.id).toggle();
+			} );
+
+			$("tr:contains('里斯')").addClass("selected");
+			$("table tbody tr").hide()
+				.filter(":contains(男)").show();
+		} )
+	</script>
+</head>
+<body>
+	<table>
+		<thead>
+			<tr>
+				<th>姓名</th>
+				<th>性别</th>
+				<th>暂住地</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class="parent" id="row_01">
+				<td colspan="3">前台设计组</td>
+			</tr>
+			<tr class="child_row_01">
+				<td>占山</td>
+				<td>男</td>
+				<td>宁波</td>
+			</tr>
+			<tr class="child_row_01">
+				<td>里斯</td>
+				<td>男</td>
+				<td>换岗</td>
+			</tr>
+			<tr class="parent" id="row_02">
+				<td colspan="3">前台设计组</td>
+			</tr>
+			<tr class="child_row_02">
+				<td>july</td>
+				<td>女</td>
+				<td>大理</td>
+			</tr>
+			<tr class="child_row_02">
+				<td>张飞</td>
+				<td>男</td>
+				<td>太原</td>
+			</tr>
+			<tr class="parent" id="row_03">
+				<td colspan="3">后台设计组</td>
+			</tr>
+			<tr class="child_row_03">
+				<td>Anna</td>
+				<td>女</td>
+				<td>太原</td>
+			</tr>
+			<tr class="child_row_03">
+				<td>Rain</td>
+				<td>男</td>
+				<td>北京</td>
+			</tr>
+		</tbody>
+		<tbody>
+			
+		</tbody>
+	</table>
+</body>
+</html>
