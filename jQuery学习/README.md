@@ -425,3 +425,26 @@ jQuery代码：
 	var settings = { validate : false, limit : 5, name : "foo" };
 	var options = { validate : true, name : "bar" };
 	var newOptions = jQuery.extend( settings, options );
+结果：
+
+	newOptions = { validate : true, limit : 5, name : "bar" };
+
+jQuery.extend()方法常用来用于设置插件方法的一系列默认参数
+
+	function foo( options ) {
+
+		options = jQuery.extend( {
+			name : "bar",
+			length : 5,
+			dataType : "xml"//默认参数
+			}, options );   //options为传递的参数
+	};
+
+如果用户调用foo()方法的时候，在传递参数options对象中设置了相应的值，那么就使用设置的值，否则使用默认的值
+
+	foo( { name : "a", length : 4, dataType : "json" } );
+	foo( { name : "a", length : "4" } );
+	foo( { name : "a" } );
+	foo();
+
+通过使用jQuery.extend()方法，可以用传入的参数来覆盖默认值。对方法的调用依旧保持一致。
