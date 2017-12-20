@@ -436,7 +436,9 @@ jQuery.extend()方法常用来用于设置插件方法的一系列默认参数
 		options = jQuery.extend( {
 			name : "bar",
 			length : 5,
-			dataType : "xml"//默认参数
+		
+
+	dataType : "xml"//默认参数
 			}, options );   //options为传递的参数
 	};
 
@@ -448,3 +450,18 @@ jQuery.extend()方法常用来用于设置插件方法的一系列默认参数
 	foo();
 
 通过使用jQuery.extend()方法，可以用传入的参数来覆盖默认值。对方法的调用依旧保持一致。
+
+**编写jQuery插件**
+
+1.封装jQuery对象方法的插件
+
+①编写设置和获取颜色的插件
+
+由于是对jQuery对象的方法扩展，得用jQuery.fn.extend()来编写
+
+	;( function($) {
+		$.fn.extend( { "color" : function( value ) {
+			//插件代码
+			} 
+		} );
+	} )(jQuery);
