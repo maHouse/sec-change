@@ -410,3 +410,12 @@ jQuery插件主要分为3类：
 
 **jQuery插件的机制**
 
+2中扩展jQuery功能的方法，jQuery.fn.extend()和jQuery.extend()，都接受一个参数，类型为Object，Object对象的“名/值对”分别代表“函数或方法名/函数主体”。
+
+jQuery.extend()不仅可以扩展jQuery对象还可以扩展已有的jQuery对象
+
+jQuery代码：
+
+	jQuery.extend(target,obj1,...[objN])
+
+用来
