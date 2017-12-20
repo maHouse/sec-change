@@ -479,5 +479,17 @@ jQuery.extend()方法常用来用于设置插件方法的一系列默认参数
 
 	} )(jQuery);
 
+如果没有给方法传递参数，那么就获取集合对象中第一个对象的color的值。
 
+	;(function($) {
+		$.fn.extend( {
+			"color" : function( value ) {
+				if ( value == undefined ) {
+					return this.css( "color" );
+				} else {
+					return this.css( "color", value);
+				} 
+			} 
+		} );
+	} )(jQuery);
 
