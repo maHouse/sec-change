@@ -418,4 +418,10 @@ jQuery代码：
 
 	jQuery.extend(target,obj1,...[objN])
 
-用来
+用一个或多个对象来扩展一个对象，然后返回被扩展的对象。
+
+例如合并settings和options对象，修改并返回settings对象
+
+	var settings = { validate : false, limit : 5, name : "foo" };
+	var options = { validate : true, name : "bar" };
+	var newOptions = jQuery.extend( settings, options );
