@@ -465,3 +465,19 @@ jQuery.extend()方法常用来用于设置插件方法的一系列默认参数
 			} 
 		} );
 	} )(jQuery);
+
+设置了默认参数，如果提供了value参数，就使用传递的value参数来设置字体颜色，否则就用默认的。
+
+第一个功能设置字体颜色
+
+	;( function($) {
+		$.fn.extend( {
+			"color" : function( value ) {
+				return this.css( "color", value );//使插件具有可链接性
+			} 
+		} );
+
+	} )(jQuery);
+
+
+
