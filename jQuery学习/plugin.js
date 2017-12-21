@@ -7,7 +7,3 @@
 	} );
 } )(jQuery);
 
-$( function() {
-
-	
-} )
