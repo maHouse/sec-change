@@ -18,7 +18,11 @@
 	}
 
 	Beautifier.prototype = {
-		
+
+		beautify : function() {
+
+			return this.$element.css( { 'color' : this.options.color } );
+		}
 	}
 } )(jQuery);
 
