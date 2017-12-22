@@ -12,7 +12,7 @@
 
 	// 面向对象解决上述两个方法合并的问题
 	
-	
+
 	var Beautifier = function( ele, opt ) {
 
 		this.$element = ele;
@@ -20,6 +20,7 @@
 		this.options = $.extend( {}, this.defaults, opt );
 	}
 
+// 
 	Beautifier.prototype = {
 
 		beautify : function() {
