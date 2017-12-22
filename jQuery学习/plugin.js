@@ -24,5 +24,12 @@
 			return this.$element.css( { 'color' : this.options.color } );
 		}
 	}
+
+	$.fn.myPlugin = function( options ) {
+
+		var beautifier = new Beautifier( this, options );
+
+		return beautifier.beautify();
+	}
 } )(jQuery);
 
