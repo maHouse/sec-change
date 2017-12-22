@@ -9,5 +9,16 @@
 			return this.css( "fontSize", value );
 		}
 	} );
+
+	var Beautifier = function( ele, opt ) {
+
+		this.$element = ele;
+		this.defaults = { 'color' : 'red'};
+		this.options = $.extend( {}, defaults, opt );
+	}
+
+	Beautifier.prototype = {
+		
+	}
 } )(jQuery);
 
