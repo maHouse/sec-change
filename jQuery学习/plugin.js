@@ -16,19 +16,20 @@
 	var Beautifier = function( ele, opt ) {
 
 		this.$element = ele;
-		this.defaults = { 'color' : 'red'};
+		this.defaults = { 'color' : 'blue'};
 		this.options = $.extend( {}, this.defaults, opt );
 	}
 
-// 
 	Beautifier.prototype = {
 
 		beautify : function() {
 
+			// 一个是我们需要得到元素，再有就是样式设置
 			return this.$element.css( { 'color' : this.options.color } );
 		}
 	}
 
+	//把options作为参数传到实例里面，把方法绑定到了扩展插件的方法上
 	$.fn.myPlugin = function( options ) {
 
 		var beautifier = new Beautifier( this, options );
