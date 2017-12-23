@@ -14,7 +14,7 @@
 	<script src="jquery-1.8.3.js"></script>
 	<script>
 		
-		$( function() {
+		// $( function() {
 		
 			// $("tbody>tr:odd").addClass("odd");
 			// $("tbody>tr:even").addClass("even");
@@ -55,6 +55,12 @@
 					return this;
 				}
 			} );
+		// } )
+		
+
+		$( function() {
+
+			$("tbody>tr").alterBgColor().find("tr").css("color","red");
 		} )
 	</script>
 </head>
