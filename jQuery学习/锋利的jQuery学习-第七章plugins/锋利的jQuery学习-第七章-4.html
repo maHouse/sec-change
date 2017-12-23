@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>锋利的jQuery学习-第七章-4</title>
+	
+	<script src="jquery-1.8.3.js"></script>
+	<script>
+		
+		;(function($) {
+
+			$.extend( jQuery.expr[":"], {
+
+				between : function( a, i, m ) {
+
+					var tmp = m[3].split(",");
+					return tmp[0] - 0 < i && i < tmp[1] - 0;
+				}
+			} );
+		} )(jQuery);
+
+		$( function() {
+
+			// alert("Before testing!!");
+
+			var $div = $('div:between(2,5)');
+			$div.css("backgroundColor", "greenyellow");
+
+			console.log($div);
+			// alert("After testing!!")
+		} )
+	</script>
+</head>
+<body>
+	
+	<div style="background: red">0</div>
+	<div style="background: blue">1</div>
+	<div style="background: green">2</div>
+	<div style="background: yellow">3</div>
+	<div style="background: deeppink">4</div>
+	<div style="background: gray">5</div>
+</body>
+</html>
+
+<script>
+
+</script>
