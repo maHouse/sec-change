@@ -29,7 +29,7 @@
 		}
 	}
 
-	//把options作为参数传到实例里面，把方法绑定到了扩展插件的方法上
+	//把options作为参数传到实例里面，把方法绑定到了扩展插件的方法上,options是个对象，就是用来代替this.options
 	$.fn.myPlugin = function( options ) {
 
 		var beautifier = new Beautifier( this, options );
