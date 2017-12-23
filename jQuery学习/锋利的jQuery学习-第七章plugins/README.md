@@ -53,7 +53,37 @@ m[4]不常见，如“div:l(ss(dd))”，这样的选择器，m[4]就指向了�
 
 下面就是看一个between选择器如何通过**$("div:between(2,5)"**来实现索引为3、4元素的功能。
 
+构建选择器函数
+
+	function(a, i, m) {
 	
+		var tmp = m[3].split(",");//将传递进来的m[3]以逗号分开，转换为一个数组
+		return tmp[0] - 0 < i && i < tmp[1] - 0;//i > 2 && i < 5
+	}
+
+函数解释：
+
+第一行m[3]的值为"2,5"，是一个字符串，经过分割成为了一个数组
+
+第二行2和5与i进行比较，tmp[0] - 0将本来的“2”这个字符串转换为了数字2，然后在进行比较
+
+完整代码：
+
+	;(function($) {
+		
+		$.extend( $.expr[":"], {
+
+			between : function(a, i, m) {
+				var tmp = m[3].split(",");
+				var return tmp[0] - 0 < i && i < tmp[ 1 ] - 0;
+			}
+ 
+		} );
+
+	} )(jQuery);
+
+就可以使用了，下面看代码[锋利的jQuery学习-第七章-4.html](锋利的jQuery学习-第七章-4.html)
+
 
 
 
