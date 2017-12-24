@@ -5,3 +5,31 @@
 	margin: 10px auto;
 	background: #3b5998;
 }
+#logo{
+	float: left;
+	margin: 0 0 0 10px;
+	color: #fff;
+	font-size: 3rem;
+	font-weight: 700;
+	line-height: 80px;
+}
+#skin{
+	float: right;
+	margin: 10px;
+	padding: 4px;
+	width: 120px;
+	list-style: none;
+	border: 1px solid #ccc;
+	background: #fff;
+}
+#skin li{
+	float: left;
+	margin-right: 4px;
+	width: 15px;
+	height: 15px;
+	text-indent: -9999px;
+	overflow: hidden;
+	display: block;
+	cursor: pointer;
+	/*background: url();*/
+}
