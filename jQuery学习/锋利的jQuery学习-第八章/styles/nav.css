@@ -55,3 +55,23 @@
 	width: 586px;
 	float: left;
 }
+
+.global_module{
+	position: relative;
+	background: #eee;
+	padding-bottom: 8px;
+}
+
+.module_up_down{
+	position: absolute;
+	top: 9px;
+	right: 10px;
+	cursor: pointer;
+}
+.procatalog .m-treeview li.m-expanded{
+	padding-left: 16px;
+	background: url();
+}
+.procatalog .m-treeview li.m-expanded ul li{
+	list-style-image: url(); 
+}
