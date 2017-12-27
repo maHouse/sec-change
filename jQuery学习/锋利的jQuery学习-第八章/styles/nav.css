@@ -75,3 +75,38 @@
 .procatalog .m-treeview li.m-expanded ul li{
 	list-style-image: url(); 
 }
+.content_right .ad{
+	margin-bottom: 10px;
+	width: 586px;
+	height: 150px;
+	overflow: hidden;
+	position: relative;
+}
+.content_right .slider, .content_right .num{
+	position: absolute;
+}
+.content_right .num{
+	right: 5px;
+	bottom: 5px;
+}
+.content_right .prolist{
+	position: relative;
+	height: 220px;
+	margin-bottom: 10px;
+	overflow: hidden;
+	border: 1px solid #aaa;
+	background: #fff;
+}
+.content_right .prolist .prolist_content{
+	position: absolute;
+	width: 1800px;
+	top: 26px;
+	left: 0px;
+	padding: 20px 0 0 8px;
+}
+.module_left_right{
+	position: absolute;
+	top: 5px;
+	right: 10px;
+	cursor: pointer;
+}
