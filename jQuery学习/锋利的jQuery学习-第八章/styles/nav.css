@@ -110,3 +110,9 @@
 	right: 10px;
 	cursor: pointer;
 }
+.content_right .prolist ul li{
+	float: left;
+	display: inline;
+	text-align: center;
+	margin-right: 22px;
+}
