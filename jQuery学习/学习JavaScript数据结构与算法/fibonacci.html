@@ -51,5 +51,24 @@
 
 	console.log( friends.sort(comparePerson) );
 	
+	// 字符串排序,字符的比较是根据字符对应的ASCII值来比较的，忽略大小写就要写个忽略大小写的函数
+	
+
+	var names = ['Anna', 'anna', 'john', 'John'];
+	console.log( names.sort() );
+	names.sort( function( a, b ) {
+		if ( a.toLowerCase() < b.toLowerCase() ) {
+			return -1;
+		}
+
+		if ( a.toLowerCase() > b.toLowerCase() ) {
+			return 1;
+		}
+		return 0;
+	});
+
+	// 重音符号的可以用localeCompare()比较，如：a.localeCompare(b)
+
+
 
 </script>
