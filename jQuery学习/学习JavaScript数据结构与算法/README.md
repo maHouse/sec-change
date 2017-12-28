@@ -5,3 +5,10 @@
 if...else以及变形
 
 ②、循环
+
+③、面向对象编程OOP
+
+	var Book = function(title,page) {
+		this.title = title;
+		this.page = page
+	}//还有一种就是new出来

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>斐波那契数列</title>
+</head>
+<body>
+	
+</body>
+</html>
+<script async>
+	var fibonacci = [];
+
+	// 斐波那契数列前两项
+	fibonacci[1] = 1;
+	fibonacci[2] = 1;
+
+	for ( var i = 3; i < 20; i++ ) {
+
+		// 斐波那契数列数列的规律
+		
+		fibonacci[ i ] = fibonacci[ i - 1 ] + fibonacci[ i - 2 ];
+		
+		console.log( fibonacci[ i ] );
+	}
+</script>
