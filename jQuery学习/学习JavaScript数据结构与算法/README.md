@@ -29,3 +29,17 @@ JS仅仅支持一维数组，不支持矩阵，但可以用嵌套数组来实现
 
 **搜索和排序**
 
+	numbers.sort( function( a, b ) {
+	
+		return a - b;
+	} );
+
+等价于
+
+	function compare( a, b ) {
+		if ( a < b ) { return -1 };
+		if ( a > b ) { return 1 };
+		return 0;
+	}
+
+	numbers.sort( compare );
