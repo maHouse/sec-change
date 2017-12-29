@@ -93,3 +93,47 @@ last input first output
 		items.push( element );
 	}
 实现pop方法，遵从LIFO原则，移除的是最后添加进去的元素
+	
+	this.pop = function() {
+		return items.pop();
+	}
+
+只能用push和pop方法添加和删除栈中的元素，我们的栈也就遵从了LIFO原则，一些额外的辅助方法，如果我们想知道栈里最后添加的元素是什么，可以用peek方法，这个方法返回栈顶的元素
+
+	this.peek = function() {
+	
+		return items[items.length-1];
+	}
+
+实现isEmpty方法，如果栈为空返回true，否则返回false
+
+	this.isEmpty = function() {
+
+		return items.length == 0;
+	}
+
+使用isEmpty就能简单的判断内部数组的长度是否为0。
+
+对于集合，最好用size代替length，因为栈的内部使用数组保存元素，所以简单的返回栈的长度
+
+	this.size = function() {
+
+		return items.length;
+	}
+
+clear方法的实现，用来移除栈里所有的元素，把栈清空
+
+	this.clear = function() {
+
+		items = [];
+	}
+也可以用pop方法，把数组元素全部移除，实现了clear
+
+检查栈里的内容，用辅助方法，print。把栈里的元素都输出到控制台
+
+	this.print = function() {
+		
+		console.log(items.toString());
+	}
+
+OK!完成了创建栈。
