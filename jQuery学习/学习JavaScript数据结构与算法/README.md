@@ -86,3 +86,10 @@ last input first output
 
 	size():返回栈里的元素个数。和数组的length属性类似
 
+实现的第一个方法就是push，往栈里添加新元素，只会添加新元素到栈顶，也就是栈的末尾
+
+	this.push = function( element ) {
+
+		items.push( element );
+	}
+实现pop方法，遵从LIFO原则，移除的是最后添加进去的元素
