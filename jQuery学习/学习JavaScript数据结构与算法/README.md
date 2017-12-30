@@ -200,3 +200,26 @@ OK!完成了创建栈。
 我么往栈里添加了11，调用size方法，输出为3，调用isEmpty方法，会看到输出了false，因为栈里有3个元素，不是空栈，最后添加一个元素：
 
 	stack.push(15);
+
+#### 实战 ####
+生活中我们使用十进制，计算机科学里所有内容都是用二进制数字表示的（0和1），计算机并没有十进制和二进制相互转化的能力。
+
+把十进制转化为二进制，我们可以将十进制数字和2整除，直到结果是0为止
+
+	function divideBy2(decNumber) {
+		
+		var remStack = new Stack(),
+			rem,
+			binaryString = '';
+	
+		while (decNumber > 0) {
+			rem = Math.floor(decNumber % 2);
+			remStack.push(rem);
+			decNumber = Math.floor(decNumber / 2);
+		}
+
+		while (!remStack.isEmpty()){
+			binaryString += remStack.pop().toString();
+		}
+		return binaryString;
+	}
