@@ -137,3 +137,40 @@ clear方法的实现，用来移除栈里所有的元素，把栈清空
 	}
 
 OK!完成了创建栈。
+
+栈的完整代码
+
+	function Stack() {
+	
+		var items = [];
+
+		this.push = function( element ) {
+			items.push( element );
+		};
+		
+		this.pop = function() {
+			
+			return items.pop();
+		};
+
+		this.peek = function() {
+			
+			return items[ items.length-1];
+		};
+		this.isEmpty = function() {
+			
+			return items.length == 0;
+		};
+		this.size = function() {
+			
+			return items.length;
+		};
+		this.clear = function() {
+			
+			items = [];
+		};
+		this.print = function() {
+		
+			console.log( items.toString() );
+		};
+	}
