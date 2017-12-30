@@ -174,3 +174,29 @@ OK!完成了创建栈。
 			console.log( items.toString() );
 		};
 	}
+
+使用Stack类
+
+首先，初始化Stack类，并验证栈是否为空，输出true，因为还没有往栈里添加元素
+
+	var stack = new Stack();
+	console.log(stack.isEmpty());
+
+接下来，往栈里添加一些元素，可以是任意类型的元素
+
+	stack.push(5);
+	stack.push("1");
+
+如果调用peek方法，将会输出字符串“1”，因为是最后一个添加的元素
+
+	console.log(stack.peek());
+
+再添加一个元素：
+
+	stack.push(11);
+	console.log(stack.size());
+	console.log(stack.isEmpty());
+
+我么往栈里添加了11，调用size方法，输出为3，调用isEmpty方法，会看到输出了false，因为栈里有3个元素，不是空栈，最后添加一个元素：
+
+	stack.push(15);
