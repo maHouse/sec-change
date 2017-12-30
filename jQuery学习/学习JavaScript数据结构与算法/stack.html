@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>stack</title>
+</head>
+<body>
+	
+</body>
+</html>
+<script defer>
+	
+	function divideBy2( decNumber ) {
+
+		var remStack = new Stack(),
+			rem,
+			binaryString = '';
+
+		while ( decNumber > 0 ) {
+
+			rem = Math.floor( decNumber % 2 );
+			remStack.push( rem );
+			decNumber = Math.floor( decNumber / 2 );
+		}
+
+		while  ( !remStack.isEmpty() ) {
+
+			binaryString += remStack.pop().toString();
+		}
+	}
+
+	
+</script>
