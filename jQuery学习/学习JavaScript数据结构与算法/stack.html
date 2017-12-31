@@ -8,14 +8,9 @@
 	
 </body>
 </html>
-<script defer>
-	
+<script>
 
-
-
-	function divideBy2( decNumber ) {
-
-			function Stack() {
+	function Stack() {
 
 		var items = [];
 
@@ -54,6 +49,10 @@
 			console.log( items.toString() );
 		}
 	}
+
+
+	function divideBy2( decNumber ) {
+		
 		var remStack = new Stack(),
 			rem,
 			binaryString = '';
@@ -70,10 +69,10 @@
 			binaryString += remStack.pop().toString();
 		}
 
-		console.log( divideBy2( 233 ) );
-		console.log( divideBy2( 10 ) );
-		console.log( divideBy2( 1000 ) );
+		return binaryString;
 	}
-
 	
+	console.log( divideBy2(233) );
+	console.log( divideBy2(10) );
+	console.log( divideBy2(1000) );
 </script>
