@@ -258,7 +258,7 @@ OK!完成了创建栈。
 
 	size():返回队列包含的元素个数，与数组的length属性类似
 
-先实现enqueue方法，负责向队列里添加新元素，只能向队列的末尾添加：
+先实现enqueue方法，负责向队列里添加新元素，只能向队列的末尾添加
 
 	this.enqueue = function( element ) {
 
