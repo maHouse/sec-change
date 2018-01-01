@@ -381,3 +381,15 @@ OK!完成了创建栈。
 			}
 		}
 	}
+
+默认的Queue类和PriorityQueue类实现上的区别是，要向PriorityQueue添加元素，要创建一个特殊的元素。这个元素包含了要添加到队列的元素（可以是任意类型）以及在队列中的优先级。
+
+如果队列为空，可以直接将元素入列，否则，就需要比较该元素与其他元素的优先级。当找到一个比要添加的元素的Priority值更大（优先级更低）的项时，就把新元素插入到它之前（所以，对于其他优先级相同，但是先添加到队列的元素，我们遵循同样的先进先出原则）。要做到这一点，我们只需要用splice方法即可，一旦找到priority值更大的元素，就插入新元素并终止循环。这样，队列也就根据优先级排序了。
+
+如果要添加的元素priority值大于任何已有的元素，把它添加到队列的末尾就行。
+
+	var priorityQueue = new PriorityQueue();
+	priorityQueue.enqueue("John", 2);
+	priorityQueue.enqueue("Jack", 1);
+	priorityQueue.enqueue("Camila", 1);
+	priorityQueue.print();
