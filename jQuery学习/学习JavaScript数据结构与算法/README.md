@@ -393,3 +393,7 @@ OK!完成了创建栈。
 	priorityQueue.enqueue("Jack", 1);
 	priorityQueue.enqueue("Camila", 1);
 	priorityQueue.print();
+
+第一个添加的元素是优先级为2的John。因为此前队列为空，所以他是队列中唯一的元素。接下来，添加了优先级为1的Jack。由于Jack的优先级高于John，它就成为了队列中的第一个元素，然后添加了优先级也为1的Camila。优先级相同被放到Jack之后
+
+我们这里实现的优先队列成为最小优先队列，因为优先的值较小的元素被放置到队列最前面。最大优先队列与之相反。
