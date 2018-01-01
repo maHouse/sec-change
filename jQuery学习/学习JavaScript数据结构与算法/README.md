@@ -265,3 +265,80 @@ OK!完成了创建栈。
 		items.push( element );
 	}
 
+由于队列遵循先进先出原则，最先添加的项也是最先被移除，我们用shift方法来实现，会从数组中移除储存在索引0的元素。
+
+	this.dequeue = function() {
+
+		return items.shift();
+	}
+
+我们用enqueue和dequeue方法来添加和移除元素，确保了Queue类遵循先进先出原则。
+
+如果想知道队列最前面的项是什么，可以用front方法
+
+	this.front = function() {
+
+		return items[];
+	}
+
+下一个是isEmpty方法，如果队列为空返回true，否则返回false
+
+	this.size = function() {
+		
+		return items.length;
+	}
+
+增加一个print方法
+
+	this.print = function() {
+
+		console.log( items.toString() );
+	}
+
+完整的代码：
+
+	function Queue() {
+	
+		var items = [];
+	
+		this.enqueue = function( element ) {
+			items.push( element );
+		};
+		
+		this.dequeue = function() {
+			return items.shift();
+		};
+		
+		this.front = function() {
+			return items[0];
+		};
+
+		this.isEmpty = function() {
+			return items.length == 0;
+		};
+
+		this.clear = function() {
+			items = [];
+		};
+
+		this.size = function() {
+			return items.length;
+		};
+
+		this.print = function() {
+		
+			concole.log( items.toString() );
+		};
+	}
+
+使用Queue类（队列类）
+
+首先就是实例化刚刚创建的Queue类，并进行验证（是否为空）
+
+	var queue = new Queue();
+	console.log( queue.isEmpty() );
+
+接下来添加元素进去，可以是任何类型的元素
+
+	queue.enqueue("John");
+	queue.enqueue("Jack");
