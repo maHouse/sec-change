@@ -397,3 +397,35 @@ OK!完成了创建栈。
 第一个添加的元素是优先级为2的John。因为此前队列为空，所以他是队列中唯一的元素。接下来，添加了优先级为1的Jack。由于Jack的优先级高于John，它就成为了队列中的第一个元素，然后添加了优先级也为1的Camila。优先级相同被放到Jack之后
 
 我们这里实现的优先队列成为最小优先队列，因为优先的值较小的元素被放置到队列最前面。最大优先队列与之相反。
+
+**循环队列--击鼓传花**
+
+孩子们围成一个圈，把花尽快的传给旁边的人，某一时刻传花停止，花在谁的手里，谁退出圆圈，知道剩下一个孩子
+
+	function hotPotato( nameList, num ) {
+		
+		var queue = new Queue();
+		for ( var i = 0; i < nameList.length; i++ ) {
+		
+			queue.enqueue( nameList[i] );
+		}
+
+		var eliminated = '';
+		while( queue.size() > 1 ) {
+		
+			for ( var i = 0; i < num; i++ ) {
+				queue.enqueue(queue.dequeue());
+			}
+			
+			eliminated = queue.dequeue();
+			console.log( eliminated + '在游戏中淘汰' );
+		} 
+		
+		return queue.dequeue();
+	}
+
+	var names = ['John','Jack','Camila','Ingrid','Carl'];
+	var winner = hotPotato(names, 7);
+	console.log('胜利者:' + winner);
+
+我们要用到Queue类，首先把所有的名字加入到队列，给定一个数字，然后迭代队列。从队列开头移除一项，再将其添加到队列的末尾，模拟击鼓传花（如果你把话给了旁边的人，你的危险就解除了）。一旦传递次数达到给定的数字，拿着花的人就被淘汰了（从队列中移除）。最后只剩下一个人的时候，就是胜者了。
