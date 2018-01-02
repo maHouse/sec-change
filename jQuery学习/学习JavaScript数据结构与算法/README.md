@@ -446,5 +446,34 @@ OK!完成了创建栈。
 
 另一个例子就是寻宝游戏。你有一条线索，这条线索是指向寻找下一个线索的地点的指针。你顺着这条链接去下一个地点，得到另一个指向再下一处的线索。得到列表中间的线索的唯一办法，就是从起点（第一条线索）顺着列表寻找。
 
-还有个说明列表的最流行的例子，就是火车。一列火车是由一系列车厢组成。每节车厢都相互连接，你很容易分离一节车厢，改变它的位置，添加或移除它。每节车厢都是列表的元素，车皮间的连接就是指针
+还有个说明列表的最流行的例子，就是火车。一列火车是由一系列车厢组成。每节车厢都相互连接，你很容易分离一节车厢，改变它的位置，添加或移除它。每节车厢都是列表的元素，车皮间的连接就是指针，开始搞起链表和双向链表吧
+
+**创建一个链表**
+
+看看我们的LinkedList类的骨架
+
+	function LinkedList() {
+		
+		var Node = function( element ) {
+			this.element = element;
+			this.next = null;
+		};
+		
+		var length = 0,
+			head = null;
+		
+		this.append = function( element ) {};
+		this.insert = function( position, element ) {};
+		this.removeAt = function( position ) {};
+		this.remove = function( element ) {};
+		this.indexOf = function( element ) {};
+		this.isEmpty = function() {};
+		this.size = function() {};
+		this.toString = function() {};
+		this.print = function() {};
+	}
+
+LinkedList数据结构还需要一个Node辅助类。Node类表示要加入列表的项。它包含一个element属性，即要添加到列表的值，以及一个next属性，即指向列表中下一个节点项的指针。
+
+
 
