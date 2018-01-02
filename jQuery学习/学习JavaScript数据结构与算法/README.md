@@ -479,7 +479,28 @@ LinkedList类也有存储列表项的数量的length属性
 
 另一个重要的是，我们还要存储第一个节点的引用。为此可以把这个引用存储在一个成为head的变量中
 
-然后就是LinkedList类的方法。在
+然后就是LinkedList类的方法。
+
+	append(element):向列表中添加一个新的项
+	
+	insert(position,element):向列表的特定位置插入一个新的项
+	
+	remove(element):从列表中移除一项
+
+	indexOf(element):返回元素在列表中的索引，如果列表中没有该元素则返回-1
+
+	removeAt(position):从列表中的特定位置移除一项
+
+	isEmpty():如果链表中不包含任何元素，则返回true，如果链表的长度大于0返回false
+
+	size():返回链表包含的元素的个数。与数组的length属性类似
+
+	toString():由于列表中使用了Node类，就要重新写继承JS对象默认的toString方法，让其只输出元素的值
+
+#### 向链表尾部追加元素 ####
+向LinkedList对象尾部添加一个元素时，可能有两种情况：列表为空，添加的是第一个元素，或者不为空，向其追加元素。
+
+
 
 
 
