@@ -500,7 +500,36 @@ LinkedList类也有存储列表项的数量的length属性
 #### 向链表尾部追加元素 ####
 向LinkedList对象尾部添加一个元素时，可能有两种情况：列表为空，添加的是第一个元素，或者不为空，向其追加元素。
 
+我们实现的append方法：
 
+	this.append = function( element ) { 
+		
+		var node = new Node( element ),
+			current;
 
+		if ( head === null ) {
 
+			head = node;
+		} else {
+			current = head;
+			
+			while( current.next ) {
+				
+				current = current.next;
+			}
 
+			current.next = node;
+		}
+
+		length++;
+	};
+
+首先需要做的是把element作为值传入，创建Node项
+
+先来实现第一个场景：向为空的列表添加一个元素。当我们创建一个LinkedList对象时，head会指向null
+
+如果head元素为null（列表为空），就意味着在向列表中添加第一个元素。因此要做的就是让head元素指向node元素。下一个node元素将会自动成为null
+
+列表的最后一个节点的下一个元素始终是null
+
+要向列表的尾部添加一个元素，首先需要找到最后一个元素，记住，我们只有第一个元素的引用，因此要循环访问列表，直到最后一项。为此，我们需要一个指向列表中current项的变量。循环访问列表时，当current.next元素为null时，我们就知道已经到达列表尾部。然后要做的就是让当前（也就是最后一个）元素的next指针指向想要添加到列表的节点。
