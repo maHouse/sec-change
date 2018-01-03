@@ -645,3 +645,4 @@ current变量是对列表中第一个元素的引用。要做的是把node.next�
 
 **实现其他方法**
 
+toString
