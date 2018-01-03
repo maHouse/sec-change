@@ -595,3 +595,45 @@ current变量是将要移除元素的引用。previous变量是要移除的前�
 
 **在任意位置插入一个元素**
 
+接下里实现insert方法，使用这个方法可以在任意位置插入一个元素
+
+	this.insert = function( position, element ) {
+
+		if ( position >= 0 && position <= length ) {
+			
+			var node = new Node( element ),
+				current = head,
+				previous,
+				index = 0;
+			
+			if ( position === 0 ) {
+				
+				node.next = current;
+				head = node;
+			} else {
+			
+				while ( index++ < position ) {
+				
+					previous = current;
+				
+					current = current.next;
+				}
+		
+				node.next = current;
+				previous.next = node;
+			}
+		
+			length++;
+	
+			return true;
+		} else {
+			return false;
+		}
+	};
+
+由于我们处理的是位置，就要检查越界值，如果越界了就返回false值，表示没有添加项到列表中
+
+现在我们要处理不同的场景。第一种场景，需要在列表的起点添加一个元素，也就是第一个位置
+
+current变量是对列表中第一个元素的引用。要做的是把node.next的值设为current（列表中第一个元素）。现在head和node.next都指向了current。接下来要做的就是把head的引用改为node，这样列表中就有了一个新元素
+
