@@ -533,3 +533,53 @@ LinkedList类也有存储列表项的数量的length属性
 列表的最后一个节点的下一个元素始终是null
 
 要向列表的尾部添加一个元素，首先需要找到最后一个元素，记住，我们只有第一个元素的引用，因此要循环访问列表，直到最后一项。为此，我们需要一个指向列表中current项的变量。循环访问列表时，当current.next元素为null时，我们就知道已经到达列表尾部。然后要做的就是让当前（也就是最后一个）元素的next指针指向想要添加到列表的节点。
+
+而当一个Node元素被创建时，它的next指针总是null
+
+我们可以通过以下代码来使用和测试目前创建的数据结构：
+	
+	var list = new LinkedList();
+	
+	list.append(15);
+	list.append(10);
+
+**从链表中移除元素**
+
+现在，我们看看如何从LinkedList对象中移除元素。移除元素也有两种场景：第一种是移除第一个元素，第二种是移除第一个以外的任一元素。我们要实现两种remove方法：第一种是从特定位置移除一个元素，第二种是根据元素的值移除元素。
+
+根据给定位置移除一个元素的方法的实现：
+
+	this.removeAt = function( position ) {
+		
+		if ( position > -1 && position < length ) {
+			
+			var current = head,
+				previous,
+				index = 0;
+			
+			if ( position === 0 ) {
+				
+				head = current.next;
+			} else {
+				
+				while ( index++ < position ) {
+					
+					previous = current;
+					current = current.next;	
+				}
+				
+				previous.next = current.next;
+			}
+		
+			length--;
+		
+			return current.element;
+	
+		} else {
+		
+			return null;
+		}	
+	};
+
+该方法要得到需要移除的元素的位置，就要验证这个位置是否有效，从0到列表的长度（size - 1，因为索引是从0开始的）都是有效的位置，如果不是有效的位置，就返回null（意思就是没有从列表中移除元素）。
+
