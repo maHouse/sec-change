@@ -691,3 +691,16 @@ indexOf是我们下一个要实现的方法。indexOf方法接受一个元素的
 
 		return -1;
 	};
+
+我们需要一个变量来帮助我们循环访问变量，这个变量就是current，他的初始值是head（列表的第一个元素--我们还要一个index变量来计算位置数。然后循环访问元素，检查当前元素是否是我们要找的。如果是，就返回它的位置，否则的话就继续计数，检查列表中的下一个节点。
+
+如果列表为空，或到达列表的尾部（current = current.next将是null），循环就不会执行，如果没找到值，就返回-1
+
+	this.remove = function(element) {
+
+		var index = this.indexOf(element);
+		
+		return this.removeAt(index);
+	};
+
+我们已经有一个移除给定位置的一个元素的removeAt方法。现在有了indexOf方法，如果传入元素的值，就能找到他的位置，然后调用removeAt方法并传入找到的位置。
