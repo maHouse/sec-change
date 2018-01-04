@@ -669,3 +669,25 @@ toString
 
 最后，返回列表中内容的字符串。
 
+**indexOf方法**
+
+indexOf是我们下一个要实现的方法。indexOf方法接受一个元素的值，如果元素找到就返回它的位置，否则返回-1.
+
+	this.indexOf = function( element ) {
+		
+		var current = head,
+			index = -1;
+
+		while( current ) {
+
+			if ( element === current.element ) {
+				return index;
+			}
+			
+			index++;
+			
+			current = current.next;
+		}
+
+		return -1;
+	};
