@@ -704,3 +704,21 @@ indexOf是我们下一个要实现的方法。indexOf方法接受一个元素的
 	};
 
 我们已经有一个移除给定位置的一个元素的removeAt方法。现在有了indexOf方法，如果传入元素的值，就能找到他的位置，然后调用removeAt方法并传入找到的位置。
+
+**isEmpty、size、getHead方法**
+
+
+	this.isEmpty = function() {
+
+		return length === 0;
+	};
+
+	this.size = function() {
+
+		return length;
+	};
+
+	this.getHead = function() {
+
+		return head;
+	};
