@@ -646,3 +646,19 @@ current变量是对列表中第一个元素的引用。要做的是把node.next�
 **实现其他方法**
 
 toString
+
+它会把LinkedList对象转换成一个字符串，下面就是toString方法的实现：
+
+	this.toString = function() {
+		
+		var current = head,
+			string = '';
+		
+
+		while ( current ) {
+			string = current.element;
+			current = current.next;
+		}
+		
+		return string;
+	}
