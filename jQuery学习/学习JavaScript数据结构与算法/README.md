@@ -756,6 +756,8 @@ head变量是LinkedList类的私有变量（这意味着她不能在LinkedList�
 
 如图：
 
+![](images/double8.png)
+
 先从实现DoublyLinkedList类开始所需的变动开始：
 
 	function DoublyLinkedList() {
@@ -841,13 +843,19 @@ head变量是LinkedList类的私有变量（这意味着她不能在LinkedList�
 
 如图：
 
+![](images/double7.png)
+
 假如我们要在列表的最后一项添加一个新元素。这是一个特殊情况，因为我们还控制着指向最后最后一个元素的指针（tail）。current变量将引用最后一个元素。然后开始建立第一个链接：node.prev将引用current。current.next指针将指向node（由于构造函数，node.next已经指向了null），最后一件事就是更新tail，它将由指向current变为指向node。
 
 如图：
 
+![](images/double6.png)
+
 第三种情况是：在列表中间插入一个元素。就像之前的方法中，迭代列表，直到到达要找的位置。我们将在current和previous元素之间插入新元素。首先，node.next将指向current，而previous.next将指向node，这样就不会丢失节点之间的链接。然后要处理所有的链接：current.prev将指向node，而node.prev将指向previous。
 
 如图：
+
+![](images/double5.png)
 
 我们可以改进insert和remove两个方法。如果position大于length / 2，最好从尾部开始迭代，性能改进
 
