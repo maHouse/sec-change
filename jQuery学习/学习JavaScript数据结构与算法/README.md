@@ -750,4 +750,91 @@ indexOf是我们下一个要实现的方法。indexOf方法接受一个元素的
 
 head变量是LinkedList类的私有变量（这意味着她不能在LinkedList实例外部被访问和更改，只有通过LinkedList实例才可以）。但如果我们需要在类的实现外部循环访问列表，就要提供一种获取类的第一个元素的方法。
 
-#### 双向列表 ####
+#### 双向链表 ####
+
+链表有多种不同的类型，就包括双向链表。双向链表和普通链表的区别是，链表中，一个节点只有链向下一个元素，双向链表，链表是双向的：一个链向下一个元素，另一个链向前一个元素
+
+如图：
+
+先从实现DoublyLinkedList类开始所需的变动开始：
+
+	function DoublyLinkedList() {
+		
+		var Node = function( element ) {
+
+			this.element = element;
+			this.next = null;
+			this.prev = null;
+		};
+
+		var length = 0;
+		var head = null;
+		var tail = null;
+
+		//方法
+	}
+
+这里LinkedList类和DoublyLinkedList类之间的区别是，Node类有prev属性，一个新的指针，并且也有用来保存对列表最后一项的引用的tail属性。
+
+双向链表提供了两种迭代列表的方法：从头到尾，或者反过来。我们也可以访问一个特定节点的下一个或前一个元素。在单项链表中，如果迭代列表时错过了要找的元素，就要从头开始再找，双向链表就不用了。
+
+**在任意位置插入一个新元素**
+
+与单项链表相似，区别是，链表只要控制一个next指针，双向链表要控制next和prev两个指针。
+
+算法如下：
+
+	this.insert = function( position, element ) {
+		
+		if ( position >= 0 && position <= length ) {
+
+			var node = new Node( element ),
+
+				current = head,
+				previous,
+				index = 0;
+
+			if ( position === 0 ) {
+
+				if ( !head ) {
+
+					head = node;
+					tail = node;
+				} else {
+
+					node.next = current;
+					current.prev = node;
+			
+					head = node;
+				}
+			} else if ( position === length ) {
+
+				current = tail;
+				current.next = node;
+				node.prev = current;
+				tail = node;
+			} else {
+				
+				while ( index++ < position ) {
+
+					previous = current;
+
+					current = current.next;
+				}
+		
+				node.next = current;
+				previous.next = node;
+
+				current.prev = node;
+				node.prev = previous;
+			}
+
+			length++;
+			return true;
+		} else {
+
+			return false;
+		}
+	};
+
+
