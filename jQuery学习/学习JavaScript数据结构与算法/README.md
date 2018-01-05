@@ -851,3 +851,68 @@ head变量是LinkedList类的私有变量（这意味着她不能在LinkedList�
 
 我们可以改进insert和remove两个方法。如果position大于length / 2，最好从尾部开始迭代，性能改进
 
+**从任意位置移除元素**
+
+从双向链表中移除元素跟链表相似。唯一的区别是还要设置前一个位置的指针
+
+	this.removeAt = function( position ) {
+
+		if ( position > -1 && position < length ) {
+
+			var current = head,
+			
+				previous,
+
+				index = 0;
+
+			if ( position === 0 ) {
+
+				head = current.next;
+
+				if ( length === 1 ) {
+
+
+					tail = null;
+
+				} else {
+
+					head.prev = null;
+		
+				}
+			} else if ( position === length-1 ) {
+
+				current = tail;
+
+				tail = current.prev;
+
+				tail.next = null;
+
+			} else {
+
+				while ( index++ < position ) {
+
+					previous = current;
+
+					current = current.next;
+				}
+
+				previous.next = current.next;
+	
+				current.next.prev = previous;
+
+			}
+
+			length--;
+
+			return current.element;
+
+		} else {
+
+			return null;
+		}
+
+	};
+
+
+我们要处理三种情况：从头部、中间和尾部移除元素。
+
