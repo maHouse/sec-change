@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>LinkedList</title>
+</head>
+<body>
+	
+</body>
+</html>
+
+<script>
+	
+	// 链表的骨架
+	
+	function LinkedList() {
+
+		var Node = function( element ) {
+
+			this.element = element;
+			this.next = null;
+		};
+
+		var	length = 0,
+			head = null;
+
+		this.append = function( element ) {
+
+			var node = new Node( element ),
+				current;
+
+			if ( head === null ) {
+
+				head = node;
+			} else {
+
+				current = head;
+
+				while( current.next ) {
+
+					current = current.next;
+				}
+
+				current.next = node;
+			}
+
+			length++;
+		};
+
+		this.insert = function( position, element ) {};
+
+		this.removeAt = function( element ) {};//列表的特定位置移除
+
+		this.remove = function( element ) {};
+
+		this.indexOf = function( element ) {};
+
+		this.isEmpty = function() {};
+
+		this.size = function() {};
+
+		this.toString = function() {};
+
+		this.print = function() {};
+
+	}
+
+
+</script>
