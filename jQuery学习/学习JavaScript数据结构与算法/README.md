@@ -1159,5 +1159,27 @@ values方法用了相同的逻辑，提取items对象的所有属性，以数组
 
 **并集**
 
+至于数学表达的形式和方式不在赘述，直接看代码，来实现Set类的union方法
 
+	this.union = function(otherSet) {
+
+		var unionSet = new Set();
+
+		var values = this.values();
+
+		for ( var i = 0; i < values.length; i++ ) {
+
+			unionSet.add(values[i]);
+
+		}
+
+		values = otherSet.values();
+
+		for ( var i = 0; i < values.length; i++ ) {
+
+			unionSet.add(values[i]);
+		}
+
+		return unionSet;
+	};
 
