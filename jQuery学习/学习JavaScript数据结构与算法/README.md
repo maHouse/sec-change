@@ -1017,4 +1017,44 @@ head变量是LinkedList类的私有变量（这意味着她不能在LinkedList�
 
 **remove和clear方法**
 
+	this.remove = function(value) {
+
+		if ( this.has(value) ) {
+
+			delete items[value];
+		
+			return true;
+		}
+		
+		return false;
+	};
+
+在remove方法中，我们会验证给定的value是否存在于集合中，存在就从集合中移除value，并返回true，表示值被移除；否则返回false
+
+
+既然用对象来存储集合中的items对象，就可以简单地使用delete操作符从items对象移除属性
+
+使用Set类的示例
+
+	var set = new Set();
+
+	set.add(1);
+
+	set.add(2);
+
+执行之后打印出来会是Object { 1: 1, 2: 2 },
+可以看到，这是一个有两个属性的对象。属性名就是添加到集合的值，同时也是属性值
+
+要移除集合中所有值，可以用clear方法
+
+	this.clear = function() {
+
+		items = {};
+	}
+
+要重置items对象，需要做的是把一个空对象重新赋值给它。也可以迭代集合，用remove方法依次移除所有值
+
+**size方法**
+
+
 
