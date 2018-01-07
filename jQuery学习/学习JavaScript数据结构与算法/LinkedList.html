@@ -15,9 +15,13 @@
 	
 	function LinkedList() {
 
+		// 添加到列表的项
 		var Node = function( element ) {
 
+			// 项中的节点的值
 			this.element = element;
+
+			// 项的另一部分，指向下一个节点的指针
 			this.next = null;
 		};
 
@@ -84,12 +88,13 @@
 		//列表的特定位置移除
 		this.removeAt = function( position ) {
 
+			//这是初始值
 			if ( position > -1 && position < length ) {
 
 				var current = head,
 					previous,
 					index = 0;
-
+					
 				if ( position === 0 ) {
 
 					head = current.next;
