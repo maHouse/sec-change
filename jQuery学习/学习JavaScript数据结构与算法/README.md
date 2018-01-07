@@ -963,3 +963,58 @@ head变量是LinkedList类的私有变量（这意味着她不能在LinkedList�
 
 		var items = {};
 	}
+
+
+我们用对象而不是数组来实现集合，下面看看声明一些集合可用的方法
+
+
+	add(value):向集合中添加一个新的项
+
+	remove(value):从集合中移除一个值
+
+	has(value):如果集合中有这个值，返回true，否则返回false
+
+	clear():移除集合中的所有项
+
+	size():返回集合中包含元素的数量，与数组的length类似
+
+	values():返回一个包含集合中所有值的数组
+
+**has(value)方法**
+
+因为这个方法会被add、remove方法调用就先实现这个方法
+
+	this.has = function(value) {
+		
+		return value in items;
+	}
+
+我们用对象来存储集合的值，可以用JS的in操作符来验证给定的值是否是items对象的属性
+
+更好的实现方法如下：
+
+	this.has = function(value) {
+		
+		return items.hasOwnProperty(value);
+	}
+
+所有JS对象都有hasOwnProperty方法，这个方法返回一个表明对象是否具有特定属性的布尔值
+
+**add方法**
+
+	this.add = function(value) {
+		
+		if (!this.has(value)) {
+
+			items[value] = value;
+			return true;
+		}
+
+		return false;
+	}
+
+对于给定的value，可以检查它是否存在集合中。如果不存在，就把value添加到集合中，返回true，表示添加了这个值。如果已经有了这个值，返回false，表示没有添加它
+
+**remove和clear方法**
+
+
