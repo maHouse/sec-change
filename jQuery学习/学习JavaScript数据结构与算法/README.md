@@ -1117,5 +1117,47 @@ values方法用了相同的逻辑，提取items对象的所有属性，以数组
 
 **使用Set类**
 
+现在数据结构已经完成，开始使用
+
+	var set = new Set();
+
+	set.add(1);
+
+	console.log(set.values());
+
+	console.log(set.has(1));
+
+	console.log(set.size());
+
+	set.add(2);
+
+	console.log(set.values());
+
+	console.log(set.has(2));
+
+	console.log(set.size());
+
+	set.remove(1);
+
+	console.log(set.values());
+
+	set.remove(2);
+
+	console.log(set.values());
+
+现在我们有了一个和ES6很相似的Set类，也可以用数组代替对象，存储元素
+
+#### 集合操作 ####
+
+并集：给定的两个集合，返回一个包含两个集合所有元素的新集合
+
+交集：给定的两个集合，返回一个包含两个集合共有元素的新集合
+
+差集：对于给定的两个集合，返回一个包含所有存在于第一个集合而不存在于第二个集合的元素的新集合
+
+子集：验证一个给定集合是否是另一个集合的子集
+
+**并集**
+
 
 
