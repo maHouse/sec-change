@@ -1056,5 +1056,41 @@ head变量是LinkedList类的私有变量（这意味着她不能在LinkedList�
 
 **size方法**
 
+三种实现方法
+
+第一种用length变量，每当使用add或remove时控制它，就像上一章使用LinkedList类一样
+
+第二种，使用JS内建的Object类的一个内建函数
+
+	this.size = function() {
+
+		return Object.keys(items).length;
+	};
+
+JS的Object类有一个keys方法，它返回一个包含给定对象所有属性的数组。在这种情况下，可以使用这个数组的length属性来返回items对象的属性个数。
+
+第三种手动提取items对象的每个属性，记录属性的个数并返回这个数字。这个方法可以在任何浏览器运行，并与之前的代码等价
+
+	this.sizeLegacy = function() {
+
+		var count = 0;
+		
+		for ( var prop in items ) {
+
+			if ( items.hasOwnProperty(prop) ) {
+
+				++count;
+			}
+		};
+		
+		return count;
+	};
+
+遍历items对象的所有属性，检查它们是否是对象自身的属性。如果是，就递增count变量的值，最后在结束的时候返回这个数字
+
+不能简单的使用for-in语句遍历items对象的属性，递增count变量的值，还要用has方法验证items对象是否具有该属性，因为对象的原型包含了额外的属性（属性既有继承自JS的Object类的，也有属于对象自身，未用于数据结构的）。
+
+**values方法**
+
 
 
