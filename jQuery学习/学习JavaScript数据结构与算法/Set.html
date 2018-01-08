@@ -27,6 +27,56 @@
 
 			return items.hasOwnProperty(value);
 		}
+
+		this.add = function( value ) {
+
+			if ( !this.has( value ) ) {
+
+				items[ value ] = value;
+				return true;
+			}
+
+			return false;
+		};
+
+		this.remove = function( value ) {
+
+			if ( this.has( value ) ) {
+
+				delete items[ value ];
+				return true;
+			}
+
+			return false;
+		};
+
+		this.clear = function() {
+
+			items = {};
+		}		
+
+		// method first
+		this.size = function() {
+
+			return Object.keys( items ).length;
+		}
+
+		// method third
+		
+		this.size = function() {
+
+			var count = 0;
+
+			for ( var prop in items ) {
+
+				if ( items.hasOwnProperty( prop ) ) {
+
+					++count;
+				}
+
+				return count;
+			};
+		}
 	}
 
 </script>
