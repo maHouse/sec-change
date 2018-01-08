@@ -1253,4 +1253,53 @@ intersection方法需要找到当前Set实例中，所有也存在于给定Set�
 
 	console.log(intersectionAB.values());
 
+输出["2", "3"]
+
+**差集**
+
+两个集合AB，差集表示A-B，A中没有和B相同的元素
+
+	this.difference = function(otherSet) {
+		
+		var differenceSet = new Set();
+
+		var values = this.values();
+
+		for ( var i = 0; i < values.length; i++ ) {
+
+			if ( !otherSet.has( values[i] ) ) {
+
+				differenceSet.add( values[i] );
+			} 
+		}
+
+		return differenceSet;
+	};
+
+intersection方法会得到所有同时存在于两个集合的值。而difference方法会得到所有存在于集合A但不存在于B的值。因此这两个方法在实现上唯一的区别是行。只获取不存在于otherSet实例中的值，而不是也存在于其中的值
+
+测试
+
+	var setA = new Set();
+
+	setA.add(1);
+
+	setA.add(2);
+
+	setA.add(3);
+
+	var setB = new Set();
+
+	setB.add(2);
+
+	setB.add(3);
+
+	setB.add(4);
+
+	var differenceAB = setA.difference(setB);
+
+	console.log( differenceAB.values() );
+
+**子集**
+
 
