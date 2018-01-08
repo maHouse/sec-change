@@ -1302,4 +1302,61 @@ intersection方法会得到所有同时存在于两个集合的值。而differen
 
 **子集**
 
+集合A是B的子集
+
+	this.subset = function( otherSet ) {
+
+		if ( this.size() > otherSet.size() ) {
+
+			return false;
+		} else {
+
+			var values = this.values();
+			
+			for ( var i = 0; i < values.length; i++ ) {
+
+				if ( !otherSet.has( values[i] ) ) {
+
+					return false;
+				}
+			}
+			
+			return true;
+			}
+	};
+
+首先要验证当前Set实例的大小，如果当前实例中的元素比otherSet实例更多，它就不是一个子集。子集的元素个数需要小于或等于要比较的集合
+
+接下来要遍历集合中的所有元素，验证这些元素也存在于otherSet中，如果任何元素不存在于otherSet中，就意味着它不是一个子集，返回false。如果所有元素都存在于otherSet中，行就不会被执行，那么就返回true
+
+测试
+
+	var setA = new Set();
+
+	setA.add(1);
+
+	setA.add(2);
+
+	var SetB = new Set();
+
+	setB.add(1);
+
+	setB.add(2);
+
+	setB.add(3);
+
+	var setC = new Set();
+
+	setC.add(2);
+
+	setC.add(3);
+
+	setC.add(4);
+
+	console.log( setA.subset(setB) );
+
+	console.log( setA.subset(setC) );
+
+我们有3个集合：setA是setB的子集，因此输出true，然而setA不是setC的子集，因此输出false
+
 
