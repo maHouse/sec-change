@@ -1183,3 +1183,74 @@ values方法用了相同的逻辑，提取items对象的所有属性，以数组
 		return unionSet;
 	};
 
+
+测试代码
+
+	var setA = new Set();
+
+	setA,add(1);
+
+	setA.add(2);
+
+	setA.add(3);
+
+	var setB = new Set();
+
+	setB.add(3);
+
+	setB.add(4);
+
+	setB.add(5);
+
+	setB.add(6);
+
+	var unionAB = setA.union(setB);
+
+	console.log(unionAB.values());
+
+输出为["1", "2", "3", "4", "5", "6"]。元素3在A和B中都存在，它在集合中只出现一次。
+
+**交集**
+
+	this.intersection = function(otherSet) {
+		
+		var intersectionSet = new Set();
+
+		var values = this.values();
+
+		for ( var i = 0; i < values.length; i++ ) {
+
+			if ( otherSet.has( values[i] ) ) {
+
+				intersectionSet.add( values[i] );
+			}
+		}
+
+		return intersectionSet;
+	}
+
+intersection方法需要找到当前Set实例中，所有也存在于给定Set实例中的元素。首先创建一个新的Set实例，这样就能用它返回共有的元素。接下来，遍历当前Set实例所有的值，验证它们是否也存在于otherSet实例。可以用这一章前面实现的has方法来验证元素是否存在于Set实例中。然后，如果这个值也存在于另一个Set实例中，就将其添加到创建的intersectionSet变量中，最后返回它
+
+测试
+
+	var setA = new Set();
+
+	setA.add(1);
+
+	setA.add(2);
+
+	setA.add(3);
+
+	var setB = new Set();
+
+	setB.add(2);
+
+	setB.add(3);
+
+	setB.add(4);
+
+	var intersectionAB = setA.intersection(setB);
+
+	console.log(intersectionAB.values());
+
+
