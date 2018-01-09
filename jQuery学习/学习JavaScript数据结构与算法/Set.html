@@ -24,7 +24,6 @@
 		
 		// like on
 		
-
 		this.has = function(value ) {
 
 			return items.hasOwnProperty(value);
@@ -97,25 +96,66 @@
 
 			return keys;
 		};
+
+		this.union = union;
 	}
 
 	//使用Set类
 	
-	var set = new Set();
+	// var set = new Set();
 
-	set.add(1);
-	console.log( set.values() );
-	console.log( set.has(1) );
-	console.log( set.size() );
+	// set.add(1);
+	// console.log( set.values() );
+	// console.log( set.has(1) );
+	// console.log( set.size() );
 
-	set.add(2);
-	console.log( set.values() );
-	console.log( set.has(2) );
-	console.log( set.size() );
+	// set.add(2);
+	// console.log( set.values() );
+	// console.log( set.has(2) );
+	// console.log( set.size() );
 
-	set.remove(1);
-	console.log( set.values() );
+	// set.remove(1);
+	// console.log( set.values() );
 
-	set.remove(2);
-	console.log( set.values() );
+	// set.remove(2);
+	// console.log( set.values() );
+
+	// Set类的操作
+	
+	// 并集
+	this.union = function( otherSet ) {
+
+		var unionSet = new Set();
+
+		var values = this.values();
+		for ( var i = 0; i < values.length; i++ ) {
+
+			unionSet.add( values[i] );
+		}
+
+		values = otherSet.values();
+
+		for ( var i = 0; i < values.length; i++ ) {
+
+			unionSet.add( values[i] );
+		}
+
+		return unionSet;
+	};
+
+	var setA = new Set();
+	setA.add(1);
+	setA.add(2);
+	setA.add(3);
+
+	var setB = new Set();
+	setB.add(3);
+	setB.add(4);
+	setB.add(5);
+	setB.add(6);
+
+	var unionAB = setA.union( setB );
+	console.log( unionAB.values() );
+	// 交集
+
 </script>
