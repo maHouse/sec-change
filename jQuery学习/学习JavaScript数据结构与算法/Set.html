@@ -11,6 +11,8 @@
 
 <script>
 	
+
+	// Set()的实现
 	function Set() {
 
 		var items = {};
@@ -63,7 +65,7 @@
 
 		// method third
 		
-		this.size = function() {
+		this.sizeLegacy = function() {
 
 			var count = 0;
 
@@ -77,6 +79,43 @@
 				return count;
 			};
 		}
+
+		//one way
+		this.values = function() {
+
+			return Object.keys( items );
+		};
+
+		// another way
+		this.valuesLegacy = function() {
+
+			var keys = [];
+			for ( var key in items ) {
+
+				keys.push( key );
+			}
+
+			return keys;
+		};
 	}
 
+	//使用Set类
+	
+	var set = new Set();
+
+	set.add(1);
+	console.log( set.values() );
+	console.log( set.has(1) );
+	console.log( set.size() );
+
+	set.add(2);
+	console.log( set.values() );
+	console.log( set.has(2) );
+	console.log( set.size() );
+
+	set.remove(1);
+	console.log( set.values() );
+
+	set.remove(2);
+	console.log( set.values() );
 </script>
