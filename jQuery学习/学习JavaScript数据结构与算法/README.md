@@ -1360,3 +1360,4 @@ intersection方法会得到所有同时存在于两个集合的值。而differen
 我们有3个集合：setA是setB的子集，因此输出true，然而setA不是setC的子集，因此输出false
 
 
+### 字典和散列 ###
