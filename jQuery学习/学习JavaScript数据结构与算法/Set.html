@@ -98,6 +98,7 @@
 		};
 
 		this.union = union;
+		this.intersection = intersection;
 	}
 
 	//使用Set类
@@ -143,6 +144,28 @@
 		return unionSet;
 	};
 
+
+
+	// 交集
+
+	this.intersection = function( otherSet ) {
+
+		var intersectionSet = new Set();
+
+		var values = this.values();
+
+		for ( var i = 0; i < values.length; i++ ) {
+
+			if ( otherSet.has( values[i] ) ) {
+
+				intersectionSet.add( values[i] );
+			}
+		}
+
+		return intersectionSet;
+	}
+
+	// 并集
 	var setA = new Set();
 	setA.add(1);
 	setA.add(2);
@@ -156,6 +179,18 @@
 
 	var unionAB = setA.union( setB );
 	console.log( unionAB.values() );
-	// 交集
 
+	// 交集
+	var setA = new Set();
+	setA.add(1);
+	setA.add(2);
+	setA.add(3);
+
+	var setB = new Set();
+	setB.add(2);
+	setB.add(3);
+	setB.add(4);
+
+	var intersectionAB = setA.intersection( setB );
+	console.log( intersectionAB.values() );
 </script>
