@@ -1527,6 +1527,60 @@ clear、size和keys这些方法和Set类是完全一样的，最后我们验证i
 
 **散列表**
 
+首先会看到HashTable类，也叫做HashMap类，是Dictionary类的一种散列表表现方式
+
+散列算法的作用是尽可能快的在数据结构中找到一个值，之前的章节中你已经知道如果要在数据结构中获得一个值（使用get方法），需要遍历整个数据结构来找到它。如果使用散列函数，就知道值的具体位置，因此能够快速检索到该值。散列函数的作用是给定一个键值，然后返回该值在表中的地址。
+
+举个例子，我们使用在前一节中使用的电子邮件地址簿。我们将要使用最常见的散列函数---“lose lose”散列函数，方法是简单地将每个键值中的每个字母的ASCII值相加。
+
+![](images/hashtable.png)
+
+**创建一个散列表**
+
+我们将使用数组来表示我们的数据结构，该数据结构和上个话题中的图表所用的非常相似
+
+骨架
+
+	function HashTable() {
+
+		var table = [];
+	}
+
+然后添加方法，我们给每个类实现三个基础方法
+
+	put(key, value):项散列表添加一个新的项（也能更新散列表）
+
+	remove(key):根据键值从散列表中移除值
+
+	get(key):返回根据键值检索到的特定的值
+
+实现这些方法之前我们首先要实现第一个方法是散列函数，它是HashTable类中的一个私有方法
+
+	var loseloseHashCode = function(key) {
+
+		var hash = 0;
+
+		for ( var i = 0; i < key.length; i++ ) {
+
+			hash += key.charCodeAt(i);
+		}
+
+		return hash % 37;
+	};
+
+给定一个key参数，我们就能根据组成key的每个字符的ASCII码值得和得到一个数字。所以，首先需要一个变量来存储这个总和。然后，遍历keybingjiangcongASCII表中查到的每个字符对应的ASCII值加到hash变量中（可以使用JS的String类中的charCodeAt方法）。最后，返回hash值。为了得到比较小的数值，我们会使用hash值得一个任意数做除法的余数（mod）。
+
+有了散列函数，我们就实现put方法
+
+	this.put = function(key, value) {
+
+		var position = loseloseHashCode(key);
+
+		console.log(position + '-' + key);
+
+		table[position] = value;
+	};
+
 
 
 
