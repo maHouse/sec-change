@@ -1361,3 +1361,113 @@ intersection方法会得到所有同时存在于两个集合的值。而differen
 
 
 ### 字典和散列 ###
+
+字典和散列表是用来存储唯一值（不重复的值）的数据结构。集合、字典和散列表可以存储不重复的值。集合中的重点是每个值本身，并作为主要元素。字典中我们用[键, 值]的形式来存储数据。散列表中也是一样。不同的地方我们后续说。
+
+**字典**
+
+字典中，存储的是[键, 值]对，其中键名是用来查询特定元素的。字典和集合很相似，集合以[值, 值]得形式来存储元素，字典则是以[键, 值]的形式来存储元素。字典有时也称作映射。
+
+**创作一个字典**
+
+与Set类类似，ES6同样包含了一个Map类的实现，即我们说的字典
+
+Dictionary类的骨架：
+
+	function Dictionary() {
+
+		var items = {};
+	}
+
+与Set类类似，我们将在一个Object的实例而不是数组中存储元素，声明的方法有
+
+	set(key, value):向字典中添加新元素
+
+	remove(key):通过使用键值来从字典中移除键值对应的数据值
+
+	has(key):如果某个键值存在于这个字典中，则返回true，反之返回false
+
+	get(key):通过键值查找特定的数值并返回
+
+	clear():将这个字典中的所有元素全部删除
+
+	size():返回字典中所有元素的数据量，类似于数组的length属性
+
+	keys():将字典中所包含的所有键名以数组形式返回
+
+	values():将字典中所包含的所有数值以数组形式返回
+
+**1.has和set方法**
+
+	this.has = function(key) {
+
+		return key in items;
+
+	};
+
+与实现Set类一样，我们使用JS的in操作符来验证一个key是否是items对象的一个属性，set方法的实现
+
+	this.set = function(key, value) {
+
+		items[key] = value;
+	};
+
+该方法接受一个key和一个value作为参数。我们将value设为items对象的key属性的值，它可以用来给字典添加一个新的值，或用来更新一个已有的值
+
+**2.remove方法**
+
+与Set类不同的是我们将先搜索key不是value
+
+	this.remove = function(key) {
+
+		if ( this.has(key) ) {
+
+			delete items[key];
+			return true;
+		}
+		return false;
+	};
+
+然后我们可以用JS的remove操作符从items对象中移除key属性
+
+
+**get和values方法**
+
+如果我们想在字典中查找一个特定的项，并检索它的值，方法如下
+
+	this.get = function(key) {
+
+		return this.has(key) ? items[key] : undfined;
+	};
+get方法首先会验证我们想要检索的值是否存在（通过检查key值），如果存在将返回该值，反之将返回一个undefined值。
+
+values方法。以数组的形式返回字典中所有values实例的值
+
+	this.values  = function() {
+
+		var values = {};
+
+		for ( var k in items ) {
+
+			if ( this.has(k) ) {
+
+				values.push(items[k]);
+			}
+		}
+		
+		return values;
+	};
+
+首先，我们遍历items对象的所有属性值，为确定值存在，我们使用has函数来验证key确实存在，然后将它的值加入values数组。最后，我们就能返回所有找到的值。
+
+**clear、size、keys和getItems方法**
+
+clear、size和keys这些方法和Set类是完全一样的，最后我们验证items属性输出的值。我们可以实现一个返回items变量的方法，叫做getItems
+
+	this.getItems = function() {
+
+		return items;
+	}
+
+
+
