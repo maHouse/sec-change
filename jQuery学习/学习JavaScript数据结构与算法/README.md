@@ -1581,6 +1581,28 @@ clear、size和keys这些方法和Set类是完全一样的，最后我们验证i
 		table[position] = value;
 	};
 
+首先，根据给定的key，我们需要根据所创建的散列函数计算出它在表中的位置。为了便于展示信息，我们将计算出的位置输出至控制台。由于它不是必须的，我们也可以将这行代码移除。然后要做的，是将value参数添加到用散列函数计算的对应的位置上。
 
+从HashTable实例中查找一个值也很简单，为此我们实现一个get方法
+
+	this.get = function( key ) {
+
+		return table[loseloseHashCode(key)];
+	};
+
+首先，我们会使用所创建的散列函数来求出给定key所对应的位置。这个函数会返回值得位置，因此我们所要做的就是根据这个位置从数组table中获得这个值
+
+我们要实现的最后一个方法是remove方法
+
+	this.remove = function(key) {
+
+		table[loseloseHashCode(key)] = undefined;
+	};
+
+要从HashTable实例中移除一个元素，只需要求出元素的位置（可以用散列函数来获取）并赋值为unfined
+
+对于HashTable类来说，我们不需要像ArrayList类一样从table数组中将位置也移除。由于元素分布于整个数组范围内，一些位置会没有任何元素占据，并默认为unfined值。我们也不能将位置本身从数组中移除（这回改变其他元素的位置），否则，当下次需要获得或移除一个元素的时候，这个元素会不在我们用散列函数求出的位置上。
+
+**使用HashTable类**
 
 
