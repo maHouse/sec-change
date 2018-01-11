@@ -1605,4 +1605,50 @@ clear、size和keys这些方法和Set类是完全一样的，最后我们验证i
 
 **使用HashTable类**
 
+测试HashTable类
+
+	var hash = new HashTable();
+
+	hash.put('Gandalf', 'gandalf@email.com');
+
+	hash.put('John', 'john@email.com');
+
+	hash.put('Tyrion', 'tyrion@email.com');
+
+执行结果
+
+	19 - Gandalf
+
+	29 - John
+
+	16 - Tyrion
+
+下图的图表展现了包含这三个元素的HashTable数据结构
+
+![](images/hashtable2.png)
+
+测试get方法
+
+	console.log(hash.get('Gandalf'));
+
+	console.log(has.get('Loiane'));
+
+输出结果
+
+	gandalf@email.com
+
+	undefined
+由于Gandalf是一个在散列表中存在的键，get方法将会返回它的值。由于Loiane是一个不存在的键，当我们试图在数组中根据位置来获取值得时候（一个有散列表生成的位置），返回值将会是unfined（即不存在）。
+
+然后，我们试图从散列表中移除Gandalf
+
+	hash.remove('Gandalf');
+
+	console.log(hash.get('Gandalf'));
+
+由于Gandalf不再存在于表中，hash.get('Gandalf')方法将会在控制台上给出undefined的输出结果
+
+**散列表和散列集合**
+
+	
 
