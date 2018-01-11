@@ -1469,5 +1469,64 @@ clear、size和keys这些方法和Set类是完全一样的，最后我们验证i
 		return items;
 	}
 
+**使用Dictionary类**
+
+首先我们创建一个Dictionary类的实例，然后给它添加三条电子邮件地址。我们将会使用这个dictionary实例来实现一个电子邮件地址簿
+
+	var dictionary = new Dictionary();
+
+	dictionary.set('Gandary', 'gandary@email.com');
+
+	dictionary.set('John', 'john@email.com');
+
+	dictionary.set('Tyrion', 'tyrion@email.com');
+
+执行下面的结果返回true
+
+	console.log(dictionary.has('Gandary'));
+
+下面的代码将输出3，因为我们添加了3个元素
+
+	console.log(dictionary.size());
+
+执行如下代码
+
+	console.log(dictionary.keys());
+
+	console.log(dictionary.values()):
+
+	conaole.log(dictionary.get('Tyrion'));
+
+输出的结果
+
+	["Gandary", "John", "Tyrion"]
+	
+	["gandary@email.com", "john@email.com", "tyrion@email.com"]
+
+	tyrion@email.com
+
+最后执行
+
+	dictionary.remove('John');
+
+	console.log(dictionary.keys());
+
+	console.log(dictionary.values());
+
+	console.log(dictionary.getItems());
+
+输出结果
+
+	["Gandary", "Tyrion"]
+	
+	["gandary@email.com", "tyrion@email.com"]
+
+	Object {Gandary:"gandary@email.com", Tyrion: "tyrion@email.com"}
+
+移除了一个元素，现在的dictionary实例只包含了两个元素。最下面的表现了items对象的内部结构
+
+**散列表**
+
+
 
 
