@@ -1650,5 +1650,80 @@ clear、size和keys这些方法和Set类是完全一样的，最后我们验证i
 
 **散列表和散列集合**
 
+散列表和散列映射是一样的，在一些编程语言中，还有一种叫做散列集合的实现。散列集合是由一个集合构成，但是插入、移除或获取元素时，使用的散列函数。我们可以使用本章节中实现的所有代码来实现散列集合，不同之处是，不再添加键值对，而是只插入值而没有键。例如，可以使用散列集合来存储所有的英语单词（不包括它们的定义）。和集合相似，散列集合只存储唯一的不重复的值。
+
+**处理散列表中的冲突**
+
+有时候，一些键会有相同的散列值。不同的值在散列表中对应相同的位置的时候，我们称之为冲突，例如下面代码的结果
+
+	var hash = new HashTable();
+
+	hash.put('Gandalf', 'gandalf@email.com');
+
+	hash.put('John', 'johnsnow@email.com');
+
+	hash.put('Tyrion', 'tyrion@email.com');
+
+	hash.put('Aaron', 'aaron@email.com');
+
+	hash.put('Dnnie', 'donnie@email.com');
+
+	hash.put('Ana', 'ana@email.com');
+
+	hash.put('Jonathan', 'jonathan@email.com');
+
+	hash.put('Jamie', 'jamie@email.com');
+
+	hash.put('Sue', 'sue@email.com');
+
+	hash.put('Mindy', 'mindy@email.com');
+
+	hash.put('Paul', 'paul@email.com');
+
+	hash.put('Nathan', 'nathan@email.com');	
+
+输出结果
+
+	19 - Gandalf
+
+	29 - John
+
+	16 - Tyrion
+
+	16 - Aaron
+
+	13 - Dnnie
+
+	13 - Ana
+
+	5 - Jonathan
+
+	5 - Jamie
+
+	5 - Sue
+
+	32 - Mindy
+
+	32 - Paul
+
+	10 - Nathan	
+注意，Tyrion和Aaron有相同的散列值。还有几个也是
+
+那HashTable实例会怎样呢？执行之前的代码后散列表会有哪些值呢？
+
+我们用个print方法，在控制台上输出HashTable中的值
+
+	this.print = function() {
 	
+		for ( var i = 0; i < table.length; ++i ) {
+
+			if ( table[i] !== undefined ) {
+
+				console.log(i + ":" + table[i]);
+			}
+		}
+
+	};
+
+
 
