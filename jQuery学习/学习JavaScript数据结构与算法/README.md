@@ -1725,5 +1725,30 @@ clear、size和keys这些方法和Set类是完全一样的，最后我们验证i
 
 	};
 
+首先，遍历数组中的所有元素，当某个位置上有值得时候，会在控制台输出位置和对应的值
+
+	hash.print();
+	
+	5:sue@email.com
+	
+	10:nathan@email.com
+
+	13:ana@email.com
+
+	16:aaron@email.com
+
+	19:gandalf@email.com
+
+	29:johnsnow@email.com
+
+	32:paul@email.com
+
+Johnathan、Jamie和Sue有相同的散列值，也就是5，由于Sue是最后一个被添加的，Sue将是在HashTable实例中占据位置5的元素，。首先，Johnathan会占据这个位置，然后Jamie会覆盖它，然后Sue会再次覆盖。其他冲突的元素也是一样的原因
+
+使用一个数据结构来保存数据的目的显然不是去丢失数据，而是通过某种方法将它们全部保存起来，因此，这种情况发生时，我们也有解决方案：分离链接、线性探查和双散列，我们说前两种。
+
+**1.分离链接**
 
 
+
+**2.线性探查**
