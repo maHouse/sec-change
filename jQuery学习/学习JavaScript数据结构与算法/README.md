@@ -1749,6 +1749,134 @@ Johnathan、Jamie和Sue有相同的散列值，也就是5，由于Sue是最后�
 
 **1.分离链接**
 
+分离链接方法包括为散列表的每一个位置创建一个链表并将元素存储在里面。它是解决冲突的最简单的方法，但在HashTable实例之外还需要额外的存储空间。
+
+例如，我们在之前的测试代码中使用分离链接的话，输出的结果如下图
+
+在位置5上，将会包含3个元素的LinkedList实例；在位置13、16和32上，将会有包含两个元素的LinkedList实例；在位置10、19和29上，将会有包含单个元素的LinkedList实例。
+
+对于实现一个使用了分离链接的HashTable实例，我们需要一个新的辅助类来表示将要加入LinkedList实例的元素。我们管它叫做ValuePair类（在HashTable类内部定义）
+
+	var ValuePair = function(key, value) {
+
+		this.key = key;
+
+		this.value = value;
+
+		this.toString = function() {
+
+			return '[' + this.key + '-' + this.value + ']';
+		}
+	};
+
+这个类只会将key和value存储在一个Object实例中。我们也重写了toString方法，以便之后在浏览器控制台输出结果。
+
+**put方法**
+
+我们实现第一个方法，put方法
+
+	this.put = function(key, value) {
+
+		var position = loseloseHashCode(key);
+		
+		if ( table[position] == undefined ) {
+
+			table[position] = new LinkedList();
+		}
+
+		table[position].append( new ValuePair(key, value) );
+	};
+
+这个方法，将验证要加入的新元素的位置是否已经被占据。如果这个位置是第一次被加入元素，我们将会在这个位置上初始化一个LinkedList类的实例。然后，使用append方法向LinkedList实例添加一个ValuePair实例。
+
+**get方法**
+
+然后，我们实现用来获取特定值得get方法
+
+	this.get = function(key) {
+
+		var position = loseloseHashCode(key);
+
+		if (table[position] !== undefined) {
+
+			var current = table[position].getHead();
+
+			while(current.next) {
+
+				if ( current.element.key === key ) {
+
+					return current.element.value;
+			
+				}
+	
+				current = current.next;
+
+			}
+
+			if ( current.element.key === key ) {
+
+				return current.element.value;
+			}
+		}
+
+		return undefined;
+	};
+
+我们要做的第一个验证，是确定在特定的位置上是否有元素存在，如果没有，则返回一个undefined表示HashTable实例中没有找到这个值。如果在这个位置上有值存在，我们知道这是一个LinkedList实例。现在要做的是遍历这个链表来寻找我们需要的元素。在遍历之前先要获取链表表头的引用，然后就可以从链表的头部遍历到尾部（current.next将会是null）。
+
+Node链表包含next指针和element属性。而element属性又是ValuePair的实例，所以它又有value和key属性。可以通过current.element.next来获取Node链表的key属性，并通过比较它来确定它是否就是我们要找的键。（这就是要使用ValuePair这个辅助来来存储元素的原因，我们不能简单地存储值本身，这样就不能确定哪个值对应着特定的键。）如果key值相同，就返回Node的值；如果不相同，就继续遍历链表，访问下一个节点。
+
+如果要找的元素是链表的第一个或最后一个节点，那么就不会进入while循环的内部。因此，需要在行处理这种特殊的情况。
+
+**remove方法**
+
+使用分离链表方法从HashTable实例中移除一个元素和之前在本章实现的remove方法有一些不同。现在使用的是链表，我们需要从链表中移除一个元素。
+
+	this.remove = function(key) {
+
+		var position = loseloseHashCode(key);
+
+		if ( table[position] !== undefined ) {
+
+			var current = table[position].getHead();
+
+			while(current.next) {
+
+				if ( current.element.key === key ) {
+
+					table[position].remove(current.element);
+		
+					if ( table[position].isEmpty() ) {
+
+						table[position] = undefined;
+					}
+				
+					return true;
+
+				}
+
+				current = current.next;
+			}
+
+
+			if (current.element.key === key) {
+
+
+				table[position].remove(current.element);
+
+				if ( table[position].isEmpty() ) {
+
+					table[position] = undefined;
+
+				}
+	
+				return true;
+
+			}
+		}
+
+		return false;
+	};
 
 
 **2.线性探查**
