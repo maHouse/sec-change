@@ -56,6 +56,25 @@
 			return values;
 		};
 
+		this.clear = function() {
+
+			items = {};
+		};
+
+		this.size = function() {
+
+			var count = 0;
+			for ( var prop in items ) {
+
+				if ( items.hasOwnProperty( prop ) ) {
+
+					++count;
+				}
+
+				return count;
+			};
+		}
+
 		this.getItems = function() {
 
 			return items;
@@ -68,12 +87,13 @@
 	dictionary.set( 'Tyrion', 'tyrion@email.com' );
 
 	console.log( dictionary.has('Gandalf') );
-	console.log( dictionary.keys() );
+	console.log( dictionary.size() );
+	// console.log( dictionary.keys() );
 	console.log( dictionary.values() );
 	console.log( dictionary.get('Tyrion') );
 
 	dictionary.remove('John');
-	console.log( dictionary.keys() );
+	// console.log( dictionary.keys() );
 	console.log( dictionary.values() );
 	console.log( dictionary.getItems() );
 </script>
