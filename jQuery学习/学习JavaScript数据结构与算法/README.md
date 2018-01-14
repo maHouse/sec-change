@@ -1940,5 +1940,101 @@ Node链表包含next指针和element属性。而element属性又是ValuePair的�
 
 **get方法**
 
+	this.get = function(key) {
 
+		var position = loseloseHashCode(key);
+
+		if ( table[position] !== undefined ) {
+
+			if ( table[position].key === key ) {
+
+				return table[position].value;
+			} else {
+
+				var index = ++position;
+
+				while( table[index] === undefined || table[index].key !== key ) {
+
+					index++;
+			
+				}
+
+				if ( table[index].key === key ) {
+
+					return table[index].value;
+
+				}
+			}
+		}
+
+		return undefined;
+
+	};
+
+要获得一个键对应的值，先要确定这个键存在，如果不存在说明要查找的值不在散列表中，因此可以返回undefined。如果这个键存在，需要检查我们要找的值是否就是这个位置上的值。如果是就返回这个值。
+
+如果不是，就在散列表中的下一个位置继续查找，直到找到一个键值与我们要找的键值相同的元素。然后，验证一下当前项就是我们要找的项，并且将他的值返回。
+
+我们无法确定要找的元素实际上在哪个位置上，这就是使用ValuePair来表示HashTable元素的原因
+
+**remove方法**
+
+remove方法和get方法基本相同，不同之处在于行，他们将会由下面的代码代替：
+
+	table[index] = undefined;
+
+要移除一个元素，只需要给其赋值为undefined，来表示这个位置不再被占据并且可以在必要时接受一个新元素。
+
+**创建更好的散列函数**
+
+我们实现的“loselose”散列函数并不是一个表现良好的散列函数，因为会长生太多的冲突，如果我们使用这个函数的话，会产生各种各样的冲突。一个表现良好的散列函数是有几个方面构成：插入和检索元素的时间（性能），当然也包括较低的冲突可能性。下面是个推荐，比loselose更好
+
+	var djb2HashCode = function(key) {
+
+
+		var hash = 5381;
+
+		for ( var i = 0; i < key.length; i++ ) {
+
+			hash = hash * 33 + key.charCodeAt(i);
+
+		}
+
+		return hash % 1013;
+	};
+
+它包括初始化一个hash变量并赋值为一个质数（大多数实现使用5318）。然后迭代参数key，将hash与33相乘（用来作为一个魔力数），并和当前迭代到的字符的ASCII码值相加。
+
+最后，我们将使用相加的和与另一个随机质数（比我们认为的散列值的大小要大）相除的余数。
+
+如果再次执行代码，下面是结果：
+
+	798 - Gandalf
+
+	838 - John
+
+	624 - Tyrion
+
+	215 - Aaron
+
+	278 - Donnie
+
+	925 - Ana
+
+	288 - Johnthan
+
+	962 - Jamie
+
+	502 - Sue
+
+	804 - Mindy
+
+	54 - Paul
+
+	223 - Nathan
+
+没有冲突，这不是最优的散列函数，但是最被推荐的散列函数
+
+
+	
 
