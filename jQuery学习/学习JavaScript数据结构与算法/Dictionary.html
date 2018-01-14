@@ -59,6 +59,21 @@
 		this.getItems = function() {
 
 			return items;
-		}
+		};
 	}
+
+	var dictionary = new Dictionary();
+	dictionary.set( 'Gandalf', 'gandalf@eamil.com' );
+	dictionary.set( 'John', 'john@email.com' );
+	dictionary.set( 'Tyrion', 'tyrion@email.com' );
+
+	console.log( dictionary.has('Gandalf') );
+	console.log( dictionary.keys() );
+	console.log( dictionary.values() );
+	console.log( dictionary.get('Tyrion') );
+
+	dictionary.remove('John');
+	console.log( dictionary.keys() );
+	console.log( dictionary.values() );
+	console.log( dictionary.getItems() );
 </script>
