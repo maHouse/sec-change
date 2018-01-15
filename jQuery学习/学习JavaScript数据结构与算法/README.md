@@ -1753,6 +1753,8 @@ Johnathan、Jamie和Sue有相同的散列值，也就是5，由于Sue是最后�
 
 例如，我们在之前的测试代码中使用分离链接的话，输出的结果如下图
 
+![](images/vp.png)
+
 在位置5上，将会包含3个元素的LinkedList实例；在位置13、16和32上，将会有包含两个元素的LinkedList实例；在位置10、19和29上，将会有包含单个元素的LinkedList实例。
 
 对于实现一个使用了分离链接的HashTable实例，我们需要一个新的辅助类来表示将要加入LinkedList实例的元素。我们管它叫做ValuePair类（在HashTable类内部定义）
