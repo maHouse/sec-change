@@ -171,8 +171,6 @@
 			return head;
 		}
 
-		this.print = function() {};
-
 	};
 
 	function HashTable() {
@@ -189,7 +187,6 @@
 			return hash % 37;
 		};
 
-		var table = [];
 
 		var ValuePair = function( key, value ) {
 
@@ -201,6 +198,8 @@
 			}
 		};
 
+		var table = [];
+		
 		this.put = function( key, value ) {
 
 			var position = loseloseHashCode( key );
@@ -278,9 +277,9 @@
 			return false;
 		};
 
-		this.prin = function() {
+		this.print = function() {
 
-			for ( var i = 0; i < table.length; ++i ) {
+			for ( let i = 0; i < table.length; ++i ) {
 
 				if ( table[i] !== undefined ) {
 
@@ -290,17 +289,6 @@
 		};
 
 	}
-
-	// var hash = new HashTable();
-	// hash.put('Gandalf', 'gandalf@email.com');
-	// hash.put('John', 'john@email.com');
-	// hash.put('Tyrion', 'tyrion@email.com');
-
-	// console.log( hash.get('Gandalf') );
-	// console.log( hash.get('Loiane') );
-
-	// hash.remove('Gandalf');
-	// console.log( hash.get('Gandalf') );
 	
 	var hash = new HashTable();
 	hash.put('Gandalf', 'gandalf@email.com');
@@ -317,5 +305,5 @@
 	hash.put('Nathan', 'nathan@email.com');
 
 	console.log( hash.get('Gandalf') );
-	hash.prin();
+	hash.print();
 </script>
