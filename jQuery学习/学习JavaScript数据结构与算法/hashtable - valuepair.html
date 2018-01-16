@@ -10,7 +10,8 @@
 </html>
 
 <script>
-	 function LinkedList() {
+
+	function LinkedList() {
 
 		// 添加到列表的项
 		var Node = function( element ) {
@@ -171,9 +172,21 @@
 			return head;
 		}
 
-	};
+	}
 
 	function HashTable() {
+
+		var table = [];
+
+		var ValuePair = function( key, value ) {
+
+			this.key = key;
+			this.value = value;
+			this.toString = function() {
+
+				return '[' + this.key + '-' + this.value + ']';
+			}
+		};
 
 		var loseloseHashCode = function( key ) {
 
@@ -187,18 +200,6 @@
 			return hash % 37;
 		};
 
-
-		var ValuePair = function( key, value ) {
-
-			this.key = key;
-			this.value = value;
-			this.toString = function() {
-
-				return '[' + this.key + '-' + this.value + ']';
-			}
-		};
-
-		var table = [];
 		
 		this.put = function( key, value ) {
 
@@ -279,7 +280,7 @@
 
 		this.print = function() {
 
-			for ( let i = 0; i < table.length; ++i ) {
+			for ( var i = 0; i < table.length; ++i ) {
 
 				if ( table[i] !== undefined ) {
 
