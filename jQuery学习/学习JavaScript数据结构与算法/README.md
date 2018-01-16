@@ -2071,3 +2071,23 @@ remove方法和get方法基本相同，不同之处在于行，他们将会由�
 
 **创建BinarySearchTree类**
 
+让我们开始创建自己的BinarySearchTree类，我们它的结构
+
+	function BinarySearchTree() {
+
+		var Node = function(key) {
+
+			this.key = key;
+
+			this.left = null;
+
+			this.right = null;
+
+		};
+
+		var root = null;
+
+	}
+
+下图展现了二叉搜索树数据结构的组织方式
+
