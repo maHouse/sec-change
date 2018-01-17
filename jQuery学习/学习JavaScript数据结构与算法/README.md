@@ -2116,3 +2116,52 @@ remove方法和get方法基本相同，不同之处在于行，他们将会由�
 	max:返回树中最大的值/键
 
 	remove(key):从树中移除某个值
+
+**向树中插入一个键**
+
+本章我们会用稍微复杂的方法，我们将会在方法中使用很多递归，下面的代码是用来向树插入一个新键的算法的第一部分：
+
+	this.insert = function(key) {
+
+		var newNode = new Node(key);
+
+		if ( root === null ) {
+
+			root = newNode;
+		} else {
+
+			insertNode(root, newNode);
+		}
+	};
+
+要向树中插入一个新的节点或项，要经历三个步骤
+
+第一步是创建用来表示新节点的Node类实例。只需要向构造函数传递我们想用来插入树的节点值，它的左指针和右指针的值会由构造函数自动设置为null。
+
+第一步要验证这个插入操作是否为一种特殊情况。这个特殊情况就是我们要插入的节点是树的第一节点。如果是，就将根节点指向新节点。
+
+第三步是将节点加在非根节点的其他位置。这种情况需要一个私有的辅助函数，函数定义如下
+
+	var insertNode = function(node, newNode) {
+
+		if ( newNode.key < node.key ) {
+
+			if ( node.left === null ) {
+
+				node.left = newNode;
+			} else {
+
+				insertNode( node.left, newNode );
+			}
+		} else {
+
+			if ( node.right === null ) {
+
+				node.right = newNode;
+			} else {
+
+					insertNode( node.right, newNode );
+			
+			}
+		}
+	};
