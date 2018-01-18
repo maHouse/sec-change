@@ -2176,5 +2176,8 @@ insertNode函数会帮助我们找到新节点应该插入的正确位置，实�
 
 用例子来理解过程：我们有一个新的树，并且想要它插入第一个值
 
+	var tree = new BinarySearchTree();
+	
+	tree.insert(11);
 
 
