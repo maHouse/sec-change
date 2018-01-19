@@ -2272,4 +2272,12 @@ inOrderTraverse方法接收一个回调函数作为参数。回调函数用来�
 
 	tree.inOrderTraverse(printNode);
 
-但首先，需要创建一个回调函数。我们要做的，是在浏览器的控制台上输出节点的值。
+但首先，需要创建一个回调函数。我们要做的，是在浏览器的控制台上输出节点的值。然后调用inOrderTraverse方法并将回调函数作为参数传入行7.执行后的结果是
+
+3 5 6 7 8 9 10 11 12 13 14 15 18 20 25 
+
+下图描绘了inOrderTraverse方法的访问路径：
+
+![](images/inorderTraverse.png)
+
+**先序遍历**
