@@ -2265,4 +2265,9 @@ inOrderTraverse方法接收一个回调函数作为参数。回调函数用来�
 
 我们试着在之前展示的树上执行下面的方法
 
-	function 
+	function printNode(value) {
+
+		console.log(value);
+	}
+
+	tree.inOrderTraverse(printNode);
