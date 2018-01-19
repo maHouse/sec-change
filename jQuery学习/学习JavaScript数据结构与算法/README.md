@@ -2240,3 +2240,29 @@ insertNode函数会帮助我们找到新节点应该插入的正确位置，实�
 
 中序遍历是一种以上行顺序访问BST所有节点的遍历方式也就是以从最小到最大的顺序访问所有节点。中序遍历的一种应用就是对树进行排序操作。看实现方法：
 
+	this.inOrderTraverse = function(callback) {
+
+		inOrderTraverseNode(root, callback);
+	};
+
+inOrderTraverse方法接收一个回调函数作为参数。回调函数用来定义我们对遍历到的每个节点进行的操作（这也叫访问者模式），由于我们在BST中最常实现的算法是递归，这里使用了一个私有的辅助函数，来接收一个节点和对应的回调函数作为参数。
+
+	var inOrderTraverseNode = function(node, callback) {
+
+		if ( node !== null ) {
+
+			inOrderTraverseNode(node.left, callback);
+
+			callback(node.key);
+
+			inOrderTraverseNode(node.right, callback);
+		}
+	};
+
+要通过中序遍历的方法遍历一棵树，首先要检查以参数形式传入的节点是否为null（这就是停止递归继续执行的判断条件--行2--递归算法的基本条件）。
+
+然后，递归调用相同的函数来访问左侧子节点。接着对这个节点进行一些操作（callback），然后再访问右侧子节点。
+
+我们试着在之前展示的树上执行下面的方法
+
+	function 
