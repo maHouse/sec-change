@@ -2271,3 +2271,5 @@ inOrderTraverse方法接收一个回调函数作为参数。回调函数用来�
 	}
 
 	tree.inOrderTraverse(printNode);
+
+但首先，需要创建一个回调函数。我们要做的，是在浏览器的控制台上输出节点的值。
