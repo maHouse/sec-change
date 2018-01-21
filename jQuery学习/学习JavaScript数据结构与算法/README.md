@@ -2467,4 +2467,76 @@ searchNode方法可以用来寻找一棵树或他的任意子树中的一个特�
 
 **移除一个节点**
 
+我们要为BST实现下一个、也是最后一个方法remove方法。这是我们在本书中实现的最复杂的方法。我们先创建这个方法，使它能够在树的实现上被调用
+
+	this.remove = function( key ) {
+
+		root = removeNode( root, key );
+	};
+
+这个方法接收要移除的键并且它调用了removeNode方法，传入root和要移除的键作为参数。root被赋值为removeNode方法的返回值。原因稍后说。
+
+removeNode方法的复杂之处在于我们要处理不同的运行场景，当然也包括它同样是通过递归来实现的。
+
+看看removeNode方法的实现
+
+	var removeNode = function( node, key ) {
+
+		if ( node === null ) {
+
+			return null;
+		}
+
+		if ( key < node.key ) {
+
+			node.left = removeNode( node.left, key );
+		
+			return node;
+
+		} else if ( key > node.key ) {
+		
+			node.right = removeNode( node.right, key );
+
+			return node;
+		} else {
+
+			if ( node.left === null && node.right === null ) {
+
+				node = null;
+
+				return node;
+			}
+
+			if ( node.left === null ) {
+
+				node = node.right;
+
+				return node;
+
+			} else if ( node.right === null ) {
+
+				node = node.left;
+
+				return node;
+
+			}
+
+			var aux = findMinNode( node.right );
+
+			node.key = aux.key;
+
+			node.right = removeNode( node.right, aux.key );
+
+			return node;
+
+		}
+	};
+
+我们看看行2，如果正在检测的节点是null，那么说明键不存在于树中，所以返回null
+
+然后，第一件事，就是在树中找到移除的节点。因此，如果要找的键比当前节点的值小，就沿着树的左边找到下一个节点。如果要找的键比当前节点的值大，那么就沿着树的右边找到下一个节点
+
+如果我们找到了要找的键（键和node.key相等），就需要处理三种不同的情况
+
+**1.移除一个叶节点**
 
