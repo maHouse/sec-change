@@ -2417,3 +2417,54 @@ minNode方法允许我们从树中任意一个节点开始寻找最小的键。�
 因此，对于寻找最小值，总是沿着树的左边；对于寻找最大值，总是沿着树的右边
 
 **搜索一个特定的值**
+
+之前的章节，我们同样实现了find、search或get方法来查找数据结构中的一个特定的值。我们将同样在BST中实现搜索方法
+
+	this.search = function( key ) {
+
+		return searchNode( root, key );
+	};
+
+	var searchNode = function( node, key ) {
+
+		if ( node === null ) {
+
+			return false;
+		}
+
+		if ( key < node.key ) {
+
+			return searchNode( node.left, key );
+		} else if ( key> node.key ) {
+
+			return searchNode( node.right, key );
+
+		} else {
+
+			return true;
+		}
+	};
+
+我们要做的第一件事，是声明search方法。和BST中声明的其他方法的模式相同，我们将会使用一个辅助函数
+
+searchNode方法可以用来寻找一棵树或他的任意子树中的一个特定值。这也是为什么在行1中调用它的时候传入树的根节点作为参数。
+
+开始算法之前，先要验证作为参数传入的node是否合法（不是null）。如果是，说明要找的键没有找到，返回false
+
+如果传入的节点不是null，需要继续验证。如果要找的键比当前的节点小，那么继续在左侧的子树上搜索。如果要找的键比当前的节点大，那么就从右侧子节点开始继续搜索，否则就说明要找的键和当前节点的键相等，就返回true来表示找到了这个键
+
+可以用下面的代码来测试这个方法
+
+	console.log( tree.search(1) ? 'Key 1 found.' : 'Key 1 not found.' );
+
+	console.log( tree.search(8) ? 'Key 8 found.' : 'Key 8 not found.' );
+
+输出结果为
+
+	Value 1 not found.
+
+	Value 8 found.
+
+**移除一个节点**
+
+
