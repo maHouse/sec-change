@@ -2281,3 +2281,70 @@ inOrderTraverse方法接收一个回调函数作为参数。回调函数用来�
 ![](images/inorderTraverse.png)
 
 **先序遍历**
+
+先序遍历是以优先于后代节点的顺序访问每个节点的。先序遍历的一种应用是打印一个结构化的文档。
+
+	this.preOrderTraverse = function( callback ) {
+
+		preOrderTraverseNode( root, callback );
+	};
+
+preOrderTraverseNode方法的实现如下：
+
+	var preOrderTraverseNode = function( node, callback ) {
+
+		if ( node !== null ) {
+
+			callback(node.key);
+
+			preOrderTraverseNode(node.left, callback);
+
+			preOrderTraverseNode(node.right, callback);
+		}
+	};
+
+先序遍历和中序遍历不同点是，先序遍历会先访问节点本身，然后再访问它的左侧子节点，最后是右侧子节点，而中序遍历的执行顺序是行2、行2和行3
+
+下面是控制台上输出的结果
+
+11 7 5 3 6 9 8 10 15 13 12 14 20 18 25
+
+下图描绘了preOrderTraverse方法的访问路径
+
+![](images/pre1.png)
+
+**后序遍历**
+
+后序遍历则是先访问节点的后代节点，在访问节点本身。后序遍历的一种应用是计算机一个目录和它的子目录中所有文件所占空间的大小
+
+	this.postOrderTraverse = function(callback) {
+
+		postOrderTraverseNode(root, callback);
+	};
+
+	postOrderTraverseNode = function( node, callback ) {
+
+		if ( node !== null ) {
+
+			postOrderTraverseNode(node.left, callback);
+
+			postOrderTraverseNode(node.right, callback);
+
+			callback(node.key);
+		}
+	};
+
+后序遍历先访问左侧子节点，然后是右侧子节点，最后是父节点本身
+
+中序遍历、先序遍历和后序遍历唯一不同的是行1、行2和行3的执行顺序
+
+下面是控制台输出的结果
+
+3 6 5 8 10 9 7 12 14 13 18 25 20 15 11
+
+下图描绘了postOrderTraverse方法的访问路径
+
+![](images/post.png)
+
+**搜索树中的值**
+
