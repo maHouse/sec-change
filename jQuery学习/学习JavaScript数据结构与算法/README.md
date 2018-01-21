@@ -2348,3 +2348,72 @@ preOrderTraverseNode方法的实现如下：
 
 **搜索树中的值**
 
+在树中，有三种经常执行的搜索类型：
+
+最小值、最大值和搜索特定的值
+
+**搜索最小值和最大值**
+
+用这个树作为例子
+
+![](images/searchmaxandmin.png)
+
+我们直接也能看到最大值和最小值，最左侧的节点就是这棵树中的最小的键，值为3，最右端的节点，是这棵树中最大的键，值为25
+
+首先看看找寻树的最小键的方法
+
+	this.min = function() {
+
+		return minNode(root);
+	};
+
+	var minNode = function( node ) {
+
+		if ( node ) {
+
+			while ( node && node.left !== null ) {
+
+				node = node.left;
+
+			}
+
+			return node.key;
+		}
+
+		return null;
+	}; 
+
+minNode方法允许我们从树中任意一个节点开始寻找最小的键。我们可以使用它来找到一个一棵树或它的子树中最小的键。因此，我们在调用minNode方法的时候传入树的根节点。因为我们想要找到整棵树的最小键。
+
+在minNode内部，我们会遍历树的左边直到找到树的最下层（最左端）
+
+以相似的方式可以实现max方法
+
+	this.max = function() {
+
+		return maxNode(root);
+	};
+
+	var maxNode = function( node ) {
+
+		if ( node ) {
+
+			while ( node && node.right !== null ) {
+
+				node = node.right;
+
+			}
+
+			return node.key;
+
+		}
+
+		return null;
+
+	};
+
+我们找最大的键，我们要沿着树的右边进行遍历直到找到最右端的节点
+
+因此，对于寻找最小值，总是沿着树的左边；对于寻找最大值，总是沿着树的右边
+
+**搜索一个特定的值**
