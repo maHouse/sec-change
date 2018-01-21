@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>散列表学习之分离链接</title>
+</head>
+<body>
+	
+</body>
+</html>
+
+<script>
+
+	function LinkedList() {
+
+		// 添加到列表的项
+		var Node = function( element ) {
+
+			// 项中的节点的值
+			this.element = element;
+
+			// 项的另一部分，指向下一个节点的指针
+			this.next = null;
+		};
+
+		var	length = 0,
+			head = null;
+
+		this.append = function( element ) {
+
+			var node = new Node( element ),
+				current;
+
+			if ( head === null ) {
+
+				head = node;
+			} else {
+
+				current = head;
+
+				while( current.next ) {
+
+					current = current.next;
+				}
+
+				current.next = node;
+			}
+
+			length++;
+		};
+
+		this.insert = function( position, element ) {
+
+			if ( position >= 0 && position <= length ) {
+
+				var node = new Node( element ),
+					current = head,
+					previous,
+					index = 0;
+
+				if ( position === 0 ) {
+
+					node.next = current;
+					head = node;
+				} else {
+
+					while ( index++ < position ) {
+
+						previous = current;
+						current = current.next;
+					}
+
+					node.next = current;
+					previous.next = node;
+				}
+
+				length++;
+
+				return true;
+			} else {
+
+				return false;
+			}
+		};
+
+		//列表的特定位置移除
+		this.removeAt = function( position ) {
+
+			//这是初始值
+			if ( position > -1 && position < length ) {
+
+				var current = head,
+					previous,
+					index = 0;
+					
+				if ( position === 0 ) {
+
+					head = current.next;
+				} else {
+
+					while ( index++ < position ) {
+
+						previous = current;
+						current = current.next;
+					}
+
+					previous.next = current.next;
+				}
+
+				length--;
+
+				return current.element;
+			} else {
+
+				return null;
+			}
+		};
+
+		this.indexOf = function( element ) {
+
+			var current = head,
+				index = -1;
+
+			while ( current ) {
+
+				if ( element === current.element ) {
+
+					return index;
+				}
+
+				index++;
+				current = current.next;
+			}
+
+			return -1;
+		};
+
+		this.remove = function( element ) {
+
+			var index = this.indexOf( element );
+
+			return this.removeAt( index );
+		};
+
+		this.isEmpty = function() {
+
+			return length === 0;
+		};
+
+		this.size = function() {
+
+			return length;
+		};
+
+		this.toString = function() {
+
+			var current = head,
+				string = '';
+
+			while ( current ) {
+
+				string = current.element;
+				current = current.next;
+			}
+
+
+			return string;
+		};
+
+		this.getHead = function() {
+
+			return head;
+		}
+
+	}
+
+	function HashTable() {
+
+		var table = [];
+
+		var ValuePair = function( key, value ) {
+
+			this.key = key;
+			this.value = value;
+			this.toString = function() {
+
+				return '[' + this.key + '-' + this.value + ']';
+			}
+		};
+
+		var loseloseHashCode = function( key ) {
+
+			var hash = 0;
+
+			for ( var i = 0; i < key.length; i++ ) {
+
+				hash += key.charCodeAt( i );
+			}
+
+			return hash % 37;
+		};
+
+		
+		this.put = function( key, value ) {
+
+			var position = loseloseHashCode( key );
+
+			if ( table[ position ] == undefined ) {
+
+				table[ position ] = new ValuePair( key, value );
+			} else {
+
+				var index = ++position;
+				while( table[index] != undefined ) {
+
+					index++;
+				}
+
+				table[index] = new ValuePair( key, value );
+			}
+		};
+
+		this.get = function( key ) {
+
+			var position = loseloseHashCode( key );
+
+			if ( table[ position ] !== undefined ) {
+
+				if ( table[position].key === key ) {
+
+					return table[position].value;
+				} else {
+
+					var index = ++position;
+					while ( table[index] === undefined || table[index].key !== key ) {
+
+						index++;
+					}
+
+					if ( table[index].key === key ) {
+
+						return table[index].value;
+					}
+				}
+			}
+
+			return undefined;
+		};
+
+		this.remove = function( key ) {
+
+			var position = loseloseHashCode( key );
+
+			if ( table[ position ] !== undefined ) {
+
+				var current = table[ position ].getHead();
+
+				while( current.next ) {
+
+					if ( current.element.key === key ) {
+
+						table[ position ].remove( current.element );
+						if ( table[ position ].isEmpty() ) {
+
+							table[ index ] = undefined;
+						}
+
+						return true;
+					}
+
+					current = current.next;
+				}
+
+				if ( current.element.key === key ) {
+
+					table[ position ].remove( current.element );
+					if ( table[ position ].isEmpty() ) {
+
+						table[ index ] = undefined;
+					}
+
+					return true;
+				}
+			}
+
+			return false;
+		};
+
+		this.print = function() {
+
+			for ( var i = 0; i < table.length; ++i ) {
+
+				if ( table[i] !== undefined ) {
+
+					console.log(i + ":" + table[i]);
+				}
+			}
+		};
+
+	}
+	
+	var hash = new HashTable();
+	hash.put('Gandalf', 'gandalf@email.com');
+	hash.put('John', 'john@email.com');
+	hash.put('Tyrion', 'tyrion@email.com');
+	hash.put('Aaron', 'Aaron@email.com');
+	hash.put('Donnie', 'donnie@email.com');
+	hash.put('Ana', 'ana@email.com');
+	hash.put('Johnthan', 'johnthan@email.com');
+	hash.put('Sue', 'sue@email.com');
+	hash.put('Jamie', 'jamie@email.com');
+	hash.put('Mindy', 'mindy@email.com');
+	hash.put('Paul', 'paul@email.com');
+	hash.put('Nathan', 'nathan@email.com');
+
+	console.log( hash.get('Gandalf') );
+	hash.print();
+</script>

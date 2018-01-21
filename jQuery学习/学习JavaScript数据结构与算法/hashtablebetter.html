@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>散列表学习</title>
+</head>
+<body>
+	
+</body>
+</html>
+
+<script>
+	
+	function HashTable() {
+
+		var djb3HashCode = function( key ) {
+
+			var hash = 5381;
+
+			for ( var i = 0; i < key.length; i++ ) {
+
+				hash = hash * 33 + key.charCodeAt( i );
+			}
+
+			return hash % 1013;
+		};
+
+		var table = [];
+
+		this.put = function( key, value ) {
+
+			var position = djb3HashCode( key );
+			console.log( position + '-' + key );
+			table[ position ] = value;
+		};
+
+		this.get = function( key ) {
+
+			return table[ djb3HashCode( key )];
+		};
+
+		this.remove = function( key ) {
+
+			table[ djb3HashCode( key ) ] = undefined;
+		};
+
+		this.print = function() {
+
+			for ( var i = 0; i < table.length; ++i ) {
+
+				if ( table[i] !== undefined ) {
+
+					console.log(i + ":" + table[i]);
+				}
+			}
+		};
+
+	}
+
+	// var hash = new HashTable();
+	// hash.put('Gandalf', 'gandalf@email.com');
+	// hash.put('John', 'john@email.com');
+	// hash.put('Tyrion', 'tyrion@email.com');
+
+	// console.log( hash.get('Gandalf') );
+	// console.log( hash.get('Loiane') );
+
+	// hash.remove('Gandalf');
+	// console.log( hash.get('Gandalf') );
+	
+	var hash = new HashTable();
+	hash.put('Gandalf', 'gandalf@email.com');
+	hash.put('John', 'john@email.com');
+	hash.put('Tyrion', 'tyrion@email.com');
+	hash.put('Aaron', 'Aaron@email.com');
+	hash.put('Donnie', 'donnie@email.com');
+	hash.put('Ana', 'ana@email.com');
+	hash.put('Johnthan', 'johnthan@email.com');
+	hash.put('Sue', 'sue@email.com');
+	hash.put('Jamie', 'jamie@email.com');
+	hash.put('Mindy', 'mindy@email.com');
+	hash.put('Paul', 'paul@email.com');
+	hash.put('Nathan', 'nathan@email.com');
+
+	hash.print();
+</script>
