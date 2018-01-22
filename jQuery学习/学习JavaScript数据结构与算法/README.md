@@ -2674,3 +2674,24 @@ BST存在一个问题：取决于你添加的节点数，树的一条边可能�
 关联矩阵常用于边的数量比顶点多的情况下，以节省空间和内存
 
 **创建图类**
+
+声明类的骨架
+
+	function Graph() {
+
+		var vertices = [];
+
+		var adjList = new Dictionary();
+	}
+
+我们使用一个数组来存储图中所有顶点的名字，以及一个字典来存储邻接表。字典将会使用顶点的名字作为键，邻接顶点列表作为值。vertices数组和adjList字典两者都是我们Graph类的私有属性。
+
+接着，我们将实现两个方法：一个用来向图中添加一个新的顶点（因为图实例化后是空的），另外一个方法用来添加顶点之间的边。我们先实现addVertex方法：
+
+	this.addVertex = function( v ) {
+
+		vertices.push( v );
+
+		adjList.set( v, [] );
+	};
+
