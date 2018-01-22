@@ -2695,3 +2695,77 @@ BST存在一个问题：取决于你添加的节点数，树的一条边可能�
 		adjList.set( v, [] );
 	};
 
+这个方法接受顶点v作为参数。我们将该顶点添加到顶点列表中，并且在邻接表中，设置顶点v作为键对应的字典值为一个空数组。
+
+现在，我们来实现addEdge方法：
+
+	this.addEdge = function( v, w ) {
+
+		adjList.get( v ).push( w );
+
+		adjList.get( w ).push( v );
+	};
+
+这个方法接受两个顶点作为参数。首先，通过将w加入到v的邻接表中，我们添加了一条自顶点v到顶点w的边。如果你想实现一个有向图，则行5就足够了。由于本章的多数例子都是基于无向图的，我们需要添加一条自w向v的边
+
+注意我们只是往数组里新增元素，因为数组已经在行4被初始化了
+
+测试代码
+
+	var graph = new Graph();
+
+	var myVertices = ['A','B','C','D','E','F','G','H','I'];
+
+	for ( var i = 0; i < myVertices.length; i++ ) {
+
+		graph.addVertex( myVertices[i] );
+	}
+
+	graph.addEdge('A', 'B');
+
+	graph.addEdge('A', 'C');
+
+	graph.addEdge('A', 'D');
+
+	graph.addEdge('C', 'D');
+
+	graph.addEdge('C', 'G');
+
+	graph.addEdge('D', 'G');
+
+	graph.addEdge('D', 'H');
+
+	graph.addEdge('B', 'E');
+
+	graph.addEdge('B', 'F');
+
+	graph.addEdge('E', 'I');
+
+为方便起见，我们创建了一个数组，包含所有我们想添加到图中的顶点。接下来我们只要遍历vertices数组并将其中的值逐一添加到我们的图中。最后，我们添加想要的边。这段代码将会创建一个图，也就是目前为止本章的示意图所使用的。
+
+为更方便一些，我们来实现一下Graph类的toString方法，以便于在控制台输出图
+
+	this.toString = function() {
+
+		var s = '';
+
+		for ( var i = 0; i < vertices.length; i++ ) {
+
+			s += vertices[i] + '->';
+
+			var neighbors = adjList.get( vertices[i] );
+
+			for ( var j = 0; j < neighbors.length; j++ ) {
+
+				s += neighbors[j] + ' ';
+			}
+
+			s += '\n';
+
+		}
+
+		return s;
+
+	};
+
+
