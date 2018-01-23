@@ -2918,12 +2918,33 @@ BST存在一个问题：取决于你添加的节点数，树的一条边可能�
 
 	function printNode( value ) {
 
-		console.log( 'Visited vertices:' + value );
+		console.log( 'Visited vertex:' + value );
 
 	};
 
 	graph.bfs( myVertices[0], printNode );
 
+首先，我们声明了一个回调函数，它仅仅在浏览器控制台上输出已经被完全探索过的顶点的名字。接着，我们会调用bfs方法，给它传递一个顶点（A---从本章开头声明的myVertices数组）和回调函数。当我们执行这段代码时，该算法会在浏览器控制台下输出结果
 
+	Visited vertex: A
 
+	Visited vertex: B
+
+	visited vertex: C
+
+	Visited vertex: D
+
+	Visited vertex: E
+
+	Visited vertex: F
+
+	Visited vertex: G
+
+	Visited vertex: H
+
+	Visited vertex: I
+
+如你所见，顶点被访问的顺序和本节开头的示意图中所展示的一致
+
+**使用BFS寻找最短路径**
 
