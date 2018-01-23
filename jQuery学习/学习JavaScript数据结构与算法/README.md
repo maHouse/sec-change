@@ -2844,6 +2844,64 @@ BST存在一个问题：取决于你添加的节点数，树的一条边可能�
 
 让我们实现广度优先搜索算法：
 
-	
+	var initializeColor = function() {
+
+		var color = [];
+
+		for ( var i = 0; i < vertices.length; i++ ) {
+
+			color[ vertices[i] ] = 'white';//{1
+
+		}
+
+		return color;
+
+	};
+
+	this.bfs = function( v, callback ) {
+
+		var color = initializeColor(),
+
+			queue = new Queue();
+
+		queue.enqueue(v);
+
+		while ( !queue.isEmpty() ) {
+
+			var u = queue.dequeue(),
+
+				neighbprs = adjList.get(u);
+
+			color[u] = 'grey';
+
+			for ( var i = 0; i < neighbors.length; i++ ) {
+
+				var w = neighbors[i];
+
+				if ( color[w] === 'white' ) {
+
+
+					color [w] = 'grey';
+
+					queue.enqueue(w);
+
+				}
+			}
+
+			color[u] = 'black';
+
+			if ( callback ) {
+
+				callback(u);
+		
+			}
+
+		}
+
+	};
+
+广度优先搜索和深度优先搜索都需要标注被访问过的顶点。为此，我们将使用一个辅助数组color。由于当算法开始执行时，所有的顶点颜色都是白色，所以我们可以创建一个辅助函数initializeColor，为这两个算法执行此初始化操作
+
+
 
 
