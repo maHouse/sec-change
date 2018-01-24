@@ -2960,4 +2960,81 @@ BST存在一个问题：取决于你添加的节点数，树的一条边可能�
 
 看看如何用广度优先方法实现：
 
+	this.BFS = function( v ) {
 
+		var color = initializeColor(),
+
+			queue = new Queue(),
+			
+			d = [],
+
+			pred = [];
+
+		queue.enqueue( v );
+
+		for ( var i = 0; i < vertices.length; i++ ) {
+
+			d[ vertices[i] ] = 0;
+
+			pred[ vertices[i] ] = null;
+
+		}
+
+		while ( !queue.isEmpty() ) {
+
+			var u = queue.dequeue(),
+
+				neighbors = adjList.get( u );
+
+			color[u] = 'grey';
+
+			for ( i = 0; i < neighbors.length; i++ ) {
+
+				var w = neighbors[i];
+
+				if ( color[w] === 'white' ) {
+
+					color[w] = 'grey';
+
+					d[w] = d[u] + 1;
+
+					pred[w] = u;
+
+					queue.enqueue(w);
+
+				}
+
+			}
+
+			color[u] = 'black';
+
+		}
+
+		return {
+
+			distances: d,
+
+			predecessors: pred
+		};
+
+	};
+
+我们还需要声明数组d来表示距离，以及pred数组来表示前溯点。下一步则是对图中的每一个顶点，用0来初始化数组d，用null来初始化数组pred。
+
+当我们发现顶点u的邻点w时，则设置w的前溯点值为u。我们还通过给d[u]加1来设置v和w之间的距离（u是w的前溯点，d[u]的值已经有了）。
+
+方法的最后返回了一个包含d和pred的对象。
+
+现在，我们可以再次执行BFS方法，并将其返回值存在一个变量中：
+
+	var shortestPathA = graph.BFS( myVertices[0] );
+
+	console.log( shortestPathA );
+
+对顶点A执行BFS方法，以下将会是输出：
+
+	distances: [A: 0, B: 1, C: 1, D: 1, E: 2, F: 2, G: 2, H: 2, I: 3],
+
+	predecessors: [A: null, B: "A", C: "A", D: "A", E: "B", F: "B", G: "C", H: "D", I: "E"]
+
+这意味着顶点A与顶点B、C和D的距离是1；
