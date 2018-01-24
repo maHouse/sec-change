@@ -3039,3 +3039,15 @@ BST存在一个问题：取决于你添加的节点数，树的一条边可能�
 
 这意味着顶点A与顶点B、C和D的距离是1；与顶点E、F、G和H的距离为2；与顶点I的距离为3.
 
+通过前溯点数组，我们可以用下面这段代码来构建从顶点A到其他顶点的路径：
+
+	var fromVertex = myVertices[0];
+
+	for ( var i = 1; i < myVertices.length; i++ ) {
+
+		var toVertex = myVertices[i],
+
+			path = new Stack();
+
+		for () {}}
+
