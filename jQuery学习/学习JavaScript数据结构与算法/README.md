@@ -3049,5 +3049,22 @@ BST存在一个问题：取决于你添加的节点数，树的一条边可能�
 
 			path = new Stack();
 
-		for () {}}
+		for ( var v = toVertex; v !== fromVertex; v = shortestPathA.predecessors[v] ) {
+
+			path.push(v);
+		}
+
+		path.push( fromVertex );
+
+		var s = path.pop();
+
+		while ( !path.isEmpty() ) {
+
+			s += '-' + path.pop();
+
+		}
+
+		console.log(s);
+
+	}
 
