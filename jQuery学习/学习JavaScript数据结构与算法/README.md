@@ -3128,5 +3128,43 @@ BST存在一个问题：取决于你添加的节点数，树的一条边可能�
 
 		var color = initializeColor();
 
-		for ( var i = 0;}
+		for ( var i = 0; i < vertices.length; i++ ) {
+
+			if ( color[vertices[i] ] === 'white' ) {
+
+				dfsVist( vertices[i], color, callback );
+
+			}
+		}
+
+	};
+
+	var dfsVist = function( u, color, callback ) {
+
+		color[u] = 'grey';
+
+		if ( callback ) {
+
+			callback(u);
+
+		}
+
+		var neighbors = adjList.get(u);
+
+		for ( var i = 0; i < neighbors.length; i++ ) {
+
+			var w = neighbors[i];
+
+			if ( color[w] === 'white' ) {
+
+				dfsVist( w, color, callback );
+
+			}
+
+		}
+
+		color[u] = 'black';
+	};
+
+
 
