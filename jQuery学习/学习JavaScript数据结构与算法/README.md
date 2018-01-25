@@ -3124,5 +3124,9 @@ BST存在一个问题：取决于你添加的节点数，树的一条边可能�
 
 让我们来实现一下深度优先算法
 
-	
+	this.dfs = function( callback ) {
+
+		var color = initializeColor();
+
+		for ( var i = 0;}
 
