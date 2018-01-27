@@ -3325,4 +3325,41 @@ BST存在一个问题：取决于你添加的节点数，树的一条边可能�
 
 拓扑排序只能应用于DAG。那么，如何使用深度优先搜索来实现拓扑排序呢？让我们在本节开头的示意图上执行一下深度优先搜索。
 
-	
+	graph = new Graph();
+
+	myVertices = ['A', 'B', 'C', 'D', 'E', 'F'];
+
+	for (i =  0; i < myVertices.length; i++ ) {
+
+		graph.addVertex(myVertices[i]);
+
+	}
+
+	graph.addEdge('A, 'C');
+
+	graph.addEdge('A', 'D');
+
+	graph.addEdge('B', 'D');
+
+	graph.addEdge('B', 'E');
+
+	graph.addEdge('C', 'F');
+
+	graph.addEdge('F', 'E');
+
+	var result = graph.DFS();
+
+这段代码将创建图，添加边，执行改进版本的深度优先搜索算法，并将结果保存到result变量中。下图展示了深度优先搜索算法执行后，该图的发现和完成时间。
+
+![](images/searchdeep.png)
+
+现在要做的仅仅是以倒序来排序完成时间数组，这便得出了该图的拓扑排序
+
+	B - A - D - C - F - E
+
+注意之前的拓扑排序结果仅是多种可能性之一。如果我们稍微修改算法，就会有不同的结果，比如下面这个结果就是众多可能性中的一个
+
+	A - B - C - D - F - E
+
+也是一个可以接受的结果
+
