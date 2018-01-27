@@ -3168,5 +3168,127 @@ BST存在一个问题：取决于你添加的节点数，树的一条边可能�
 
 首先，我们创建颜色数组，并用值white为图中的每个顶点对其做初始化，广度优先搜索也这么做的。接着，对于图实例中每一个未被访问过的顶点，我们调用私有的递归函数，传递的参数为顶点、颜色数组以及回调函数。
 
-当访问u顶点时，我们标注其为被发现的（grey）。
+当访问u顶点时，我们标注其为被发现的（grey）。如果有callback函数的话，则执行该函数输出已访问过的顶点。接下来一步是取得包含顶点u所有邻点的列表。对于顶点u的每一个被访问过（颜色为white）的邻点w，我们将调用dfsVistit函数，传递w和其他参数（添加顶点w入栈，这样接下来就能访问它），最后，在该顶点和邻点按深度访问过后，我们回退，意思是该顶点已被完全探索，并将其标注为black。
+
+让我们执行下面的代码来测试一下dfs方法
+
+	graph.dfs(printNode);
+
+输出
+
+	Visited vertex: A
+
+	Visited vertex: B
+
+	Visited vertex: E
+
+	Visited vertex: I
+
+	Visited vertex: F
+
+	Visited vertex: C
+
+	Visited vertex: D
+
+	Visited vertex: G
+
+	Visited vertex: H
+
+这个顺序和本节开头处示意图所展示的一致，下面这个示意图展示了该算法每一步的执行过程：
+
+![](images/search.png)
+
+在我们实例所用的图中，行4只会被执行一次，因为所有其他的顶点 到第一个调用dfsVisit函数的顶点（顶点A）。如果顶点B第一个调用函数，则行4将会为其他顶点再执行一次（比如顶点A）。
+
+**探索深度优先算法**
+
+到目前为止，我们只是展示了深度优先搜索算法的工作原理。我们可以用该算法作更多的事情，而不只是输出被访问顶点的顺序。
+
+对于给定的图G，我们希望深度优先搜索算法遍历图G的所有节点，构建“森林”（有根树的一个集合）以及一组源顶点（根），并输出两个数组：发现时间和完成探索时间。我们可以修改dfs方法来返回给我们一些信息
+
+顶点u的发现时间d[u]
+
+当顶点u被标注为黑色时，u的完成探索时间f[u]
+
+顶点u的前溯点p[u]
+
+让我们来看看改进了的DFS方法的实现：
+
+	var time = 0;
+
+	this.DFS = function() {
+
+		var color = initializeColor(),
+
+			d = [],
+
+			f = [],
+
+			p = [];
+
+		time = 0;
+
+		for ( var i = 0; i < vertices.length; i++ ) {
+
+			f[ vertices[i] ] = 0;
+
+			d[ vertices[i] ] = 0;
+
+			p[ vertices[i] ] = null;
+
+		}
+
+		for ( i = 0; i < vertices.length; i++ ) {
+
+			if ( color[vertices[i]] === 'white' ) {
+
+				DFSVisit( vertices[i], color, d, f, p );
+
+			}
+
+		}
+
+		return {
+
+			discovery: d,
+
+			finished: f,
+
+			predecessors: p
+		};
+
+	};
+
+	var DFSVisit = function( u, color, d, f, p ) {
+
+		console.log( 'discovered' + u );
+
+		color[u] = 'grey';
+
+		d[u] = ++time;
+
+		var neighbors = adjList.get(u);
+
+		for ( var i = 0; i < neighors.length; i++ ) {
+
+			var w = neighbors[i];
+
+			if ( color[w] === 'white' ) {
+
+				p[w] = u;
+
+				DFSVisit( w, color, d, f, p );
+
+			}
+
+		}
+
+		color[u] = 'black';
+
+		f[u] = ++time;
+
+		console.log( 'explored' + u );
+
+	};
+
 
