@@ -162,7 +162,6 @@
 
 			return color;
 		};
-
 		this.bfs = function( v, callback ) {
 
 			var color = initializeColor(),
@@ -175,7 +174,7 @@
 					neighbors = adjList.get( u );
 
 				color[u] = 'grey';
-				for ( var i = 0; i < neighbors.length; i++ ) {
+				for ( var i = 0; i < neighbors.size(); i++ ) {
 
 					var w = neighbors[i];
 					if ( color[w] === 'white' ) {
