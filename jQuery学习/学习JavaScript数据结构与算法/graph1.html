@@ -152,46 +152,7 @@
 			return s;
 		};
 
-		var initializeColor = function() {
-
-			var color = [];
-			for ( var i = 0; i < vertices.length; i++ ) {
-
-				color[ vertices[i] ] = 'white';
-			}
-
-			return color;
-		};
-		
-		this.bfs = function( v, callback ) {
-
-			var color = initializeColor(),
-				queue = new Queue();
-			queue.enqueue( v );
-
-			while ( !queue.isEmpty() ) {
-
-				var u = queue.dequeue(),
-					neighbors = adjList.get( u );
-
-				color[u] = 'grey';
-				for ( var i = 0; i < neighbors.size(); i++ ) {
-
-					var w = neighbors[i];
-					if ( color[w] === 'white' ) {
-
-						color[w] = 'grey';
-						queue.enqueue(w);
-					}
-				}
-
-				color[u] = 'black';
-				if ( callback ) {
-
-					callback( u );
-				}
-			}
-		};
+		this.bfs = bfs;
 
 
 	}
@@ -217,6 +178,46 @@
 
 	console.log( graph.toString() );
 
+	var initializeColor = function() {
+
+		var color = [];
+		for ( var i = 0; i < vertices.length; i++ ) {
+
+			color[ vertices[i] ] = 'white';
+		}
+
+		return color;
+	};
+
+	this.bfs = function( v, callback ) {
+
+		var color = initializeColor(),
+			queue = new Queue();
+		queue.enqueue( v );
+
+		while ( !queue.isEmpty() ) {
+
+			var u = queue.dequeue(),
+				neighbors = adjList.get( u );
+
+			color[u] = 'grey';
+			for ( var i = 0; i < neighbors.length; i++ ) {
+
+				var w = neighbors[i];
+				if ( color[w] === 'white' ) {
+
+					color[w] = 'grey';
+					queue.enqueue(w);
+				}
+			}
+
+			color[u] = 'black';
+			if ( callback ) {
+
+				callback( u );
+			}
+		}
+	};
 	function printNode( value ) {
 
 		console.log( 'Visited vertex:' + value );
