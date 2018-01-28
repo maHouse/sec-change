@@ -92,7 +92,7 @@
 
 		this.dequeue = function() {
 
-			items.shift();
+			return items.shift();
 		};
 		this.front = function() {
 
@@ -169,11 +169,13 @@
 				queue = new Queue();
 			queue.enqueue( v );
 
+			console.log( queue );
 			while ( !queue.isEmpty() ) {
 
 				var u = queue.dequeue(),
 					neighbors = adjList.get(u);
 
+				// console.log( queue.dequeue() );
 				color[u] = 'grey';
 				for ( var i = 0; i < neighbors.length; i++ ) {
 
@@ -222,5 +224,5 @@
 		console.log( 'Visited vertex:' + value );
 	}
 
-	graph.bfs( myVertices, printNode );
+	graph.bfs( myVertices[0], printNode );
 </script>
