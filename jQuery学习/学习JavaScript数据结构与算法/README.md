@@ -3385,4 +3385,9 @@ BST存在一个问题：取决于你添加的节点数，树的一条边可能�
 
 		};
 
-		this.toString = function() {}}
+		this.toString = function() {
+
+			return array.join();
+
+		};
+	}
