@@ -3403,4 +3403,20 @@ BST存在一个问题：取决于你添加的节点数，树的一条边可能�
 
 冒泡排序比较任何两个相邻的项，如果第一个比第二个大，则交换它们。元素项向上移动至正确的顺序，就好像气泡升至表面一样，冒泡排序因此得名。看看实现：
 
+	this.bubbleSort = function() {
+
+		var length = array.length;
 	
+		for ( var i = 0; i < length; i  ++ ) {
+
+			for ( var j = 0; j < length - 1; j++ ) {
+
+				if ( array[j] > array[j+1] ) {
+
+					swap(j ,j+1);
+				
+				}
+
+			}
+		}
+	}
