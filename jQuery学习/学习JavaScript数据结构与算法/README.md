@@ -3419,4 +3419,18 @@ BST存在一个问题：取决于你添加的节点数，树的一条边可能�
 
 			}
 		}
-	}
+	};
+
+length变量用于存储数组的长度，现在我们声明一个swap函数（一个私有函数，只能用在ArrayList类的内部代码中）
+
+	var swap = function(index1, index2) {
+
+		var aux = array[index1];
+
+		array[index1] = array[index2];
+
+		array[index2] = aux;
+
+	};
+
+交换时，我们用一个中间值来存储某一交换项的值，其他排序方法也会用到这个方法，因此我们声明一个方法放置这段代码以便重用。下图是冒泡排序的工作过程
