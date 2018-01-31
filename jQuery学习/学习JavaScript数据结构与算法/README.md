@@ -3469,4 +3469,29 @@ length变量用于存储数组的长度，现在我们声明一个swap函数（�
 
 改进后的冒泡算法，如果从内循环减去外循环中已经跑过的轮数，尽可以避免不必要的比较
 
+	this.modifiedBubbleSort = function() {
+
+		var length = array.length;
+
+		for ( var i = 0; i < length; i++ ) {
+
+			for ( var j = 0; j < length - 1 - i; j++ ) {
+
+				if ( array[j] > array[j+1] ) {
+
+					swap( j, j+1 );
 	
+
+				}
+
+			}
+
+		}
+	};
+
+下图展示了改进版的冒泡顺序
+
+![](images/modefiedswap.png)
+
+这个是有了小改变，改进了冒泡排序算法，但是这种方法不推荐，因为复杂度更加大
+
