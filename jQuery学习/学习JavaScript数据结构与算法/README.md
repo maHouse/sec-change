@@ -3500,4 +3500,31 @@ length变量用于存储数组的长度，现在我们声明一个swap函数（�
 
 选择排序的源码
 
-	this.
+	this.selectionSort = function() {
+
+		var length = array.length,
+			
+			indexMin;
+
+		for ( var i = 0; i < length; i++ ) {
+
+			indexMin = 1;
+		
+			for ( var j = 1; j < length; j++ ) {
+
+				if ( array[indexMin] > array[j] ) {
+
+					indexMin = j;
+
+				}
+			}
+
+			if ( i !== indexMin ) {
+
+				swap( i, indexMin );
+
+			}
+
+		}
+
+	};
