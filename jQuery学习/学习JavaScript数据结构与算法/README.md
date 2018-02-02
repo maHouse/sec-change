@@ -3533,3 +3533,10 @@ length变量用于存储数组的长度，现在我们声明一个swap函数（�
 
 用下面代码测试选择排序算法：
 
+	array = createNonSortedArray(5);
+
+	console.log(array.toString());
+
+	array.selectionSort();
+
+	console.log(array.toString());
