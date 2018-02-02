@@ -3615,4 +3615,40 @@ length变量用于存储数组的长度，现在我们声明一个swap函数（�
 
 	};
 
-像之前的章节一样，
+像之前的章节一样，每当要实现一个递归函数，我们都会实现一个实际被执行的辅助函数。对归并排序我们也会这么做。我们将声明mergeSort方法以供随后使用，而mergeSort方法将会调用mergeSortRec，该函数是一个递归函数：
+
+	var mergeSortRec = function( array ) {
+
+		var length = array.length;
+
+		if ( length === 1 ) {
+
+			return array;
+
+		}
+
+		var mid = Math.floor( length / 2 ),
+
+			left = array.slice( 0, mid ),
+
+			right = array.slice( mid, length );
+
+		return merge( mergeSortRec(left), mergeSortRec(right) );
+
+	};
+
+归并排序将一个大数组转化为多个小数组直到只有一个项。由于算法是递归的，我们需要一个停止条件，在这里此条件是判断数组的长度是否为1.如果是，则直接返回这个长度为1的数组，因为它已排序了。
+
+如果数组长度比1大，那么我们得将其分成小数组。为此，首先得找到数组的中间位，找到后我们将数组分成两个小数组，分别叫做left和right。left数组由索引0至中间索引的元素组成，而right数组又中间索引至原始数组最后一个位置的元素组成。
+
+下面的步骤是调用merge函数，它负责合并和排序小数组产生大数组，直到回到原始数组并已排序完成。为了不断将原始数组分成小数组，我们得再次对left数组和right数组递归调用mergeSortRec，并同时作为参数传递给merge函数。
+
+	var merge = function( left, right ) {
+
+		var result = [],
+
+			il = 0,
+
+			ir = 0;
+
+		while }
