@@ -3651,4 +3651,35 @@ length变量用于存储数组的长度，现在我们声明一个swap函数（�
 
 			ir = 0;
 
-		while }
+		while ( il < left.length && ir < right.length ) {
+
+			if ( left[il] < right[ir] ) {
+
+				result.push( left[il++] );
+
+			} else {
+
+				result.push( right[ir++] );
+
+			}
+
+		}
+
+		while ( il < left.length ) {
+
+			result.push( left[ir++] );
+
+		}
+
+		while ( ir < right.length ) {
+
+			result.push( right[ir++] );
+
+		}
+
+		return result;
+
+	};
+
+merge函数接受两个数组作为参数，并将它们归并至一个大数组。排序发生在归并过程中。首先，需要声明归并过程要创建的新数组以及用来迭代两个数组（left和right数组）所需要的两个变量。迭代两个数组的过程中，我们比较来自left数组的项是否比来自right数组的项小。如果是，将该项从left数组添加至归并结果数组，并递增迭代数组的控制变量；否则，从right数组添加并递增相应的迭代数组的控制变量。接下来，将left数组或者right数组所有剩余的项添加到归并数组中，最后，将归并数组作为结果返回。
+
