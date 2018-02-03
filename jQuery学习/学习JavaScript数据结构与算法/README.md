@@ -3860,3 +3860,53 @@ swapQuickSort函数和我们在本章开始处实现的swap函数类似。唯一
 
 **二分搜索**
 
+二分搜索算法的原理和猜字数字游戏类似，就是那个有人说“我正想着一个1到100的数字”的游戏，我们每回应一个数字，那个人就会说这个数字是高了、低了还是对了。
+
+这个算法要求被搜索的数据结构已排序，以下是该算法遵循的步骤：
+
+（1）选择数组的中间值
+
+（2）如果选中值是待搜索值，那么算法执行完毕（值找到了）
+
+（3）如果待搜索值比选中值小，则返回步骤1并在选中值左边的子数组中寻找。
+
+（4）如果待搜索值比选中值要大，则返回步骤1并在选中值右边的子数组中寻找。
+
+以下是其实现：
+
+	this.binarySearch = function( item ) {
+
+		this.quickSort();
+
+		var low = 0,
+
+			high = array.length - 1,
+
+			mid, element;
+
+		while ( low <= high ) {
+
+			mid = Math.floor( ( low + high ) / 2 );
+
+			element = array[mid];
+
+			if ( element < item ) {
+
+				low = mid + 1;
+
+			} else if ( element > item ) {
+
+				high = mid - 1;
+
+			} else {
+
+				return mid;
+
+			}
+
+		}
+
+		return -1;
+
+	};
+
