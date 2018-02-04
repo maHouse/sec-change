@@ -3942,8 +3942,14 @@ swapQuickSort函数和我们在本章开始处实现的swap函数类似。唯一
 
 能够像下面这样间接调用自身的函数，也是递归：
 
-	var recursiveFunction = function ( someParam ) {
+	var recursiveFunction1 = function ( someParam ) {
 
-		}
+		recursiveFunction2( someParam );
+
+	};
+
+	var recursiveFunction2 = function( someParam ) {
+
+	}
 
 假设
