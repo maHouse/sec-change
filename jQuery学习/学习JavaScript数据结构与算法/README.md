@@ -3950,6 +3950,8 @@ swapQuickSort函数和我们在本章开始处实现的swap函数类似。唯一
 
 	var recursiveFunction2 = function( someParam ) {
 
-	}
+		recursiveFunction1( someParam )l
+
+	};
 
 假设
