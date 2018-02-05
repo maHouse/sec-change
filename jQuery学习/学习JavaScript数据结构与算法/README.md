@@ -3962,3 +3962,22 @@ swapQuickSort函数和我们在本章开始处实现的swap函数类似。唯一
 
 每个浏览器都有自己的上限，可以用下面的代码测试：
 
+	var i = 0;
+
+	function recursiveFn() {
+
+		i++;
+
+		recursiveFn();
+
+	}
+
+	try {
+
+		recursiveFn();
+
+	} catch (ex) {
+
+		alert('i = ' + i + ' error: ' + ex);
+
+	}
