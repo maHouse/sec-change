@@ -3981,3 +3981,5 @@ swapQuickSort函数和我们在本章开始处实现的swap函数类似。唯一
 		alert('i = ' + i + ' error: ' + ex);
 
 	}
+
+在Chromev37中，这个函数执行了20955次，
