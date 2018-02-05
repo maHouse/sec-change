@@ -3982,4 +3982,80 @@ swapQuickSort函数和我们在本章开始处实现的swap函数类似。唯一
 
 	}
 
-在Chromev37中，这个函数执行了20955次，而后
+在Chrome v37中，这个函数执行了20955次，而后浏览器抛出错误RangeError：Maximum call stack size exceeded（超限错误：超过最大调用栈大小）。Firefox v27中，函数执行了343429次，然后抛出错误InternalError：too much recursion（内部错误：递归次数过多）。
+
+注意：根据操作系统和浏览器的不同，具体数值会有所不同，但区别不大。
+
+ECMA6有尾调用优化（tail call optimization）。如果函数内部最后一个操作时调用函数（就像示例中加粗的那行），会通过“跳转指令”（jump）而不是“子程序调用”（subroutine call）来控制。也就是说，在ECMA6中，这里的代码可以一直执行下去。所以，具有停止递归的边界条件非常重要。
+
+**斐波纳契数列**
+
+第十章提到的斐波那契问题，斐波纳契数的定义如下：
+
+1和2的斐波那契数是1；
+
+n（n>2）的斐波那契数是（n-1）的斐波那契数加上（n-2）的斐波那契数。
+
+那么，让我们开始实现斐波那契函数：
+
+	function fibonacci(num) {
+
+		if ( num == 1 || num === 2 ) {
+
+			return 1;
+
+		}
+	}
+
+边界条件是已知的，1和2的斐波那契数是1，现在，让我们完成斐波那契函数的实现：
+
+	function fibonacci( num ) {
+
+		if ( num === 1 || num === 2 ) {
+
+			return 1;
+
+		}
+
+		return fibonacci( num -1 ) + fibonacci( num - 2 );
+
+	}
+
+我们已经知道，当n大于2时，Fibonacci(n)等于Fibonacci(n-1)+Fbonacci(n-2)。
+
+现在，斐波那契函数实现完毕，让我们试着找出6的斐波那契数，其会产生如下函数调用：
+
+![](images/fibonacci.png)
+
+我们也可以哟个非递归的方式实现斐波那契函数：
+
+	function fib(num) {
+
+		var n1 = 1,
+
+			n2 = 1,
+
+			n = 1;
+
+		for ( var i = 1; i <= num; i++ ) {
+
+			n = n1 + n2;
+
+			n1 = n2;
+
+			n2 = n;
+
+		}
+
+		return n;
+
+	}
+
+为何用递归呢？更快？递归并不比普通版本更快，反倒是更慢，但是，递归更容易理解，所需要的代码量更少。
+
+注意：ECMAScript6中，因为尾调用优化的缘故，递归并不会更慢，但是在其他语言中，递归通常更慢。
+
+所以，我们用递归，通常因为它更容易解决问题。
+
+**动态规划**
+
