@@ -4059,3 +4059,385 @@ n（n>2）的斐波那契数是（n-1）的斐波那契数加上（n-2）的斐�
 
 **动态规划**
 
+动态规划（Dynamic Programming，DP）是一种复杂问题分解为更小的子问题来解决的优化技术。
+
+本章之前提到的几次动态规划技术。用动态规划解决的一个问题是第九章的深度优先搜索。
+
+注意：动态规划和分而治之（归并排序和快速排序算法中用到的那种）是不同的方法。分而治之方法是把问题分解成相互独立的子问题，然后组合它们的答案，而动态规划则是将问题分解成相互都依赖的子问题。
+
+另一个例子是上一节解决的斐波那契问题。我们将斐波那契问题分解成如该图示的小问题。用动态规划问题时，要遵循三个重要步骤：
+
+能用动态规划解决的一些著名的问题如下：
+
+**背包问题**：给出一组项目，各自有值和容量，目标是找出总值最大的项目的集合。这个问题的限制是，总容量必须小于等于“背包”的容量。
+
+**最长公共子序列**：找出一组序列的最长公共子序列（可由另一序列删除元素但不会改变余下元素的顺序而得到）。
+
+**矩阵链相乘**：给出一系列矩阵，目标是找到这些矩阵相乘的最高效办法（计算次数尽可能少）。相乘操作不会进行，解决方案是找到这些矩阵各自相乘的顺序。
+
+**硬币找零**：给出面额为d1...dn的一定数量的硬币和要找零的钱数，找出有多少种找零的方法。
+
+**图的全源最短路径**：对所有顶点对（u，v），找出从顶点u到顶点v的最短路径。接下来的例子，涉及硬币找零问题的一个变种。
+
+**最少硬币找零问题**
+
+最少硬币找零问题是硬币找零问题的一个变种。硬币找零问题是给出要找零的钱数，以及可用的硬币面额d1...dn及其数量，找出有多少中找零方法。最少硬币找零问题是给出要找零的钱数，以及可用的硬币面额d1...dn及其数量，找到所需的最少的硬币个数。
+
+例如，美国有以下额（硬币）：d1=1，d2=5，d3=10，d4=25。
+
+如果要找36美分的零钱，我们可以用1个25美分、1个10美分和一个便士（1美分）。
+
+如何将这个解答转换成算法？
+
+最少硬币找零的解决方案是找到n所需的最小硬币数。但要做到这一点，首先得找到对每个x<n的解。然后，我们将建立在更小的值的解的基础上。
+
+来看看算法：
+
+	function MinCoinChange(coins) {
+
+		var coins = coins;
+
+		var cache = {};
+
+		this.makeChange = function( amount ) {
+
+			var me = this;
+
+			if ( !amount ) {
+
+				return [];
+
+			}
+
+			if ( cache[ amount ] ) {
+
+				return cache[ amount ];
+	 		}
+
+			var min = [], newMin, newAmount;
+
+			for ( var i = 0; i < coins.length; i++ ) {
+
+				var coin = coins[i];
+
+				newAmount = amount - coin;
+
+				if ( newAmount >= 0 ) {
+
+					newMin = me.makeChange( newAmount );
+
+				}
+
+				if ( newAmount >= 0 && ( newMin.length < min.length-1 || !min.length ) && ( newMin.length || !newAmount ) ) {
+
+					min = [coin].concat( newMin );
+
+					console.log( 'new Min' + min + 'for' + amount;
+
+				}
+
+			}
+
+			return ( cache[amount] = min );
+
+		};
+
+	}
+
+为了更有条理，我们创建了一个类，解决给定面额的最少硬币找零问题。让我们一步步解读这个算法。
+
+MinCoinChange类接收coins参数，代表问题中的面额。面对美国的硬币系统而言，它是[1, 5, 10, 25]。我们可以随心所欲传递任何面额。此外，为了更加高效且不重复计算值，我们使用了cache。
+
+接下来是makeChange方法，它也是一个递归函数，找零问题由它解决。首先，若amount不为正（<0），就返回空数组；方法执行结束后，会返回一个数组，包含用来找零的各个面额的硬币数量（最少硬币数）。接着，检查cache缓存。若结果已缓存，则直接返回结果；否则，执行算法。
+
+我们基于coins参数（面额）解决问题。因此，对每个面额，我们都计算newAmount的值，它的值会一直减小，知道能找零的最小钱数（别忘了本算法对所有的x<amount都会计算makeChange结果）。若newAmount是合理的值（正值），我们也会计算它的找零结果。
+
+最后，我们判断newAmount是否有效，minValue（最少硬币数）是否是最优解，与此同时minValue和newAmount是否是合理的值。若以上判断都成立，意味着有一个比之前更优的答案，（以5美分为例，可以给5便士或1个5美分，1个5美分是最优解）。最后，返回最终结果。
+
+测试算法：
+
+	var minCoinChange = new MinCoinChange([1, 5, 10, 25]);
+
+	console.log(minCoinChange.makeChange(36));
+
+要知道，如果我们检查cache变量，会发现它存储了从1到36美分的所有结果。以上代码的结果是[1, 10, 25]。
+
+本书的代码中会有几行多余代码，输出算法的步骤，例如，使用面额[1, 3, 4],并对钱数6执行算法，会产生以下输出：
+	
+	new Min 1 for 1
+
+	new Min 1, 1 for 2
+
+	new Min 1, 1, 1 for 3
+
+	new Min 3 for 3
+
+	new Min 1, 3 for 4
+
+	new Min 4 for 4
+	
+	new Min 1, 4 for 5
+
+	new Min 1, 1, 4 for 6
+
+	new Min 3, 3 for 6
+
+	[3, 3]
+
+所以，找零钱数为6时，最佳答案是两枚价值为3的硬币。
+
+**贪心算法**
+
+贪心算法遵循一种近似解决问题的技术，期盼通过每个阶段的局部最优选择（当前最好的解），从而达到全局最优（全局最优解）。它不像动态规划那样计算更大的格局。用同样的题目看看结果。
+
+**最少硬币找零问题**
+
+最少硬币找零问题也能用贪心算法解决。大部分情况的结果是最优的，不过对有些面额而言，结果不会是最优的。来看看算法。
+
+	function MinCoinChange( coins ) {
+
+		var coins = coins;
+
+		this.makeChange = function( amount ) {
+
+			var change = [];
+
+			var total = 0;
+
+			for ( var i = coins.length; i >= 0; i-- ) {
+
+				var coin = coins[i];
+
+				while ( total + coin <= amount ) {
+
+					change.push( coin );
+
+					total += coin;
+
+				}
+
+			}
+
+			return change;
+
+		};
+
+	}
+
+不得不说贪心版本的MinCoinChange比DP版本的简单多了。和动态规划相似，我们传递面额参数，实例化MinCoinChange。
+
+对每个面额（从大到小），把它的值和total相加后，total需要小于amount。我们会将当前面额coins添加到结果中，也会将他和total相加。
+
+如你所见，这个解法很简单。从最大面额的硬币开始，那尽可能多的这种硬币找零。当无法在拿更多这种价值的硬币时，开始拿第二大价值的硬币，依次继续。
+
+用和DP方法同样测试代码测试：
+
+	var minCoinChange = new MinCoinChange([1, 5, 10, 25]);
+
+	console.log( minCoinChange.makeChange(36) );
+
+结果依然是[25, 10, 1],和用DP得到的一样。下图阐释了算法的执行过程：
+
+然而，如果用[1, 3, 4]面额执行贪心算法，会得到结果[4, 1, 1].如果用动态规划的解法，会得到最优的结果[3, 3]。
+
+图1
+
+比起动态规划算法而言，贪心算法更简单、更快。然而，如我们所见，它并不总是得到最优答案。但综合来看，它相对执行时间来说，输出了一个可以接受的解。
+
+**大O表示法**
+
+第十章引入了大O表示法的概念。他的确切含义是什么？是描述算法的性能和复杂程度。
+
+分析算法时，时常遇到以下几类函数：
+
+图2
+
+**考虑O(1)**
+
+考虑一下函数：
+
+	function increment( num ) {
+
+		return ++num;
+
+	}
+
+假设运行increment(1)函数，执行时间等于X。如果再用不同的参数运行一次increment函数，执行时间依然是X。和参数无关，increment函数的性能都一样。因此，我们说上述函数的复杂度是O(1)(常数)。
+
+**O(n)**
+
+现在以第十章实现的顺序搜索算法为例
+
+	function sequentialSearch( array, item ) {
+
+		for ( var i = 0; i < array.length; i++ ) {
+
+			if ( item === array[i] ) {
+
+				return i;
+
+			}
+
+		}
+
+		return -1;
+
+	}
+
+如果将含10个元素的数组（[1, ..., 10]）传递给该函数，假如搜索1这个元素，那么，第一次判断时就能找到想要搜索的元素，在这里我们假设每执行一次行1，开销是1。
+
+现在，假如要搜索元素11。行1会执行10次（遍历数组中的所有值，并且找不到要搜索的元素，因而结果返回-1）。如果行1的开销是1，那么他执行10次的开销就是10，10倍于第一种假设。
+
+现在，假设该数组有1000个元素（[1, ..., 1000]）。搜索1001的结果是行1执行了1000次（然后返回-1）。
+
+注意，sequentialSearch函数执行的总开销取决于数组元素的个数（数组大小），而且也和搜索的值有关。如果是查找数组中存在的值，行1会执行几次呢？如果查找的是数组中不存在的值，那么行1就会执行和数组大小一样多次，这就是通常所说的最坏情况。
+
+最坏情况下，如果数组大小是10，开销就是10；如果数组大小是1000，开销就是1000.可以得出sequentialSearch函数的时间复杂度是O(n)，n是（输入）数组的大小。
+
+回到之前的例子，修改一下算法的实现，使之计算开销：
+
+	function sequentialSearch( array, item ) {
+
+		var cost = 0;
+
+		for ( var i = 0; i < array.length; i++ ) {
+
+			cost++;
+
+			if ( item === array[i] ) {
+
+				return i;
+
+			}
+
+		}
+
+		console.log('cost for sequentialSearch with input size' + array.length + 'is' + cost);
+
+		return -1;
+
+	}
+
+用不同大小的输入数组执行以上算法，可以看到不同的输出。
+
+**O(n^2)**
+
+用冒泡排序做O(n^2)的例子:
+
+	function swap( array, index1, index2 ) {
+
+		var aux = array[index1];
+
+		array[index1] = array[index2];
+
+		array[index2] = aux;
+
+	}
+
+	function bubbleSort( array ) {
+
+		var length = array.length;
+
+		for ( var i = 0; i < length; i++ ) {
+
+			for ( var j = 0; j < length - 1; j++ ) {
+
+				if ( array[j] > array[j+1] ) {
+
+					swap(array, j, j+1);
+
+				}
+
+			}
+
+		}
+
+	}
+
+假设行1和行2的开销分别是1.修改算法的实现使之计算开销：
+
+	function bubbleSort( array ) {
+
+		var length = array.length;
+
+		var cost = 0;
+
+		for ( var i = 0; i < length; i++ ) {
+
+			cost++;
+
+			for ( var j = 0; j < length - 1; j++ ) {
+
+				cost++;
+
+				if ( array[j] > array[j+1] ) {
+
+					swap(array, j, j+1);
+
+				}
+
+			}
+
+		}
+
+		console.log('cost for bubbleSort with input size' + length + 'is' + cost);
+
+	}
+
+如果用大小为10的数组执行bubbleSort，开销是100(10^2)。如果用大小为100的数组执行行bubbleSort，开销就是10000(100^2)。需要注意，我们每次增加输入的大小，执行都会越来越久。
+
+注意：时间复杂度O(n)的代码只有一层循环，而O(n^2)的代码有双层嵌套循环。如果算法有三层遍历数组的嵌套循环，他的时间复杂度很可能是O(n^3)。
+
+**时间复杂度比较**
+
+下图比较了前述各个大O符号表示的时间复杂度：
+
+图3
+
+**用算法娱乐身心**
+
+算法不仅仅是大学必修课，也不单是想成为开发者。通过用学到的算法来解决问题，可以提高解决问题的能力，进而成为更棒的专业人士。练习更好，下面是有用的网站推荐
+
+**UVa Online Judge(http://uva.onlinejudge.org/)**:这个网站包含了世界各大赛事的题目，包含有IBM赞助的ACM国际大学生程序竞赛（ICPC。若你依然在校，尽量参加这项赛事，获胜的话，有一次免费国际旅行）。这个网站包括了成百上千的题目，可以应用本书学到的算法。
+
+**Sphere Online Judge(http://www.spoj.com/)**:这个网站和UVa Online Judge差不多，但支持用更多语言解题（包含JS）。
+
+**Coder Byte(http://coderbyte.com/)**:这个网站可以用JS解答的题目（简单、中等难度和非常困难）。
+
+**Project Euler(https://projecteuler.net/)**:这个网站包含了一系列数学/计算机的编程题目。我们所作的就是输入那些题目的答案，不过我们可以用算法来找到正确的解答。
+
+**Hacker Rank(https://www.hackerrank.com)**:这个网站包含了263个挑战，分为16个类别（可以用本书中学到的算法和更多其他算法）。当然有JavaScript和其他语言。
+
+**Code Chef(http://www.codechef.com/)**:这个网站包含一些题目，并会举办在线比赛。
+
+**Top Coder(http://www.topcoder.com/)**:此网站会举办算法联赛，这些联赛通常由NASA、Google、Yahoo!、Amazon和Facebook这样的公司赞助。参加一些赛事，可以获得赞助公司工作的机会，一些赛事能赢得奖学金。也有很棒的解题和算法教程。
+
+以上网站的另一个好处是，它们往往给出了真实世界中的问题，而我们要鉴别用哪一个算法解决它。
+
+### 时间复杂度速查表 ###
+
+**数据结构**
+
+下表是它们插入、删除和搜索操作的时间复杂度：
+
+图数据结构
+
+**图**
+
+第九章提到的两种表示图的方式。下表分别列出了使用这两种方式时，图的存储空间大小，以及其增加顶点、增加边、删除顶点、删除边、查找顶点的时间复杂度。
+
+图图
+
+**排序算法**
+
+第十章介绍了一些常用的排序算法，以下是他们在最好、一般和最差的情况下的时间复杂度：
+
+图排序算法
+
+**搜索算法**
+
+下表整理了本书中的搜索算法的时间复杂度，包括图的遍历算法：
+
+图搜索算法
+
+
