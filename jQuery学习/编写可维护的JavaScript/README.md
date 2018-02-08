@@ -14,13 +14,42 @@ JavaScript编码风格很少提及行的长度，但是代码规范中指定一�
 
 变量和函数要简洁并且抓住要点，例如命名count、length和size表明数据类型是数字，而命名name、title和message表明数据类型是字符串。但单个字符命名的变量诸如i、j和k通常在循环中使用。使用这些能够体现出数据类型的命名，易于别人和自己读懂。注意伪标准的标准。
 
+对于函数和命名来说，第一个单词应该是动词，这里有一些使用动词常见的约定：
+
+![](images/first.png)
+
+看看例子：
+
+	if ( isEnabled ) {
+
+		setName("Nicholas");
+	}
+
+
+	if ( getName() === "Nicholas" ) {
+
+		doSomething();
+	}
+
 常量用大写字母加下划线来命名，下划线用来分隔单词
 
 	var MAX_COUNT = 10,
 
 		URL = "http://www.baidu.com";
 
+JS中，构造函数是前面冠以new运算符的函数，用来创建对象。语言本身已经包含了很多内置构造函数，比如Object和RedExp，也可以开发自己的构造函数来生成新类型，构造函数从变量和普通函数区别开来方式有命名用大写字母开始。构造函数的命名常常是名词，因为是用来创建某个类型的实例，如下：
 
+	function Person( name ) {
+
+		this.name = name;
+	}
+
+	Person.prototype.sayName = function() {
+
+		alert(this.name);
+	};
+
+	var me = new Person("Nicholas");
 
 
 
