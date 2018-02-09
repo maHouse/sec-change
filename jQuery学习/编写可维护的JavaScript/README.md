@@ -119,5 +119,80 @@ undefined是一个特殊值，不同于null，不过null = undefined结果为tru
 
 将变量初始值赋值为null表明了这个变量的意图，他最终很可能赋值为对象。typeof运算符运算null的类型时返回object，这样就能和undefined区分开了。
 
+对象直接量和数组直接量是推荐的方式。
+
+**使用文档注释时，应当对如下内容添加注释**
+
+**所有的方法**
+
+应当对方法、期望的参数和可能的返回值添加注释描述。
+
+**所有的构造函数**
+
+应当对自定义类型和期望的参数添加描述。
+
+**所有包含文档方法的对象**
+
+如果一个对象包含一个或多个附带文档注释的方法，那么这个对象也应当针对文档生成工具添加文档注释。
+
+**所有的块语句都应当使用花括号**：包括
+
+if、for、while、do...while...、try...catch...finally
+
+for-in循环用来遍历对象属性。不用定义任何控制条件，循环将会遍历每个对象属性，并返回属性名（不是值）
+
+	var prop;
+	
+	for (prop in object ) {
+
+		console.log("Property name is " + prop);
+
+		console.log("Property value is" + object[prop]);
+	}
+
+for-in循环有一个问题，就是它不仅遍历对象的实例属性（instance property），同样还遍历从原型继承来的属性。当遍历自定义对象的属性时，往往会因为意外的结果而终止。出于这个原因，最好使用hasOwnProperty()方法来为for-in方法循环过滤出实例属性。看看下面的例子
+
+	var prop;
+
+	for (prop in object) {
+
+		if (object.hasOwnProperty(prop)) {
+
+			console.log("Property name is" + prop);
+			console.log("ProPerty value is" + object[prop]);
+		}
+	}
+
+**上面的遍历是没有原型链的，如果要原型链也遍历，则不要判断即可。不要用for-in来遍历数组。**
+
+JS编程的本质是编写一个个的函数来完成任务，var语句不论是否真正被执行，所有的var语句都提前到包含这段逻辑的函数的顶部执行。如
+
+	function doSomething() {
+
+		var result = 10 + value;
+		var value = 10;
+		return result;
+	}
+
+上述代码块中，变量value在声明之前就参与了运算，这是合法的，尽管result最后的结果是个特殊值NaN
+
+	function doSomething() {
+
+		var result, value;
+
+		result = 10 + value;
+		value = 10;
+
+		return result;
+	}
+
+两个var语句提前到函数的顶部，初始化逻辑紧跟其后，JS的执行顺序是从上到下，变量已经提到函数的顶部，不过赋值是以后的事情。ECMA5之前没有块级变量声明（block-level variable declaration）。
+
+**立即调用的函数**
+
+
+
+
+
 
 
