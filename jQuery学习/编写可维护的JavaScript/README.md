@@ -86,4 +86,38 @@ null是一个特殊值，使用null的场景是：
 		}
 	}
 
-	var person = 
+	var person = getPerson();
+
+	if ( person !== null ) {
+
+		doSomething();
+	}
+
+理解null最好的方式是将它当作占位符
+
+**undefined**
+
+undefined是一个特殊值，不同于null，不过null = undefined结果为true，不过undefined的用途和前者不同。那些没有被初始化的变量都有一个初始值即undefined，表示这个变量等待被赋值。比如：
+
+	var person;//不妥当的写法
+
+	console.log( person === undefined );//true
+
+	var person;
+
+	console.log( typeof person );//undefined
+
+	console.log( typeof foo );//undefined
+
+上述的代码中，person和foo都会导致typeof返回undefined，哪怕是person和foo在其他场景中的行为千差万别（语句中foo会报错，而使用person不会报错）
+
+通过禁止使用特殊值undefined，可以有效确保只在一种情况下typeof才会返回undefined：当变量未声明。如果你使用了一个可能赋值为一个对象的变量时，其赋值为null。
+
+	var person = null;//right way
+
+	console.log( person === null );//true
+
+将变量初始值赋值为null表明了这个变量的意图，他最终很可能赋值为对象。typeof运算符运算null的类型时返回object，这样就能和undefined区分开了。
+
+
+
